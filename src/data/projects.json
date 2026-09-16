@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "title": "A Timeless Promise",
+    "slug": "a-timeless-promise",
+    "category": "WEDDINGS",
+    "location": "Udaipur",
+    "year": "2026",
+    "description": "An intimate celebration of love, surrounded by the heritage and calm waters of Udaipur. We focused on capturing the raw, unscripted moments between the couple, blending grand architectural scales with quiet intimacy.",
+    "coverImage": "/works/weddings/wedding-1.jpg",
+    "images": [
+      "/works/weddings/wedding-1.jpg",
+      "/works/weddings/wedding-2.jpg",
+      "/works/weddings/wedding-3.jpg",
+      "/works/weddings/wedding-7.jpg",
+      "/works/weddings/wedding-8.jpg"
+    ],
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "2",
+    "title": "The Golden Hour",
+    "slug": "the-golden-hour",
+    "category": "PORTRAITS",
+    "location": "Kerala",
+    "year": "2026",
+    "description": "Pre-wedding portraits that explore the connection between light, landscape, and love. Captured during the final moments of sunlight to create a warm, cinematic feel.",
+    "coverImage": "/works/portraits/portrait-1.jpg",
+    "images": [
+      "/works/portraits/portrait-1.jpg",
+      "/works/portraits/portrait-2.jpg",
+      "/works/portraits/portrait-3.jpg"
+    ],
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "3",
+    "title": "Echoes of Eternity",
+    "slug": "echoes-of-eternity",
+    "category": "WEDDINGS",
+    "location": "Jaipur",
+    "year": "2026",
+    "description": "A vibrant celebration filled with deeply rooted traditions and overwhelming joy. Our approach was to let the story unfold naturally, preserving the feeling over the frame.",
+    "coverImage": "/works/weddings/wedding-4.jpg",
+    "images": [
+      "/works/weddings/wedding-4.jpg",
+      "/works/weddings/wedding-5.jpg",
+      "/works/weddings/wedding-6.jpg"
+    ],
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": "4",
+    "title": "Unscripted Joy",
+    "slug": "unscripted-joy",
+    "category": "EVENTS",
+    "location": "Goa",
+    "year": "2026",
+    "description": "Candid, unposed moments caught in the blink of an eye. This collection embraces the authentic, spontaneous energy of the day, proving that beautiful memories don't always need to be perfectly staged.",
+    "coverImage": "/works/events/event-1.jpg",
+    "images": [
+      "/works/events/event-1.jpg",
+      "/works/events/event-2.jpg",
+      "/works/events/event-3.jpg",
+      "/works/events/event-4.jpg",
+      "/works/events/event-5.jpg"
+    ],
+    "featured": true,
+    "order": 4
+  }
+]

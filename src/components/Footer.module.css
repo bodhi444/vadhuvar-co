@@ -1,0 +1,94 @@
+.footer {
+  background-color: var(--color-surface);
+  padding: 8rem 0 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.cta {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.subtext {
+  font-family: var(--font-primary);
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 3rem;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  justify-content: space-between;
+  padding-top: 4rem;
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .bottomRow {
+    flex-direction: row;
+  }
+}
+
+.brand h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.brand p {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  max-width: 300px;
+}
+
+.links {
+  display: flex;
+  gap: 4rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.column h4 {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.column a {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+
+.copyright {
+  margin-top: 4rem;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+}
