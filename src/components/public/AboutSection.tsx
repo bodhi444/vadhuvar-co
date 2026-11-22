@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Award, Compass, Film, Flame } from "lucide-react";
+import { ArrowUpRight, Award, Briefcase, Download, GraduationCap, Palette } from "lucide-react";
 import { AboutContent } from "@/types";
 
 interface AboutSectionProps {
@@ -24,7 +24,7 @@ export default function AboutSection({ about }: AboutSectionProps) {
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
                 src={about.image_url || "/athul-ollur.jpg"}
-                alt="Athul Ollur — Cinematographer & Film Director"
+                alt="Athul Ollur (Athul Kumar) — Cinematographer & DOP"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
@@ -35,10 +35,10 @@ export default function AboutSection({ about }: AboutSectionProps) {
             {/* Overlapping Floating Milestone Card */}
             <div className="hidden sm:block absolute -bottom-6 -right-6 bg-[#12141A]/95 border border-cinematic-borderGold/50 p-5 rounded-sm shadow-2xl backdrop-blur-xl max-w-xs">
               <span className="text-[10px] uppercase tracking-[0.2em] text-cinematic-gold font-bold block mb-1">
-                Athul Ollur
+                Athul Ollur (Athul Kumar)
               </span>
               <p className="text-xs text-white/90 leading-relaxed font-sans">
-                Director of Photography & Visual Storyteller crafting emotive cinematic experiences worldwide.
+                Director of Photography (DOP) & Visual Artist. BFA in Painting, Raja Ravi Varma College of Fine Arts.
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function AboutSection({ about }: AboutSectionProps) {
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
-                Philosophy & Direction
+                Biography & Artistic Pedigree
               </span>
               <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight leading-tight">
                 {about.heading}
@@ -58,9 +58,42 @@ export default function AboutSection({ about }: AboutSectionProps) {
               {about.intro}
             </p>
 
-            <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed font-sans">
+            <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed font-sans whitespace-pre-wrap">
               {about.story}
             </p>
+
+            {/* Experience & Fine Arts Badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="bg-[#12141A]/80 border border-cinematic-border p-3.5 rounded-sm flex items-start gap-3">
+                <Briefcase className="w-4 h-4 text-cinematic-gold shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <span className="text-[10px] uppercase tracking-wider text-cinematic-gold font-bold block">
+                    2024 – 2026 · DOP
+                  </span>
+                  <span className="text-xs font-semibold text-white block">
+                    Skillmount Education
+                  </span>
+                  <p className="text-[11px] text-cinematic-textMuted font-sans">
+                    Director of Photography leading video masterclasses & media production.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-[#12141A]/80 border border-cinematic-border p-3.5 rounded-sm flex items-start gap-3">
+                <GraduationCap className="w-4 h-4 text-cinematic-gold shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <span className="text-[10px] uppercase tracking-wider text-cinematic-gold font-bold block">
+                    Academic Degree (2015)
+                  </span>
+                  <span className="text-xs font-semibold text-white block">
+                    BFA in Painting
+                  </span>
+                  <p className="text-[11px] text-cinematic-textMuted font-sans">
+                    Raja Ravi Varma College of Fine Arts, Mavelikkara (Kerala University).
+                  </p>
+                </div>
+              </div>
+            </div>
 
             {/* Two Pillars: Philosophy & Approach */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-cinematic-border">
@@ -102,14 +135,24 @@ export default function AboutSection({ about }: AboutSectionProps) {
               </div>
             )}
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-6">
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold hover:text-white transition-colors"
               >
-                <span>Read Full Studio Story</span>
+                <span>View Full CV & Career Experience</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
+
+              <a
+                href={about.cv_url || "/athul-ollur-cv.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/70 hover:text-cinematic-gold transition-colors"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download CV (PDF)</span>
+              </a>
             </div>
           </div>
         </div>

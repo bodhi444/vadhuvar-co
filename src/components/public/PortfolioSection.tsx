@@ -19,6 +19,7 @@ const CATEGORIES: ProjectCategory[] = [
   "Music Video",
   "Documentary",
   "Photography",
+  "Fine Art",
 ];
 
 export default function PortfolioSection({

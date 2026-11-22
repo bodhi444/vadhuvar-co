@@ -35,6 +35,7 @@ const CATEGORIES: ProjectCategory[] = [
   "Music Video",
   "Documentary",
   "Photography",
+  "Fine Art",
 ];
 
 export default function ManagePortfolioPage() {
@@ -55,7 +56,7 @@ export default function ManagePortfolioPage() {
   // Form Fields
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
-  const [category, setCategory] = useState<"Wedding" | "Commercial" | "Music Video" | "Documentary" | "Photography">("Wedding");
+  const [category, setCategory] = useState<Project["category"]>("Wedding");
   const [shortDesc, setShortDesc] = useState("");
   const [fullDesc, setFullDesc] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
@@ -587,6 +588,7 @@ export default function ManagePortfolioPage() {
                         <option value="Music Video">Music Video</option>
                         <option value="Documentary">Documentary</option>
                         <option value="Photography">Photography</option>
+                        <option value="Fine Art">Fine Art & Sculptures</option>
                       </select>
                     </div>
 

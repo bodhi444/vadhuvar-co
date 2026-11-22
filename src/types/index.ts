@@ -4,13 +4,14 @@ export type ProjectCategory =
   | "Commercial"
   | "Music Video"
   | "Documentary"
-  | "Photography";
+  | "Photography"
+  | "Fine Art";
 
 export interface Project {
   id: string;
   title: string;
   slug: string;
-  category: "Wedding" | "Commercial" | "Music Video" | "Documentary" | "Photography";
+  category: "Wedding" | "Commercial" | "Music Video" | "Documentary" | "Photography" | "Fine Art";
   short_description: string;
   full_description: string;
   thumbnail_url: string;
@@ -65,6 +66,27 @@ export interface StatItem {
   suffix?: string;
 }
 
+export interface ExperienceItem {
+  period: string;
+  role: string;
+  company: string;
+  location?: string;
+  description?: string;
+}
+
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  boardOrUniversity?: string;
+  year?: string;
+  details?: string;
+}
+
+export interface SkillCategoryItem {
+  title: string;
+  items: string[];
+}
+
 export interface AboutContent {
   id: string;
   heading: string;
@@ -75,6 +97,11 @@ export interface AboutContent {
   image_url: string;
   video_url?: string;
   stats: StatItem[];
+  experience?: ExperienceItem[];
+  education?: EducationItem[];
+  skills_categories?: SkillCategoryItem[];
+  software_tools?: string[];
+  cv_url?: string;
   updated_at: string;
 }
 

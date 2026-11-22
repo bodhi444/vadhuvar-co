@@ -2,25 +2,25 @@
   "site_settings": {
     "id": "default",
     "company_name": "ATHUL OLLUR",
-    "tagline": "Cinematographer, Filmmaker & Visual Storyteller",
+    "tagline": "Cinematographer · Director of Photography · Visual Artist",
     "logo_url": "",
     "favicon_url": "/favicon.ico",
-    "email": "contact@athulollur.com",
-    "phone": "+91 98460 00000",
-    "whatsapp": "+919846000000",
-    "address": "Kochi, India & Worldwide Commissions",
+    "email": "athulollur@gmail.com",
+    "phone": "+91 98476 10569",
+    "whatsapp": "+919847610569",
+    "address": "Karimbanakkal Meethal, Kunnathara (PO), Koyilandy, Calicut, Kerala, India",
     "instagram_url": "https://instagram.com/athulollur",
     "facebook_url": "https://facebook.com/athulollur",
     "youtube_url": "https://youtube.com/@athulollur",
     "vimeo_url": "https://vimeo.com/athulollur",
-    "seo_title": "ATHUL OLLUR — Cinematographer & Film Director",
-    "seo_description": "Official cinematic portfolio of Athul Ollur — Director of Photography, filmmaker, and visual storyteller crafting evocative narratives in commercial advertising, luxury wedding films, music videos, and documentaries.",
-    "updated_at": "2026-11-22T19:38:00.000Z"
+    "seo_title": "ATHUL OLLUR (ATHUL KUMAR) — Cinematographer, DOP & Visual Artist",
+    "seo_description": "Official portfolio and CV of Athul Ollur (Athul Kumar) — Director of Photography (DOP) at Skillmount Education, former Cinematographer at Greenmedia, and BFA Painting graduate from Raja Ravi Varma College of Fine Arts. Specializing in commercial advertising, wedding epics, documentaries, and fine art.",
+    "updated_at": "2026-11-22T20:00:00.000Z"
   },
   "homepage_content": {
     "id": "default",
     "hero_heading": "TELL YOUR STORY THROUGH THE LENS.",
-    "hero_subheading": "Athul Ollur — Cinematographer & Visual Director creating powerful films, unforgettable commercial visuals, and evocative stories for brands and people worldwide.",
+    "hero_subheading": "Athul Ollur — Cinematographer & Director of Photography (DOP) merging classical fine art discipline with high-end camera movement to craft evocative films, commercials, and visual experiences.",
     "hero_video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "hero_image_fallback": "/works/hero/hero-1.jpg",
     "cta_primary_text": "EXPLORE MY WORK",
@@ -32,7 +32,7 @@
     "show_showreel": true,
     "show_about": true,
     "show_contact": true,
-    "updated_at": "2026-11-22T19:38:00.000Z"
+    "updated_at": "2026-11-22T20:00:00.000Z"
   },
   "services": [
     {
@@ -232,6 +232,83 @@
       "display_order": 6,
       "created_at": "2026-11-21T10:30:00.000Z",
       "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "proj-art-1",
+      "title": "The Classical Form & Sculptural Murals — Fine Art Works",
+      "slug": "classical-form-sculptures-art",
+      "category": "Fine Art",
+      "short_description": "Life-size figurative sculptures, terracotta Harappan reliefs, and environmental installations created by Athul Ollur.",
+      "full_description": "With a BFA from Raja Ravi Varma College of Fine Arts and experience at RestoreDesign Bangalore, Athul has created striking life-size sculptures (including a signature outdoor mermaid statue in Kerala), architectural reliefs inspired by Indus Valley civilization bulls, and dynamic figurative studies in clay, plaster, and bronze-effect finishes.",
+      "thumbnail_url": "/artworks/sculpture-mermaid-installation.jpg",
+      "gallery_images": [
+        "/artworks/sculpture-mermaid-detail.jpg",
+        "/artworks/sculpture-indus-reliefs.jpg",
+        "/artworks/sculpture-harappan-bull.jpg",
+        "/artworks/sculpture-monumental-figure.jpg",
+        "/artworks/sculpture-swan-form.jpg"
+      ],
+      "video_url": "",
+      "youtube_url": "",
+      "vimeo_url": "",
+      "year": "2016-2024",
+      "client": "RestoreDesign & Independent Commissions",
+      "is_featured": true,
+      "is_published": true,
+      "display_order": 7,
+      "created_at": "2026-11-22T20:00:00.000Z",
+      "updated_at": "2026-11-22T20:00:00.000Z"
+    },
+    {
+      "id": "proj-art-2",
+      "title": "Chiaroscuro & Human Soul — Canvas Paintings & Aquatint Etchings",
+      "slug": "paintings-and-aquatint-etchings",
+      "category": "Fine Art",
+      "short_description": "A fine art collection spanning oil on canvas, watercolor still lifes, and intaglio aquatint etchings.",
+      "full_description": "A curated selection of Athul Ollur's fine art paintings and printmaking pieces. Featuring dramatic chiaroscuro oil works (traditional terracotta vessel carrier on crimson canvas, meditative ascetics), expressive portraits, intricate floral aquatint etchings, and luminous watercolors demonstrating his foundational mastery of tone and texture.",
+      "thumbnail_url": "/artworks/painting-crimson-vessel.jpg",
+      "gallery_images": [
+        "/artworks/painting-the-ascetic.jpg",
+        "/artworks/painting-the-unveiled-smile.jpg",
+        "/artworks/painting-deep-waters.jpg",
+        "/artworks/painting-ganesha-immersion.jpg",
+        "/artworks/etching-aquatint-hibiscus.jpg",
+        "/artworks/watercolor-copper-still-life.jpg"
+      ],
+      "video_url": "",
+      "youtube_url": "",
+      "vimeo_url": "",
+      "year": "2015-2023",
+      "client": "Raja Ravi Varma Fine Arts Portfolio",
+      "is_featured": false,
+      "is_published": true,
+      "display_order": 8,
+      "created_at": "2026-11-22T20:00:00.000Z",
+      "updated_at": "2026-11-22T20:00:00.000Z"
+    },
+    {
+      "id": "proj-art-3",
+      "title": "Scenography & Event Architecture — Grand Stage Installations",
+      "slug": "scenography-event-architecture",
+      "category": "Fine Art",
+      "short_description": "Architectural event scenography, grand stage lighting, and custom thematic set designs.",
+      "full_description": "Merging art direction with spatial engineering, Athul designs immersive stage experiences, carved architectural arches, theatrical lighting palettes, and sculptural decor for high-end wedding events and cultural showcases.",
+      "thumbnail_url": "/artworks/scenography-wedding-stage.jpg",
+      "gallery_images": [
+        "/artworks/mural-cherry-blossoms.jpg",
+        "/artworks/sculpture-flamingos.jpg",
+        "/artworks/craft-kerala-houseboat.jpg"
+      ],
+      "video_url": "",
+      "youtube_url": "",
+      "vimeo_url": "",
+      "year": "2022-2025",
+      "client": "Event Productions & Heritage Clients",
+      "is_featured": false,
+      "is_published": true,
+      "display_order": 9,
+      "created_at": "2026-11-22T20:00:00.000Z",
+      "updated_at": "2026-11-22T20:00:00.000Z"
     }
   ],
   "showreel": {
@@ -246,36 +323,136 @@
   },
   "about_content": {
     "id": "default",
-    "heading": "ATHUL OLLUR — VISUAL STORYTELLER.",
-    "intro": "Athul Ollur is an independent cinematographer, filmmaker, and creative director obsessed with the poetry of natural light, deliberate camera movement, and raw human emotion.",
-    "story": "With over a decade behind the lens, Athul Ollur has traversed diverse storytelling landscapes — from high-concept commercial brand campaigns and intimate destination wedding epics to experimental music videos and documentaries. His signature aesthetic merges vintage anamorphic lens characteristics with modern dynamic range, creating frames that linger long after the projector fades.",
-    "philosophy": "To me, cinematography is not merely pointing a sensor at a subject — it is an emotional dialogue with light, rhythm, and silence. Every frame must have intent, breath, and truth.",
-    "approach": "Every project receives hands-on creative direction: tailored anamorphic and spherical lens selections, precision naturalistic lighting design, high-fidelity color timing in DaVinci Resolve, and symphonic audio pacing.",
+    "heading": "ATHUL OLLUR — CINEMATOGRAPHER & VISUAL ARTIST.",
+    "intro": "Athul Ollur (Athul Kumar) is a multidisciplinary Director of Photography (DOP), Cinematographer, and Fine Arts Graduate (BFA in Painting from Raja Ravi Varma College of Fine Arts, Kerala University). His visual direction is shaped by a deep mastery of light, color harmony, and human emotion.",
+    "story": "Before looking through a camera viewfinder, Athul Ollur studied the masters of light on canvas. Holding a Bachelor of Fine Arts (BFA in Painting) from the historic Raja Ravi Varma College of Fine Arts, Mavelikkara (2015), and having worked as a sculptor at RestoreDesign Bangalore, his cinema aesthetic is anchored in classical painting, dimensional lighting, and spatial rhythm.\n\nFrom 2016 onwards, Athul built a prolific independent career as a freelance videographer, cinematographer, photographer, and visual artist. He served as lead Cinematographer at Greenmedia (2023–2024), orchestrating commercial advertising campaigns and branded films, before becoming Director of Photography (DOP) at Skillmount Education (2024–2026), where he directs high-production-value video series, masterclasses, and visual narratives.\n\nHis work spans luxury destination weddings, commercial films, music videos, documentaries, and large-scale fine art sculptures and paintings across Kerala, Bangalore, and across India.",
+    "philosophy": "To me, cinematography is painting with dynamic light across time. My fine arts background taught me that light is not merely illumination — it creates volume, texture, tension, and truth. Every camera movement must have rhythm, intent, and emotional honesty.",
+    "approach": "Bridging fine art intuition with technical precision: tailored anamorphic and spherical lens choices, chiaroscuro lighting architecture, fine-tuned post-production across Final Cut Pro, Premiere Pro, DaVinci Resolve, Edius, and Photoshop, with holistic art direction from concept sketch to final grade.",
     "image_url": "/athul-ollur.jpg",
     "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     "stats": [
       {
-        "label": "Films Produced",
-        "value": "180",
+        "label": "Years Behind The Lens",
+        "value": "10",
         "suffix": "+"
       },
       {
-        "label": "Global Film Awards",
-        "value": "16",
-        "suffix": ""
+        "label": "Films & Visuals Produced",
+        "value": "200",
+        "suffix": "+"
       },
       {
-        "label": "Countries Filmed",
-        "value": "24",
-        "suffix": ""
+        "label": "Fine Art & Sculptures",
+        "value": "40",
+        "suffix": "+"
       },
       {
-        "label": "Client Trust",
-        "value": "99.8",
+        "label": "Client Satisfaction",
+        "value": "100",
         "suffix": "%"
       }
     ],
-    "updated_at": "2026-11-22T19:38:00.000Z"
+    "updated_at": "2026-11-22T20:00:00.000Z",
+    "cv_url": "/athul-ollur-cv.pdf",
+    "experience": [
+      {
+        "period": "2024 – 2026",
+        "role": "Director of Photography (DOP)",
+        "company": "Skillmount Education",
+        "location": "Kerala, India",
+        "description": "Directing visual architecture, camera department, lighting setups, and cinematic execution for high-end educational video productions, masterclass series, and brand storytelling."
+      },
+      {
+        "period": "2023 – 2024",
+        "role": "Cinematographer",
+        "company": "Greenmedia",
+        "location": "Kerala, India",
+        "description": "Spearheaded camera operation, visual branding campaigns, commercial advertisements, promotional films, and creative video content from pre-production to final delivery."
+      },
+      {
+        "period": "2016 – Present",
+        "role": "Freelance Cinematographer, Videographer & Photographer",
+        "company": "Independent Practice / Athul Ollur Visuals",
+        "location": "Calicut, Kerala & Worldwide Commissions",
+        "description": "Leading camera, lighting, and creative direction across luxury wedding films, commercial adverts, music videos, documentaries, and fine art commissions."
+      },
+      {
+        "period": "Prior (Fine Art)",
+        "role": "Sculptor & Dimensional Artist",
+        "company": "RestoreDesign Bangalore",
+        "location": "Bangalore, India",
+        "description": "Sculpted life-size figurative installations, environmental art pieces, and architectural reliefs in plaster, clay, and composite materials."
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Fine Arts (BFA) in Painting",
+        "institution": "Raja Ravi Varma College Of Fine Arts, Mavelikkara",
+        "boardOrUniversity": "University of Kerala",
+        "year": "2015",
+        "details": "Classical oil & acrylic painting, anatomy, chiaroscuro, art history, printmaking, and visual aesthetics."
+      },
+      {
+        "degree": "Higher Secondary (Plus Two — Commerce)",
+        "institution": "Arts College Koyilandy",
+        "boardOrUniversity": "Kerala State Board",
+        "year": "2011",
+        "details": "Commerce, business economics, and computer applications."
+      },
+      {
+        "degree": "High School (SSLC)",
+        "institution": "Koothali VHSS",
+        "boardOrUniversity": "Kerala State Board",
+        "year": "2009",
+        "details": "Secondary School Leaving Certificate."
+      }
+    ],
+    "skills_categories": [
+      {
+        "title": "Cinematography & Directing",
+        "items": [
+          "Director of Photography (DOP)",
+          "Visual Storytelling",
+          "Natural & Studio Lighting",
+          "Camera Blocking & Movement",
+          "Anamorphic & Spherical Optics",
+          "Wedding Videography",
+          "Commercial Advertising",
+          "Documentary Filming"
+        ]
+      },
+      {
+        "title": "Fine Arts & Sculpting",
+        "items": [
+          "Oil & Acrylic Painting",
+          "Figurative Sculpting",
+          "Printmaking & Aquatint Etching",
+          "Watercolors & Murals",
+          "Architectural Scenography",
+          "Relief Carving & Model Making"
+        ]
+      },
+      {
+        "title": "Post-Production & Software",
+        "items": [
+          "Final Cut Pro",
+          "Adobe Premiere Pro",
+          "DaVinci Resolve",
+          "Adobe Photoshop",
+          "Edius",
+          "Color Grading & Audio Pacing"
+        ]
+      },
+      {
+        "title": "Production Management",
+        "items": [
+          "Art Direction & Set Design",
+          "Event Management & Scenography",
+          "Crew Direction & Grip",
+          "Pre-visualization & Storyboarding"
+        ]
+      }
+    ]
   },
   "contact_messages": [
     {

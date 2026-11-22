@@ -5,8 +5,8 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
 import MediaUploader from "@/components/admin/MediaUploader";
 import { useToast } from "@/components/admin/Toast";
-import { AboutContent, StatItem } from "@/types";
-import { Save, Loader2, Plus, Trash2, FileText, BarChart3 } from "lucide-react";
+import { AboutContent, StatItem, ExperienceItem, EducationItem } from "@/types";
+import { Save, Loader2, Plus, Trash2, FileText, BarChart3, Briefcase, GraduationCap, FileDown } from "lucide-react";
 
 export default function ManageAboutPage() {
   const { success, error: toastError } = useToast();
@@ -55,6 +55,58 @@ export default function ManageAboutPage() {
     setAbout({
       ...about,
       stats: about.stats.filter((_, i) => i !== index),
+    });
+  };
+
+  const handleExpChange = (index: number, field: keyof ExperienceItem, value: string) => {
+    if (!about) return;
+    const expList = [...(about.experience || [])];
+    expList[index] = { ...expList[index], [field]: value };
+    setAbout({ ...about, experience: expList });
+  };
+
+  const addExp = () => {
+    if (!about) return;
+    setAbout({
+      ...about,
+      experience: [
+        ...(about.experience || []),
+        { period: "2024 – Present", role: "Role Title", company: "Company Name", location: "Location", description: "Responsibilities" },
+      ],
+    });
+  };
+
+  const removeExp = (index: number) => {
+    if (!about) return;
+    setAbout({
+      ...about,
+      experience: (about.experience || []).filter((_, i) => i !== index),
+    });
+  };
+
+  const handleEduChange = (index: number, field: keyof EducationItem, value: string) => {
+    if (!about) return;
+    const eduList = [...(about.education || [])];
+    eduList[index] = { ...eduList[index], [field]: value };
+    setAbout({ ...about, education: eduList });
+  };
+
+  const addEdu = () => {
+    if (!about) return;
+    setAbout({
+      ...about,
+      education: [
+        ...(about.education || []),
+        { degree: "Degree / Course", institution: "Institution Name", year: "2024", boardOrUniversity: "University" },
+      ],
+    });
+  };
+
+  const removeEdu = (index: number) => {
+    if (!about) return;
+    setAbout({
+      ...about,
+      education: (about.education || []).filter((_, i) => i !== index),
     });
   };
 
@@ -282,6 +334,185 @@ export default function ManageAboutPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Career Experience Timeline */}
+              <div className="bg-cinematic-surface border border-cinematic-border p-6 rounded-sm space-y-6">
+                <div className="flex items-center justify-between pb-3 border-b border-cinematic-border">
+                  <h3 className="text-sm font-cinematic font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-cinematic-gold" />
+                    Career Experience (Timeline)
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={addExp}
+                    className="text-xs text-cinematic-gold hover:underline flex items-center gap-1"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Add Role</span>
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {(about.experience || []).map((exp, i) => (
+                    <div
+                      key={i}
+                      className="p-4 rounded-sm bg-black/40 border border-cinematic-border space-y-3 relative"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => removeExp(i)}
+                        className="absolute top-3 right-3 text-red-400 hover:text-red-300 transition-colors"
+                        title="Delete Role"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Time Period (e.g. 2024 – 2026)
+                          </label>
+                          <input
+                            type="text"
+                            value={exp.period}
+                            onChange={(e) => handleExpChange(i, "period", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Role / Job Title
+                          </label>
+                          <input
+                            type="text"
+                            value={exp.role}
+                            onChange={(e) => handleExpChange(i, "role", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Company / Studio
+                          </label>
+                          <input
+                            type="text"
+                            value={exp.company}
+                            onChange={(e) => handleExpChange(i, "company", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                          Role Scope & Key Contributions
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={exp.description || ""}
+                          onChange={(e) => handleExpChange(i, "description", e.target.value)}
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Education Credentials */}
+              <div className="bg-cinematic-surface border border-cinematic-border p-6 rounded-sm space-y-6">
+                <div className="flex items-center justify-between pb-3 border-b border-cinematic-border">
+                  <h3 className="text-sm font-cinematic font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 text-cinematic-gold" />
+                    Education & Fine Art Qualifications
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={addEdu}
+                    className="text-xs text-cinematic-gold hover:underline flex items-center gap-1"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Add Qualification</span>
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {(about.education || []).map((edu, i) => (
+                    <div
+                      key={i}
+                      className="p-4 rounded-sm bg-black/40 border border-cinematic-border space-y-3 relative"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => removeEdu(i)}
+                        className="absolute top-3 right-3 text-red-400 hover:text-red-300 transition-colors"
+                        title="Delete Qualification"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Degree / Course
+                          </label>
+                          <input
+                            type="text"
+                            value={edu.degree}
+                            onChange={(e) => handleEduChange(i, "degree", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Institution / College
+                          </label>
+                          <input
+                            type="text"
+                            value={edu.institution}
+                            onChange={(e) => handleEduChange(i, "institution", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] uppercase tracking-wider text-cinematic-textDim block mb-1">
+                            Passing Year
+                          </label>
+                          <input
+                            type="text"
+                            value={edu.year || ""}
+                            onChange={(e) => handleEduChange(i, "year", e.target.value)}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-2.5 py-1.5 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CV Document Link */}
+              <div className="bg-cinematic-surface border border-cinematic-border p-6 rounded-sm space-y-4">
+                <h3 className="text-sm font-cinematic font-bold text-white uppercase tracking-wider pb-3 border-b border-cinematic-border flex items-center gap-2">
+                  <FileDown className="w-4 h-4 text-cinematic-gold" />
+                  Curriculum Vitae (PDF) File
+                </h3>
+                <div>
+                  <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
+                    CV Download URL
+                  </label>
+                  <input
+                    type="text"
+                    value={about.cv_url || ""}
+                    onChange={(e) => setAbout({ ...about, cv_url: e.target.value })}
+                    placeholder="/athul-ollur-cv.pdf"
+                    className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
+                  />
+                  <p className="text-[11px] text-cinematic-textDim mt-1">
+                    Default is /athul-ollur-cv.pdf. Visitors can view and download this verified CV.
+                  </p>
                 </div>
               </div>
 

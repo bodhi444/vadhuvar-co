@@ -26,10 +26,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} — ${project.category} Film`,
+    title: `${project.title} — ${project.category}`,
     description: project.short_description,
     openGraph: {
-      title: `${project.title} | FRAME / MOTION`,
+      title: `${project.title} | ATHUL OLLUR`,
       description: project.short_description,
       images: [{ url: project.thumbnail_url }],
     },

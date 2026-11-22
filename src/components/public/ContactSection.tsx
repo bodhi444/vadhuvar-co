@@ -80,7 +80,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
 
   const whatsappHref = settings.whatsapp
     ? `https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
-        "Hello FRAME / MOTION team, I would like to inquire about a cinematic film production."
+        "Hello Athul, I would like to inquire about a cinematic film production / project collaboration."
       )}`
     : "#";
 
