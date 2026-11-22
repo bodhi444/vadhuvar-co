@@ -1,38 +1,38 @@
 {
   "site_settings": {
     "id": "default",
-    "company_name": "FRAME / MOTION",
-    "tagline": "Cinematic Video Production & Film Studio",
+    "company_name": "ATHUL OLLUR",
+    "tagline": "Cinematographer, Filmmaker & Visual Storyteller",
     "logo_url": "",
     "favicon_url": "/favicon.ico",
-    "email": "contact@framemotion.studio",
-    "phone": "+1 (555) 839-2041",
-    "whatsapp": "+15558392041",
-    "address": "Stage 7, Production Blvd, Los Angeles, CA 90028",
-    "instagram_url": "https://instagram.com/framemotion",
-    "facebook_url": "https://facebook.com/framemotion",
-    "youtube_url": "https://youtube.com/@framemotion",
-    "vimeo_url": "https://vimeo.com/framemotion",
-    "seo_title": "FRAME / MOTION — Cinematic Video Production & Film Studio",
-    "seo_description": "Award-winning international video production company creating high-end films, commercials, music videos, and documentaries.",
-    "updated_at": "2026-11-22T10:00:00.000Z"
+    "email": "contact@athulollur.com",
+    "phone": "+91 98460 00000",
+    "whatsapp": "+919846000000",
+    "address": "Kochi, India & Worldwide Commissions",
+    "instagram_url": "https://instagram.com/athulollur",
+    "facebook_url": "https://facebook.com/athulollur",
+    "youtube_url": "https://youtube.com/@athulollur",
+    "vimeo_url": "https://vimeo.com/athulollur",
+    "seo_title": "ATHUL OLLUR — Cinematographer & Film Director",
+    "seo_description": "Official cinematic portfolio of Athul Ollur — Director of Photography, filmmaker, and visual storyteller crafting evocative narratives in commercial advertising, luxury wedding films, music videos, and documentaries.",
+    "updated_at": "2026-11-22T19:38:00.000Z"
   },
   "homepage_content": {
     "id": "default",
     "hero_heading": "TELL YOUR STORY THROUGH THE LENS.",
-    "hero_subheading": "Creating powerful visuals, unforgettable films and cinematic experiences for brands, people and businesses.",
+    "hero_subheading": "Athul Ollur — Cinematographer & Visual Director creating powerful films, unforgettable commercial visuals, and evocative stories for brands and people worldwide.",
     "hero_video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "hero_image_fallback": "/works/hero/hero-1.jpg",
-    "cta_primary_text": "EXPLORE OUR WORK",
+    "cta_primary_text": "EXPLORE MY WORK",
     "cta_primary_link": "/work",
-    "cta_secondary_text": "CONTACT US",
+    "cta_secondary_text": "GET IN TOUCH",
     "cta_secondary_link": "/contact",
     "show_services": true,
     "show_portfolio": true,
     "show_showreel": true,
     "show_about": true,
     "show_contact": true,
-    "updated_at": "2026-11-22T10:00:00.000Z"
+    "updated_at": "2026-11-22T19:38:00.000Z"
   },
   "services": [
     {
@@ -95,7 +95,7 @@
       "slug": "elysian-vows-florence-michael",
       "category": "Wedding",
       "short_description": "A sun-drenched Tuscan villa ceremony captured on 35mm anamorphic glass and RED Monstro 8K.",
-      "full_description": "Set against the rolling golden hills of Val d'Orcia, Florence and Michael gathered friends and family for an intimate three-day celebration. Using customized anamorphic lenses and Kodak 250D emulation, we documented this union with romantic warmth, rich shadow tones, and sweeping architectural aerial perspectives.",
+      "full_description": "Set against the rolling golden hills of Val d'Orcia, Florence and Michael gathered friends and family for an intimate three-day celebration. Using customized anamorphic lenses and Kodak 250D emulation, Athul documented this union with romantic warmth, rich shadow tones, and sweeping architectural aerial perspectives.",
       "thumbnail_url": "/works/weddings/wedding-2.jpg",
       "gallery_images": [
         "/works/weddings/wedding-1.jpg",
@@ -112,7 +112,7 @@
       "is_published": true,
       "display_order": 1,
       "created_at": "2026-11-21T08:00:00.000Z",
-      "updated_at": "2026-11-22T11:12:53.276Z"
+      "updated_at": "2026-11-22T10:00:00.000Z"
     },
     {
       "id": "proj-2",
@@ -236,22 +236,22 @@
   ],
   "showreel": {
     "id": "default",
-    "title": "FRAME / MOTION — Official 2025 Studio Showreel",
+    "title": "ATHUL OLLUR — Official Cinematography Reel",
     "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     "youtube_url": "https://www.youtube.com/watch?v=ScMzIvxBSi4",
     "vimeo_url": "https://vimeo.com/76979871",
     "poster_url": "/works/hero/hero-2.jpg",
     "is_active": true,
-    "updated_at": "2026-11-22T10:00:00.000Z"
+    "updated_at": "2026-11-22T19:38:00.000Z"
   },
   "about_content": {
     "id": "default",
-    "heading": "WE CREATE VISUAL STORIES.",
-    "intro": "FRAME / MOTION is an internationally acclaimed boutique cinema studio. We craft unforgettable visual experiences for iconic brands, musical pioneers, and extraordinary human milestones.",
-    "story": "Founded over a decade ago by visionary directors and cinematographers, FRAME / MOTION was born from a singular obsession: to transcend the generic and craft imagery with genuine emotional resonance. Over ten years and 180+ productions later, our team has filmed across four continents — from remote sub-zero mountain ranges to high-fashion runways in Paris.",
-    "philosophy": "We believe cinema is an alchemy of precision and raw emotion. True storytelling doesn't rely on gimmicks; it is born from understanding human truth, manipulating light with intent, and building rhythm that commands undivided attention.",
-    "approach": "Every production receives a dedicated creative director, tailored lens packages (vintage anamorphic and large-format sensors), bespoke original sound scores, and master-level color grading in DaVinci Resolve.",
-    "image_url": "/works/portraits/portrait-3.jpg",
+    "heading": "ATHUL OLLUR — VISUAL STORYTELLER.",
+    "intro": "Athul Ollur is an independent cinematographer, filmmaker, and creative director obsessed with the poetry of natural light, deliberate camera movement, and raw human emotion.",
+    "story": "With over a decade behind the lens, Athul Ollur has traversed diverse storytelling landscapes — from high-concept commercial brand campaigns and intimate destination wedding epics to experimental music videos and documentaries. His signature aesthetic merges vintage anamorphic lens characteristics with modern dynamic range, creating frames that linger long after the projector fades.",
+    "philosophy": "To me, cinematography is not merely pointing a sensor at a subject — it is an emotional dialogue with light, rhythm, and silence. Every frame must have intent, breath, and truth.",
+    "approach": "Every project receives hands-on creative direction: tailored anamorphic and spherical lens selections, precision naturalistic lighting design, high-fidelity color timing in DaVinci Resolve, and symphonic audio pacing.",
+    "image_url": "/athul-ollur.jpg",
     "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     "stats": [
       {
@@ -270,12 +270,12 @@
         "suffix": ""
       },
       {
-        "label": "Client Satisfaction",
+        "label": "Client Trust",
         "value": "99.8",
         "suffix": "%"
       }
     ],
-    "updated_at": "2026-11-22T10:00:00.000Z"
+    "updated_at": "2026-11-22T19:38:00.000Z"
   },
   "contact_messages": [
     {
@@ -294,7 +294,7 @@
       "email": "julian.vance@solarcity.com",
       "phone": "+1 (415) 920-3341",
       "service": "Commercial Ads",
-      "message": "Hello FRAME / MOTION team. We are launching a global EV mobility brand in Q3 and need a 90-second hero commercial film plus 4 cutdowns. Would love to review availability and production rates.",
+      "message": "Hello Athul. We are launching a global EV mobility brand in Q3 and need a 90-second hero commercial film plus 4 cutdowns. Would love to review availability and production rates.",
       "is_read": false,
       "created_at": "2026-11-22T08:15:00.000Z"
     },
@@ -310,6 +310,16 @@
     }
   ],
   "media_assets": [
+    {
+      "id": "media-athul",
+      "filename": "athul-ollur.jpg",
+      "original_name": "athul-ollur.jpg",
+      "url": "/athul-ollur.jpg",
+      "file_type": "image",
+      "mime_type": "image/jpeg",
+      "file_size": 87916,
+      "created_at": "2026-11-22T19:37:00.000Z"
+    },
     {
       "id": "media-1",
       "filename": "hero-1.jpg",
@@ -353,10 +363,18 @@
   ],
   "admin_users": [
     {
+      "id": "usr-admin-athul",
+      "email": "athul@athulollur.com",
+      "password_hash": "$2b$10$JN00a1zpKp9n1nh1gA/Hl./QdxfuB6cCpd5S21o6KxjjfQKHT/k1O",
+      "name": "Athul Ollur",
+      "role": "admin",
+      "created_at": "2026-11-22T19:37:00.000Z"
+    },
+    {
       "id": "usr-admin-1",
       "email": "admin@framemotion.com",
       "password_hash": "$2b$10$JN00a1zpKp9n1nh1gA/Hl./QdxfuB6cCpd5S21o6KxjjfQKHT/k1O",
-      "name": "Studio Director",
+      "name": "Athul Ollur",
       "role": "admin",
       "created_at": "2026-11-20T10:00:00.000Z"
     }

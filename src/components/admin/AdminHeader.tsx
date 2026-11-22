@@ -14,8 +14,8 @@ interface AdminHeaderProps {
 export default function AdminHeader({
   title,
   subtitle,
-  adminName = "Studio Director",
-  adminEmail = "admin@framemotion.com",
+  adminName = "Athul Ollur",
+  adminEmail = "athul@athulollur.com",
 }: AdminHeaderProps) {
   return (
     <header className="h-16 bg-cinematic-surface/90 backdrop-blur-md border-b border-cinematic-border px-8 flex items-center justify-between sticky top-0 z-30">

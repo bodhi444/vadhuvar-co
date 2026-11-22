@@ -58,7 +58,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         {/* Subtle Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-cinematic-gold/30 text-cinematic-gold text-[11px] font-medium tracking-[0.25em] uppercase backdrop-blur-md animate-fade-in shadow-xl">
           <Sparkles className="w-3.5 h-3.5 text-cinematic-gold" />
-          <span>Cinematic Film Studio</span>
+          <span>Athul Ollur — Cinematographer</span>
         </div>
 
         {/* Main Heading */}

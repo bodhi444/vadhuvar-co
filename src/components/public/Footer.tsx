@@ -23,16 +23,16 @@ export default function Footer({ settings }: FooterProps) {
               <ApertureIcon className="w-8 h-8 text-cinematic-gold group-hover:rotate-45 transition-transform duration-700" />
               <div>
                 <span className="font-cinematic font-bold tracking-[0.25em] text-base text-white block">
-                  {settings?.company_name || "FRAME / MOTION"}
+                  {settings?.company_name || "ATHUL OLLUR"}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.3em] text-cinematic-gold font-sans block">
-                  Cinematic Film Studio
+                  {settings?.tagline || "Cinematographer & Filmmaker"}
                 </span>
               </div>
             </Link>
 
             <p className="text-xs text-cinematic-textMuted leading-relaxed max-w-sm font-sans pt-2">
-              An international cinema production company dedicated to commanding visual rhythm, unforgettable commercial storytelling, and emotion-driven wedding films.
+              Official portfolio of Athul Ollur — Cinematographer & Director crafting evocative commercial films, luxury wedding epics, and visual stories worldwide.
             </p>
 
             {/* Social Icons */}
@@ -163,7 +163,7 @@ export default function Footer({ settings }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cinematic-textDim font-sans">
-          <p>© {currentYear} FRAME / MOTION Studio. All rights reserved.</p>
+          <p>© {currentYear} ATHUL OLLUR. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
             <Link

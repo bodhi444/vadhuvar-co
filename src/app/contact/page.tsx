@@ -6,9 +6,9 @@ import Footer from "@/components/public/Footer";
 import { getSiteSettings, getServices } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Contact — Initiate Production Brief",
+  title: "Contact Athul Ollur — Inquire for Production",
   description:
-    "Get in touch with FRAME / MOTION to commission a cinematic commercial, luxury wedding film, music video, or documentary.",
+    "Get in touch with Athul Ollur to commission a commercial film, luxury wedding cinematography, music video, or documentary.",
 };
 
 export const revalidate = 0;

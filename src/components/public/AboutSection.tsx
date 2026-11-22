@@ -23,8 +23,8 @@ export default function AboutSection({ about }: AboutSectionProps) {
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
-                src={about.image_url || "/works/portraits/portrait-3.jpg"}
-                alt="FRAME / MOTION Cinematic Vision"
+                src={about.image_url || "/athul-ollur.jpg"}
+                alt="Athul Ollur — Cinematographer & Film Director"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
@@ -35,10 +35,10 @@ export default function AboutSection({ about }: AboutSectionProps) {
             {/* Overlapping Floating Milestone Card */}
             <div className="hidden sm:block absolute -bottom-6 -right-6 bg-[#12141A]/95 border border-cinematic-borderGold/50 p-5 rounded-sm shadow-2xl backdrop-blur-xl max-w-xs">
               <span className="text-[10px] uppercase tracking-[0.2em] text-cinematic-gold font-bold block mb-1">
-                Studio Heritage
+                Athul Ollur
               </span>
               <p className="text-xs text-white/90 leading-relaxed font-sans">
-                Over a decade of independent filmmaking, mastering natural lighting and emotional resonance.
+                Director of Photography & Visual Storyteller crafting emotive cinematic experiences worldwide.
               </p>
             </div>
           </div>

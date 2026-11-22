@@ -53,10 +53,10 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
             <ApertureIcon className="w-7 h-7 text-cinematic-gold group-hover:rotate-45 transition-transform duration-500" />
             <div>
               <span className="font-cinematic font-bold tracking-widest text-sm text-white block">
-                FRAME / MOTION
+                ATHUL OLLUR
               </span>
               <span className="text-[10px] uppercase tracking-wider text-cinematic-gold/80 block">
-                Studio CMS Engine
+                Portfolio CMS
               </span>
             </div>
           </Link>

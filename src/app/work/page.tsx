@@ -6,9 +6,9 @@ import Footer from "@/components/public/Footer";
 import { getProjects, getSiteSettings } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Our Work — Filmography & Portfolio",
+  title: "Selected Films & Works",
   description:
-    "Explore our complete cinematic archive of commercial ads, luxury wedding films, music videos, and feature documentaries.",
+    "Explore the cinematic archive of Athul Ollur — commercial ads, luxury wedding films, music videos, and feature documentaries.",
 };
 
 export const revalidate = 0;

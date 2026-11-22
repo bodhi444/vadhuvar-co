@@ -18,9 +18,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services — Cinematic Production Disciplines",
+  title: "Cinematic Disciplines & Services",
   description:
-    "Explore our specialized video production services: luxury wedding films, commercial brand ads, music videos, and documentaries.",
+    "Specialized cinematography and directing services by Athul Ollur: luxury wedding films, commercial brand ads, music videos, and documentaries.",
 };
 
 export const revalidate = 0;

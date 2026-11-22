@@ -95,13 +95,13 @@ export default function AdminLoginPage() {
             <ApertureIcon className="w-8 h-8 text-cinematic-gold" />
           </div>
           <h1 className="font-cinematic text-2xl font-bold tracking-widest text-white">
-            FRAME / MOTION
+            ATHUL OLLUR
           </h1>
           <p className="text-xs uppercase tracking-widest text-cinematic-gold mt-1">
-            Studio CMS Administration
+            Portfolio CMS Administration
           </p>
           <p className="text-xs text-cinematic-textDim mt-2">
-            Secure editorial portal for film assets, inquiries & dynamic content
+            Secure editorial portal for films, photography, inquiries & content
           </p>
         </div>
 
@@ -208,7 +208,7 @@ export default function AdminLoginPage() {
               Default administrator access:
             </p>
             <p className="text-[11px] font-mono text-cinematic-gold mt-1 bg-black/40 py-1 px-2 rounded border border-cinematic-border/40 inline-block">
-              admin@framemotion.com / cinematic2025!
+              athul@athulollur.com or admin@framemotion.com / cinematic2025!
             </p>
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function AdminLoginPage() {
             onClick={() => router.push("/")}
             className="text-xs text-cinematic-textMuted hover:text-cinematic-gold transition-colors"
           >
-            ← Return to Public Film Studio
+            ← Return to Athul Ollur Portfolio
           </button>
         </div>
       </div>

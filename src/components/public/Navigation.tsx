@@ -52,10 +52,10 @@ export default function Navigation({ settings }: NavigationProps) {
             <ApertureIcon className="w-7 h-7 text-cinematic-gold group-hover:rotate-45 transition-transform duration-700" />
             <div className="flex flex-col">
               <span className="font-cinematic font-bold tracking-[0.25em] text-sm sm:text-base text-white">
-                {settings?.company_name || "FRAME / MOTION"}
+                {settings?.company_name || "ATHUL OLLUR"}
               </span>
               <span className="text-[9px] uppercase tracking-[0.3em] text-cinematic-gold font-sans font-medium">
-                Cinema Studio
+                {settings?.tagline || "Cinematographer"}
               </span>
             </div>
           </Link>
@@ -115,7 +115,7 @@ export default function Navigation({ settings }: NavigationProps) {
             >
               <ApertureIcon className="w-7 h-7 text-cinematic-gold" />
               <span className="font-cinematic font-bold tracking-[0.2em] text-sm text-white">
-                FRAME / MOTION
+                {settings?.company_name || "ATHUL OLLUR"}
               </span>
             </Link>
             <button

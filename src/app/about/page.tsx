@@ -9,9 +9,9 @@ import { getAboutContent, getSiteSettings } from "@/lib/db";
 import { ArrowUpRight, Award, Compass, Film, Flame } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us — Studio Manifesto & Filmmakers",
+  title: "About Athul Ollur — Cinematographer & Director",
   description:
-    "Discover the creative philosophy, cinematic craftsmanship, and founding story of FRAME / MOTION.",
+    "Discover the creative journey, philosophy, and cinematography craft of Athul Ollur.",
 };
 
 export const revalidate = 0;
@@ -48,8 +48,8 @@ export default async function AboutPage() {
             {/* Left Image */}
             <div className="lg:col-span-5 relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
-                src={about.image_url || "/works/portraits/portrait-3.jpg"}
-                alt="FRAME / MOTION Cinematographer"
+                src={about.image_url || "/athul-ollur.jpg"}
+                alt="Athul Ollur — Cinematographer & Film Director"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"

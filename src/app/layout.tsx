@@ -16,36 +16,38 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://athul-ollur.vercel.app"),
   title: {
-    default: "FRAME / MOTION — Cinematic Video Production & Film Studio",
-    template: "%s | FRAME / MOTION",
+    default: "ATHUL OLLUR — Cinematographer & Film Director",
+    template: "%s | ATHUL OLLUR",
   },
   description:
-    "Award-winning cinematic video production studio specializing in commercial advertising, wedding films, music videos, and feature documentaries. Tell your story through the lens.",
+    "Official cinematic portfolio of Athul Ollur — Director of Photography, filmmaker, and visual storyteller specializing in commercial advertising, luxury wedding films, music videos, and documentaries.",
   keywords: [
-    "video production",
+    "Athul Ollur",
+    "cinematographer",
+    "filmmaker",
+    "director of photography",
     "cinematography",
     "commercials",
     "wedding films",
     "music videos",
     "documentary",
-    "FRAME MOTION",
-    "filmmaking",
+    "video production",
   ],
-  authors: [{ name: "FRAME / MOTION Studio" }],
+  authors: [{ name: "Athul Ollur" }],
   openGraph: {
-    title: "FRAME / MOTION — Cinematic Video Production & Film Studio",
+    title: "ATHUL OLLUR — Cinematographer & Film Director",
     description:
-      "Creating powerful visuals, unforgettable films, and cinematic experiences for brands, people, and businesses.",
-    url: "https://framemotion.studio",
-    siteName: "FRAME / MOTION",
+      "Creating powerful visuals, unforgettable films, and cinematic experiences for brands, people, and businesses worldwide.",
+    url: "https://athul-ollur.vercel.app",
+    siteName: "ATHUL OLLUR",
     images: [
       {
-        url: "/works/hero/hero-1.jpg",
-        width: 1920,
-        height: 1080,
-        alt: "FRAME / MOTION Studio",
+        url: "/athul-ollur.jpg",
+        width: 1200,
+        height: 800,
+        alt: "Athul Ollur — Cinematographer & Director",
       },
     ],
     locale: "en_US",
@@ -53,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FRAME / MOTION — Cinematic Video Production",
-    description: "Creating powerful visuals, unforgettable films and cinematic experiences.",
-    images: ["/works/hero/hero-1.jpg"],
+    title: "ATHUL OLLUR — Cinematographer & Filmmaker",
+    description: "Creating powerful visuals, unforgettable films, and cinematic experiences.",
+    images: ["/athul-ollur.jpg"],
   },
 };
 

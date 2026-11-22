@@ -2,7 +2,7 @@ import React from "react";
 import { ToastProvider } from "@/components/admin/Toast";
 
 export const metadata = {
-  title: "FRAME / MOTION — Studio Admin CMS",
+  title: "ATHUL OLLUR — Portfolio Admin CMS",
   robots: "noindex, nofollow",
 };
 
