@@ -156,22 +156,12 @@ export default function Footer({ settings }: FooterProps) {
           {/* Column 4: Contact & Operations */}
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold block">
-              Operations & CV
+              Operations
             </span>
             <div className="space-y-2 text-xs font-sans text-cinematic-textMuted">
               <p>{settings?.address || "Calicut, Kerala, India"}</p>
               <p className="font-mono text-white/90">{settings?.email || "athulollur@gmail.com"}</p>
               <p className="font-mono text-white/90">{settings?.phone || "+91 98476 10569"}</p>
-              <p className="pt-2">
-                <a
-                  href="/athul-ollur-cv.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cinematic-gold hover:text-white transition-colors underline underline-offset-4 text-[11px] uppercase tracking-wider block font-semibold"
-                >
-                  Download Curriculum Vitae (PDF)
-                </a>
-              </p>
             </div>
           </div>
         </div>

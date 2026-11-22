@@ -101,7 +101,6 @@ export interface AboutContent {
   education?: EducationItem[];
   skills_categories?: SkillCategoryItem[];
   software_tools?: string[];
-  cv_url?: string;
   updated_at: string;
 }
 

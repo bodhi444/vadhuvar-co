@@ -6,7 +6,7 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import MediaUploader from "@/components/admin/MediaUploader";
 import { useToast } from "@/components/admin/Toast";
 import { AboutContent, StatItem, ExperienceItem, EducationItem } from "@/types";
-import { Save, Loader2, Plus, Trash2, FileText, BarChart3, Briefcase, GraduationCap, FileDown } from "lucide-react";
+import { Save, Loader2, Plus, Trash2, FileText, BarChart3, Briefcase, GraduationCap } from "lucide-react";
 
 export default function ManageAboutPage() {
   const { success, error: toastError } = useToast();
@@ -490,29 +490,6 @@ export default function ManageAboutPage() {
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              {/* CV Document Link */}
-              <div className="bg-cinematic-surface border border-cinematic-border p-6 rounded-sm space-y-4">
-                <h3 className="text-sm font-cinematic font-bold text-white uppercase tracking-wider pb-3 border-b border-cinematic-border flex items-center gap-2">
-                  <FileDown className="w-4 h-4 text-cinematic-gold" />
-                  Curriculum Vitae (PDF) File
-                </h3>
-                <div>
-                  <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                    CV Download URL
-                  </label>
-                  <input
-                    type="text"
-                    value={about.cv_url || ""}
-                    onChange={(e) => setAbout({ ...about, cv_url: e.target.value })}
-                    placeholder="/athul-ollur-cv.pdf"
-                    className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
-                  />
-                  <p className="text-[11px] text-cinematic-textDim mt-1">
-                    Default is /athul-ollur-cv.pdf. Visitors can view and download this verified CV.
-                  </p>
                 </div>
               </div>
 

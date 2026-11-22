@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Award, Briefcase, Download, GraduationCap, Palette } from "lucide-react";
+import { ArrowUpRight, Award, Briefcase, GraduationCap, Palette } from "lucide-react";
 import { AboutContent } from "@/types";
 
 interface AboutSectionProps {
@@ -135,24 +135,14 @@ export default function AboutSection({ about }: AboutSectionProps) {
               </div>
             )}
 
-            <div className="pt-2 flex flex-wrap items-center gap-6">
+            <div className="pt-2">
               <Link
                 href="/about"
                 className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold hover:text-white transition-colors"
               >
-                <span>View Full CV & Career Experience</span>
+                <span>Explore Full Biography & Career Timeline</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
-
-              <a
-                href={about.cv_url || "/athul-ollur-cv.pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/70 hover:text-cinematic-gold transition-colors"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Download CV (PDF)</span>
-              </a>
             </div>
           </div>
         </div>

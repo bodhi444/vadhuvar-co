@@ -6,7 +6,7 @@ import Navigation from "@/components/public/Navigation";
 import Footer from "@/components/public/Footer";
 import VideoPlayer from "@/components/shared/VideoPlayer";
 import { getAboutContent, getSiteSettings } from "@/lib/db";
-import { ArrowUpRight, Award, Briefcase, Calendar, CheckCircle2, Compass, Download, Film, GraduationCap, MapPin, Palette } from "lucide-react";
+import { ArrowUpRight, Award, Briefcase, Calendar, CheckCircle2, Compass, Film, GraduationCap, MapPin, Palette } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Athul Ollur (Athul Kumar) — Cinematographer & Visual Artist",
@@ -42,22 +42,12 @@ export default async function AboutPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href={about.cv_url || "/athul-ollur-cv.pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold text-xs py-3.5 px-6 tracking-[0.18em] flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download CV (PDF)</span>
-              </a>
-
+            <div>
               <Link
                 href="/contact"
-                className="btn-outline-gold text-xs py-3.5 px-6 tracking-[0.18em]"
+                className="btn-gold text-xs py-3.5 px-8 tracking-[0.18em]"
               >
-                Book For Production
+                Initiate Project Brief
               </Link>
             </div>
           </div>
@@ -318,23 +308,13 @@ export default async function AboutPage() {
             <p className="text-xs sm:text-sm text-cinematic-textMuted font-sans leading-relaxed">
               Available for commercials, wedding films, documentaries, and creative visual direction across India and internationally.
             </p>
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-4">
               <Link
                 href="/contact"
                 className="btn-gold text-xs py-3.5 px-8 tracking-[0.2em]"
               >
                 Initiate Project Brief
               </Link>
-
-              <a
-                href={about.cv_url || "/athul-ollur-cv.pdf"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline-gold text-xs py-3.5 px-8 tracking-[0.2em] flex items-center gap-2"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Download CV</span>
-              </a>
             </div>
           </div>
         </div>
