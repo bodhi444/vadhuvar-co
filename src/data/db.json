@@ -1,0 +1,364 @@
+{
+  "site_settings": {
+    "id": "default",
+    "company_name": "FRAME / MOTION",
+    "tagline": "Cinematic Video Production & Film Studio",
+    "logo_url": "",
+    "favicon_url": "/favicon.ico",
+    "email": "contact@framemotion.studio",
+    "phone": "+1 (555) 839-2041",
+    "whatsapp": "+15558392041",
+    "address": "Stage 7, Production Blvd, Los Angeles, CA 90028",
+    "instagram_url": "https://instagram.com/framemotion",
+    "facebook_url": "https://facebook.com/framemotion",
+    "youtube_url": "https://youtube.com/@framemotion",
+    "vimeo_url": "https://vimeo.com/framemotion",
+    "seo_title": "FRAME / MOTION — Cinematic Video Production & Film Studio",
+    "seo_description": "Award-winning international video production company creating high-end films, commercials, music videos, and documentaries.",
+    "updated_at": "2026-11-22T10:00:00.000Z"
+  },
+  "homepage_content": {
+    "id": "default",
+    "hero_heading": "TELL YOUR STORY THROUGH THE LENS.",
+    "hero_subheading": "Creating powerful visuals, unforgettable films and cinematic experiences for brands, people and businesses.",
+    "hero_video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "hero_image_fallback": "/works/hero/hero-1.jpg",
+    "cta_primary_text": "EXPLORE OUR WORK",
+    "cta_primary_link": "/work",
+    "cta_secondary_text": "CONTACT US",
+    "cta_secondary_link": "/contact",
+    "show_services": true,
+    "show_portfolio": true,
+    "show_showreel": true,
+    "show_about": true,
+    "show_contact": true,
+    "updated_at": "2026-11-22T10:00:00.000Z"
+  },
+  "services": [
+    {
+      "id": "srv-1",
+      "title": "Wedding Films",
+      "slug": "wedding-films",
+      "description": "Timeless, emotion-driven wedding films documented with cinematic elegance, natural lighting, and intimate visual rhythm.",
+      "full_description": "We treat every wedding as a sacred cinematic epic. Our signature documentary-meets-fine-art approach captures the nervous anticipation, the stolen glances, and the euphoric celebrations without staged clichés.",
+      "image_url": "/works/weddings/wedding-1.jpg",
+      "icon": "HeartHandshake",
+      "display_order": 1,
+      "is_active": true,
+      "created_at": "2026-11-20T10:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "srv-2",
+      "title": "Commercial Ads",
+      "slug": "commercial-ads",
+      "description": "High-impact advertising films and brand manifestos engineered to command attention and inspire immediate brand loyalty.",
+      "full_description": "From national television campaigns to digital social spectacles, we conceptualize, shoot, and post-produce high-fidelity commercials that translate brand narratives into unforgettable cultural moments.",
+      "image_url": "/works/hero/hero-2.jpg",
+      "icon": "Clapperboard",
+      "display_order": 2,
+      "is_active": true,
+      "created_at": "2026-11-20T10:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "srv-3",
+      "title": "Music Videos",
+      "slug": "music-videos",
+      "description": "Visually arresting music videos with hypnotic pacing, custom lighting design, and bold stylistic direction for visionary artists.",
+      "full_description": "Collaborating directly with musical artists and record labels, we merge sonic frequency with striking visual worlds — experimenting with optical textures, anamorphic flares, and rhythmically synchronized cuts.",
+      "image_url": "/works/portraits/portrait-1.jpg",
+      "icon": "Music",
+      "display_order": 3,
+      "is_active": true,
+      "created_at": "2026-11-20T10:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "srv-4",
+      "title": "Documentaries",
+      "slug": "documentaries",
+      "description": "Deeply researched, character-driven feature and short documentaries exploring human triumph, art, and environmental wonder.",
+      "full_description": "Our documentary division travels to the furthest corners of the globe to capture raw truth. We prioritize empathetic journalistic integrity combined with festival-grade cinematography.",
+      "image_url": "/works/events/event-1.jpg",
+      "icon": "Camera",
+      "display_order": 4,
+      "is_active": true,
+      "created_at": "2026-11-20T10:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "Elysian Vows — Florence & Michael",
+      "slug": "elysian-vows-florence-michael",
+      "category": "Wedding",
+      "short_description": "A sun-drenched Tuscan villa ceremony captured on 35mm anamorphic glass and RED Monstro 8K.",
+      "full_description": "Set against the rolling golden hills of Val d'Orcia, Florence and Michael gathered friends and family for an intimate three-day celebration. Using customized anamorphic lenses and Kodak 250D emulation, we documented this union with romantic warmth, rich shadow tones, and sweeping architectural aerial perspectives.",
+      "thumbnail_url": "/works/weddings/wedding-2.jpg",
+      "gallery_images": [
+        "/works/weddings/wedding-1.jpg",
+        "/works/weddings/wedding-3.jpg",
+        "/works/weddings/wedding-4.jpg",
+        "/works/weddings/wedding-5.jpg"
+      ],
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "vimeo_url": "https://vimeo.com/76979871",
+      "year": "2025",
+      "client": "Florence & Michael Sterling",
+      "is_featured": true,
+      "is_published": true,
+      "display_order": 1,
+      "created_at": "2026-11-21T08:00:00.000Z",
+      "updated_at": "2026-11-22T11:12:53.276Z"
+    },
+    {
+      "id": "proj-2",
+      "title": "Apex Velocity — Nocturne GT Campaign",
+      "slug": "apex-velocity-nocturne-gt",
+      "category": "Commercial",
+      "short_description": "High-speed precision tracking film across neon-soaked Tokyo expressway tunnels.",
+      "full_description": "Commissioned to launch the new limited hypercar concept, we utilized a custom gyro-stabilized Russian Arm camera chase vehicle to film high-speed midnight runs through Tokyo's Shuto expressway system. Precision color timed with heavy contrast and metallic amber hues.",
+      "thumbnail_url": "/works/hero/hero-2.jpg",
+      "gallery_images": [
+        "/works/hero/hero-1.jpg",
+        "/works/events/event-2.jpg",
+        "/works/portraits/portrait-2.jpg"
+      ],
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=ScMzIvxBSi4",
+      "vimeo_url": "",
+      "year": "2025",
+      "client": "Apex Motors International",
+      "is_featured": true,
+      "is_published": true,
+      "display_order": 2,
+      "created_at": "2026-11-21T08:30:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "proj-3",
+      "title": "Neon Reverie — The Midnight Pulse",
+      "slug": "neon-reverie-the-midnight-pulse",
+      "category": "Music Video",
+      "short_description": "A hallucinatory synthwave odyssey combining anamorphic flares with practical in-camera optical illusions.",
+      "full_description": "An ambitious 5-minute visual narrative filmed in an abandoned industrial cathedral. We deployed synchronized DMX-controlled lighting rigs synchronized to the audio track's sub-bass frequencies, creating an immersive cyber-noir visual landscape.",
+      "thumbnail_url": "/works/portraits/portrait-1.jpg",
+      "gallery_images": [
+        "/works/portraits/portrait-3.jpg",
+        "/works/events/event-3.jpg",
+        "/works/weddings/wedding-6.jpg"
+      ],
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=R2_V_m1V3dM",
+      "vimeo_url": "",
+      "year": "2024",
+      "client": "Subway Sound Records",
+      "is_featured": true,
+      "is_published": true,
+      "display_order": 3,
+      "created_at": "2026-11-21T09:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "proj-4",
+      "title": "Silent Peaks — Himalayan Solitude",
+      "slug": "silent-peaks-himalayan-solitude",
+      "category": "Documentary",
+      "short_description": "An intimate exploration of monasteries perched 14,000 feet above the clouds in Ladakh.",
+      "full_description": "Filmed over four weeks in sub-zero alpine conditions, Silent Peaks follows Buddhist monks preserving centuries-old manuscript chanting traditions. Captured in natural sunlight and flickering butter lamps with extreme dynamic range.",
+      "thumbnail_url": "/works/events/event-1.jpg",
+      "gallery_images": [
+        "/works/events/event-4.jpg",
+        "/works/events/event-5.jpg",
+        "/works/weddings/wedding-7.jpg"
+      ],
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+      "vimeo_url": "",
+      "year": "2024",
+      "client": "National Heritage Geographic",
+      "is_featured": false,
+      "is_published": true,
+      "display_order": 4,
+      "created_at": "2026-11-21T09:30:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "proj-5",
+      "title": "Vogue Noir — Haute Couture Runway",
+      "slug": "vogue-noir-haute-couture",
+      "category": "Commercial",
+      "short_description": "Paris Fashion Week high-speed phantom flex cinematography showcasing avant-garde textile physics.",
+      "full_description": "Filmed at 1,000 frames per second using high-output tungsten lighting, this fashion piece breaks down micro-movements of silk, metallic weaves, and structural pleats on the runway for Maison Noir.",
+      "thumbnail_url": "/works/weddings/wedding-8.jpg",
+      "gallery_images": [
+        "/works/weddings/wedding-6.jpg",
+        "/works/portraits/portrait-2.jpg"
+      ],
+      "video_url": "",
+      "youtube_url": "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
+      "vimeo_url": "",
+      "year": "2025",
+      "client": "Maison Noir Paris",
+      "is_featured": false,
+      "is_published": true,
+      "display_order": 5,
+      "created_at": "2026-11-21T10:00:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    },
+    {
+      "id": "proj-6",
+      "title": "Golden Horizons — Desert Shadows",
+      "slug": "golden-horizons-desert-shadows",
+      "category": "Photography",
+      "short_description": "Medium-format architectural and editorial portrait series under Arabian dune sunsets.",
+      "full_description": "A fine-art photographic monograph exploring the interplay of minimalist modern concrete architecture against the fluid organic curves of shifting sand dunes in Liwa Desert.",
+      "thumbnail_url": "/works/portraits/portrait-2.jpg",
+      "gallery_images": [
+        "/works/portraits/portrait-1.jpg",
+        "/works/portraits/portrait-3.jpg",
+        "/works/hero/hero-1.jpg"
+      ],
+      "video_url": "",
+      "youtube_url": "",
+      "vimeo_url": "",
+      "year": "2025",
+      "client": "Architectural Digest Middle East",
+      "is_featured": false,
+      "is_published": true,
+      "display_order": 6,
+      "created_at": "2026-11-21T10:30:00.000Z",
+      "updated_at": "2026-11-22T10:00:00.000Z"
+    }
+  ],
+  "showreel": {
+    "id": "default",
+    "title": "FRAME / MOTION — Official 2025 Studio Showreel",
+    "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "youtube_url": "https://www.youtube.com/watch?v=ScMzIvxBSi4",
+    "vimeo_url": "https://vimeo.com/76979871",
+    "poster_url": "/works/hero/hero-2.jpg",
+    "is_active": true,
+    "updated_at": "2026-11-22T10:00:00.000Z"
+  },
+  "about_content": {
+    "id": "default",
+    "heading": "WE CREATE VISUAL STORIES.",
+    "intro": "FRAME / MOTION is an internationally acclaimed boutique cinema studio. We craft unforgettable visual experiences for iconic brands, musical pioneers, and extraordinary human milestones.",
+    "story": "Founded over a decade ago by visionary directors and cinematographers, FRAME / MOTION was born from a singular obsession: to transcend the generic and craft imagery with genuine emotional resonance. Over ten years and 180+ productions later, our team has filmed across four continents — from remote sub-zero mountain ranges to high-fashion runways in Paris.",
+    "philosophy": "We believe cinema is an alchemy of precision and raw emotion. True storytelling doesn't rely on gimmicks; it is born from understanding human truth, manipulating light with intent, and building rhythm that commands undivided attention.",
+    "approach": "Every production receives a dedicated creative director, tailored lens packages (vintage anamorphic and large-format sensors), bespoke original sound scores, and master-level color grading in DaVinci Resolve.",
+    "image_url": "/works/portraits/portrait-3.jpg",
+    "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "stats": [
+      {
+        "label": "Films Produced",
+        "value": "180",
+        "suffix": "+"
+      },
+      {
+        "label": "Global Film Awards",
+        "value": "16",
+        "suffix": ""
+      },
+      {
+        "label": "Countries Filmed",
+        "value": "24",
+        "suffix": ""
+      },
+      {
+        "label": "Client Satisfaction",
+        "value": "99.8",
+        "suffix": "%"
+      }
+    ],
+    "updated_at": "2026-11-22T10:00:00.000Z"
+  },
+  "contact_messages": [
+    {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@cinema-sample.com",
+      "phone": "+1 555 492 8190",
+      "service": "Commercial Ads",
+      "message": "We are looking for an international cinematography crew for our upcoming architectural brand documentary and commercial series.",
+      "id": "msg-1795346050583",
+      "is_read": false,
+      "created_at": "2026-11-22T11:14:10.583Z"
+    },
+    {
+      "id": "msg-1",
+      "name": "Julian Vance",
+      "email": "julian.vance@solarcity.com",
+      "phone": "+1 (415) 920-3341",
+      "service": "Commercial Ads",
+      "message": "Hello FRAME / MOTION team. We are launching a global EV mobility brand in Q3 and need a 90-second hero commercial film plus 4 cutdowns. Would love to review availability and production rates.",
+      "is_read": false,
+      "created_at": "2026-11-22T08:15:00.000Z"
+    },
+    {
+      "id": "msg-2",
+      "name": "Amara & David Sterling",
+      "email": "amara.sterling@gmail.com",
+      "phone": "+1 (212) 670-1928",
+      "service": "Wedding Films",
+      "message": "We are planning our 4-day wedding celebration in Lake Como, Italy next spring and fell in love with your cinematic aesthetic. Are you available for overseas commissions?",
+      "is_read": true,
+      "created_at": "2026-11-21T14:40:00.000Z"
+    }
+  ],
+  "media_assets": [
+    {
+      "id": "media-1",
+      "filename": "hero-1.jpg",
+      "original_name": "hero-1.jpg",
+      "url": "/works/hero/hero-1.jpg",
+      "file_type": "image",
+      "mime_type": "image/jpeg",
+      "file_size": 18613793,
+      "created_at": "2026-11-20T10:00:00.000Z"
+    },
+    {
+      "id": "media-2",
+      "filename": "hero-2.jpg",
+      "original_name": "hero-2.jpg",
+      "url": "/works/hero/hero-2.jpg",
+      "file_type": "image",
+      "mime_type": "image/jpeg",
+      "file_size": 22701792,
+      "created_at": "2026-11-20T10:00:00.000Z"
+    },
+    {
+      "id": "media-3",
+      "filename": "wedding-1.jpg",
+      "original_name": "wedding-1.jpg",
+      "url": "/works/weddings/wedding-1.jpg",
+      "file_type": "image",
+      "mime_type": "image/jpeg",
+      "file_size": 18876352,
+      "created_at": "2026-11-20T10:00:00.000Z"
+    },
+    {
+      "id": "media-4",
+      "filename": "portrait-1.jpg",
+      "original_name": "portrait-1.jpg",
+      "url": "/works/portraits/portrait-1.jpg",
+      "file_type": "image",
+      "mime_type": "image/jpeg",
+      "file_size": 19332905,
+      "created_at": "2026-11-20T10:00:00.000Z"
+    }
+  ],
+  "admin_users": [
+    {
+      "id": "usr-admin-1",
+      "email": "admin@framemotion.com",
+      "password_hash": "$2b$10$JN00a1zpKp9n1nh1gA/Hl./QdxfuB6cCpd5S21o6KxjjfQKHT/k1O",
+      "name": "Studio Director",
+      "role": "admin",
+      "created_at": "2026-11-20T10:00:00.000Z"
+    }
+  ]
+}
