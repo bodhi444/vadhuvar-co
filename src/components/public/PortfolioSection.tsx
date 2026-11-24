@@ -10,23 +10,25 @@ import { Project, ProjectCategory } from "@/types";
 interface PortfolioSectionProps {
   projects: Project[];
   showAllLink?: boolean;
+  initialCategory?: ProjectCategory;
 }
 
 const CATEGORIES: ProjectCategory[] = [
   "All",
-  "Wedding",
   "Commercial",
-  "Music Video",
-  "Documentary",
+  "Concert Video",
+  "Podcast",
   "Photography",
   "Fine Art",
+  "Wedding",
 ];
 
 export default function PortfolioSection({
   projects,
   showAllLink = true,
+  initialCategory = "All",
 }: PortfolioSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All");
+  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>(initialCategory);
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   const publishedProjects = projects.filter((p) => p.is_published);
@@ -34,7 +36,20 @@ export default function PortfolioSection({
   const filteredProjects =
     selectedCategory === "All"
       ? publishedProjects
-      : publishedProjects.filter((p) => p.category === selectedCategory);
+      : publishedProjects.filter((p) => {
+          if (selectedCategory === "Concert Video") {
+            return p.category === "Concert Video" || p.category === "Music Video";
+          }
+          if (selectedCategory === "Podcast") {
+            return (
+              p.category === "Podcast" ||
+              p.category === "Documentary" ||
+              p.category?.toLowerCase() === "portcast" ||
+              p.category?.toLowerCase() === "podcast"
+            );
+          }
+          return p.category === selectedCategory;
+        });
 
   return (
     <section id="works" className="py-20 sm:py-32 bg-[#090A0D] relative select-none">

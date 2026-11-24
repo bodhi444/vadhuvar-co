@@ -30,12 +30,12 @@ import {
 
 const CATEGORIES: ProjectCategory[] = [
   "All",
-  "Wedding",
   "Commercial",
-  "Music Video",
-  "Documentary",
+  "Concert Video",
+  "Podcast",
   "Photography",
   "Fine Art",
+  "Wedding",
 ];
 
 export default function ManagePortfolioPage() {
@@ -583,12 +583,12 @@ export default function ManagePortfolioPage() {
                         onChange={(e) => setCategory(e.target.value as any)}
                         className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
                       >
-                        <option value="Wedding">Wedding</option>
                         <option value="Commercial">Commercial</option>
-                        <option value="Music Video">Music Video</option>
-                        <option value="Documentary">Documentary</option>
+                        <option value="Concert Video">Concert Video</option>
+                        <option value="Podcast">Podcast</option>
                         <option value="Photography">Photography</option>
                         <option value="Fine Art">Fine Art & Sculptures</option>
+                        <option value="Wedding">Wedding</option>
                       </select>
                     </div>
 

@@ -4,16 +4,34 @@ import Navigation from "@/components/public/Navigation";
 import PortfolioSection from "@/components/public/PortfolioSection";
 import Footer from "@/components/public/Footer";
 import { getProjects, getSiteSettings } from "@/lib/db";
+import { ProjectCategory } from "@/types";
 
 export const metadata: Metadata = {
   title: "Selected Films & Works",
   description:
-    "Explore the cinematic archive of Athul Ollur — commercial ads, luxury wedding films, music videos, and feature documentaries.",
+    "Explore the cinematic archive of Athul Ollur — commercial campaigns, concert videos, executive podcasts, and fine art installations.",
 };
 
 export const revalidate = 0;
 
-export default async function WorkPage() {
+export default async function WorkPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ cat?: string }>;
+}) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  let initialCategory: ProjectCategory = "All";
+  if (resolvedSearchParams?.cat) {
+    const rawCat = resolvedSearchParams.cat;
+    if (rawCat === "Wedding" || rawCat === "Commercial" || rawCat === "Concert Video" || rawCat === "Podcast" || rawCat === "Photography" || rawCat === "Fine Art") {
+      initialCategory = rawCat;
+    } else if (rawCat.toLowerCase() === "music video") {
+      initialCategory = "Concert Video";
+    } else if (rawCat.toLowerCase() === "documentary" || rawCat.toLowerCase() === "portcast") {
+      initialCategory = "Podcast";
+    }
+  }
+
   const [projects, settings] = await Promise.all([
     getProjects({ onlyPublished: true }),
     getSiteSettings(),
@@ -40,7 +58,7 @@ export default async function WorkPage() {
         </div>
 
         {/* Gallery */}
-        <PortfolioSection projects={projects} showAllLink={false} />
+        <PortfolioSection projects={projects} showAllLink={false} initialCategory={initialCategory} />
       </main>
 
       <Footer settings={settings} />

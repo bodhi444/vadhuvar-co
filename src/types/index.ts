@@ -1,17 +1,17 @@
 export type ProjectCategory = 
   | "All"
-  | "Wedding"
   | "Commercial"
-  | "Music Video"
-  | "Documentary"
+  | "Concert Video"
+  | "Podcast"
   | "Photography"
-  | "Fine Art";
+  | "Fine Art"
+  | "Wedding";
 
 export interface Project {
   id: string;
   title: string;
   slug: string;
-  category: "Wedding" | "Commercial" | "Music Video" | "Documentary" | "Photography" | "Fine Art";
+  category: "Commercial" | "Concert Video" | "Podcast" | "Photography" | "Fine Art" | "Wedding" | string;
   short_description: string;
   full_description: string;
   thumbnail_url: string;

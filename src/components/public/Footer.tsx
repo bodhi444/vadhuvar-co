@@ -121,23 +121,18 @@ export default function Footer({ settings }: FooterProps) {
             </span>
             <ul className="space-y-2 text-xs font-sans text-cinematic-textMuted">
               <li>
-                <Link href="/work?cat=Wedding" className="hover:text-white transition-colors py-1 block">
-                  Wedding Films
-                </Link>
-              </li>
-              <li>
                 <Link href="/work?cat=Commercial" className="hover:text-white transition-colors py-1 block">
                   Commercial Advertising
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Music%20Video" className="hover:text-white transition-colors py-1 block">
-                  Music Videos
+                <Link href="/work?cat=Concert%20Video" className="hover:text-white transition-colors py-1 block">
+                  Concert Videos
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Documentary" className="hover:text-white transition-colors py-1 block">
-                  Documentaries
+                <Link href="/work?cat=Podcast" className="hover:text-white transition-colors py-1 block">
+                  Podcasts & Series
                 </Link>
               </li>
               <li>
@@ -148,6 +143,11 @@ export default function Footer({ settings }: FooterProps) {
               <li>
                 <Link href="/work?cat=Fine%20Art" className="hover:text-white transition-colors py-1 block">
                   Fine Art & Sculptures
+                </Link>
+              </li>
+              <li>
+                <Link href="/work?cat=Wedding" className="hover:text-white transition-colors py-1 block">
+                  Wedding Films
                 </Link>
               </li>
             </ul>
