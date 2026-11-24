@@ -10,8 +10,8 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const { success, error: toastError } = useToast();
 
-  const [email, setEmail] = useState("admin@framemotion.com");
-  const [password, setPassword] = useState("cinematic2025!");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -126,7 +126,8 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@framemotion.com"
+                  autoComplete="email"
+                  placeholder="admin@athulollur.com"
                   className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-sm px-4 py-3 pl-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
                 />
                 <Mail className="w-4 h-4 text-cinematic-textDim absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -154,6 +155,7 @@ export default function AdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  autoComplete="current-password"
                   placeholder="••••••••••••"
                   className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-sm px-4 py-3 pl-11 pr-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
                 />
@@ -201,16 +203,6 @@ export default function AdminLoginPage() {
               )}
             </button>
           </form>
-
-          {/* Quick Setup Hint */}
-          <div className="mt-8 pt-6 border-t border-cinematic-border/60 text-center">
-            <p className="text-[11px] text-cinematic-textDim">
-              Default administrator access:
-            </p>
-            <p className="text-[11px] font-mono text-cinematic-gold mt-1 bg-black/40 py-1 px-2 rounded border border-cinematic-border/40 inline-block">
-              athul@athulollur.com or admin@framemotion.com / cinematic2025!
-            </p>
-          </div>
         </div>
 
         {/* Back Link */}
