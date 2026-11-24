@@ -25,7 +25,7 @@ export default async function ContactPage() {
 
       <main className="flex-1 pt-28 sm:pt-32 pb-12 sm:pb-16">
         {/* Editorial Header */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-10 sm:pb-12 border-b border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 pb-10 sm:pb-12 border-b border-cinematic-border/60">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Direct Contact

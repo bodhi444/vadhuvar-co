@@ -72,7 +72,7 @@ export default function ManageShowreelPage() {
           subtitle="Configure the full-width studio flagship showreel, YouTube/Vimeo embeds, and custom poster artwork"
         />
 
-        <main className="p-8 max-w-5xl space-y-8 flex-1 overflow-y-auto">
+        <main className="p-4 sm:p-8 max-w-7xl 2xl:max-w-[1600px] w-full space-y-8 flex-1 overflow-y-auto">
           {loading || !showreel ? (
             <div className="py-20 flex flex-col items-center justify-center text-cinematic-textMuted">
               <Loader2 className="w-8 h-8 text-cinematic-gold animate-spin mb-3" />

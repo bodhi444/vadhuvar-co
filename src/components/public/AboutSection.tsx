@@ -16,9 +16,9 @@ export default function AboutSection({ about }: AboutSectionProps) {
       {/* Background divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cinematic-borderGold/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-6 sm:px-8 2xl:px-12">
         {/* Main Grid: Visuals on Left, Manifesto on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 2xl:gap-20 items-center">
           {/* Left Column: Visual Stills & Floating Badge */}
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">

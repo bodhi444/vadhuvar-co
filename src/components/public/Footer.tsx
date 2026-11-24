@@ -15,7 +15,7 @@ export default function Footer({ settings }: FooterProps) {
 
   return (
     <footer className="bg-[#060709] border-t border-cinematic-border/80 text-white select-none">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-20 2xl:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
           {/* Column 1: Brand & Aperture */}
           <div className="lg:col-span-2 space-y-4">

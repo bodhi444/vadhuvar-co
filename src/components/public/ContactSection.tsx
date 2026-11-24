@@ -89,8 +89,8 @@ export default function ContactSection({ settings, services }: ContactSectionPro
       {/* Background divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cinematic-borderGold/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 2xl:gap-20 items-start">
           {/* Left Column: Headlines & Contact Channels */}
           <div className="lg:col-span-5 space-y-6 sm:space-y-8">
             <div className="space-y-2 sm:space-y-3">

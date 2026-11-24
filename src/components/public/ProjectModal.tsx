@@ -31,7 +31,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/90 backdrop-blur-xl animate-fade-in overflow-y-auto">
-      <div className="bg-[#12141A] border border-cinematic-border max-w-4xl w-full rounded-sm shadow-2xl relative my-auto sm:my-8 overflow-hidden max-h-[92vh] flex flex-col">
+      <div className="bg-[#12141A] border border-cinematic-border max-w-4xl 2xl:max-w-5xl 3xl:max-w-6xl w-full rounded-sm shadow-2xl relative my-auto sm:my-8 overflow-hidden max-h-[92vh] flex flex-col">
         {/* Close button with 44x44px touch target */}
         <button
           onClick={onClose}

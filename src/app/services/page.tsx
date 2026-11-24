@@ -37,7 +37,7 @@ export default async function ServicesPage() {
 
       <main className="flex-1 pt-28 sm:pt-32 pb-20 sm:pb-24">
         {/* Editorial Header */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 pb-12 sm:pb-16 border-b border-cinematic-border/60">
           <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Studio Offerings
@@ -52,7 +52,7 @@ export default async function ServicesPage() {
         </div>
 
         {/* Detailed Service Cards */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 space-y-16 sm:space-y-24">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16 space-y-16 sm:space-y-24">
           {services.map((service, idx) => {
             const isReversed = idx % 2 === 1;
 
@@ -150,7 +150,7 @@ export default async function ServicesPage() {
         </div>
 
         {/* Global Production Workflow Callout */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-cinematic-border/60">
           <div className="bg-[#12141A] border border-cinematic-border p-6 sm:p-12 rounded-sm text-center max-w-4xl mx-auto space-y-4 sm:space-y-6">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Global Availability

@@ -305,7 +305,7 @@ export default function ManagePortfolioPage() {
           subtitle="Add films, upload high-fidelity 4K thumbnails & galleries, configure video embeds, and organize order"
         />
 
-        <main className="p-8 max-w-7xl space-y-8 flex-1 overflow-y-auto">
+        <main className="p-4 sm:p-8 max-w-7xl 2xl:max-w-[1600px] w-full space-y-8 flex-1 overflow-y-auto">
           {/* Action Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-cinematic-surface border border-cinematic-border p-4 rounded-sm">
             <div>

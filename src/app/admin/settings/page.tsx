@@ -80,7 +80,7 @@ export default function WebsiteSettingsPage() {
           subtitle="Global company metadata, brand contact channels, social networks, and search engine optimization"
         />
 
-        <main className="p-8 max-w-5xl space-y-8 flex-1 overflow-y-auto">
+        <main className="p-4 sm:p-8 max-w-7xl 2xl:max-w-[1600px] w-full space-y-8 flex-1 overflow-y-auto">
           {loading || !settings ? (
             <div className="py-20 flex flex-col items-center justify-center text-cinematic-textMuted">
               <Loader2 className="w-8 h-8 text-cinematic-gold animate-spin mb-3" />

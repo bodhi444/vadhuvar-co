@@ -53,7 +53,7 @@ export default function PortfolioSection({
 
   return (
     <section id="works" className="py-20 sm:py-32 bg-[#090A0D] relative select-none">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div className="flex items-end justify-between">
@@ -116,7 +116,7 @@ export default function PortfolioSection({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-6 sm:gap-8 2xl:gap-10">
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
@@ -131,7 +131,7 @@ export default function PortfolioSection({
                     src={project.thumbnail_url}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, (max-width: 1920px) 33vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
 
@@ -157,7 +157,7 @@ export default function PortfolioSection({
                 </div>
 
                 {/* Card Content */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-5 sm:p-6 2xl:p-7 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px] text-cinematic-textDim font-sans">
                       <span className="font-mono text-xs font-bold text-cinematic-gold px-2 py-0.5 rounded bg-cinematic-gold/10 border border-cinematic-gold/30">
@@ -168,7 +168,7 @@ export default function PortfolioSection({
 
                     <h3
                       onClick={() => setActiveModalProject(project)}
-                      className="font-cinematic text-lg sm:text-xl font-bold text-white group-hover:text-cinematic-gold transition-colors cursor-pointer"
+                      className="font-cinematic text-lg sm:text-xl 2xl:text-2xl font-bold text-white group-hover:text-cinematic-gold transition-colors cursor-pointer"
                     >
                       {project.title}
                     </h3>

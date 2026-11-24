@@ -28,7 +28,7 @@ export default async function AboutPage() {
 
       <main className="flex-1 pt-28 sm:pt-32 pb-20 sm:pb-24">
         {/* Editorial Manifesto Header */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 pb-12 sm:pb-16 border-b border-cinematic-border/60">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
             <div className="max-w-3xl space-y-3 sm:space-y-4">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
@@ -54,7 +54,7 @@ export default async function AboutPage() {
         </div>
 
         {/* Studio Stills & Founding Narrative */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Image */}
             <div className="lg:col-span-5 relative aspect-[4/5] max-h-[420px] sm:max-h-none rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
@@ -103,7 +103,7 @@ export default async function AboutPage() {
         </div>
 
         {/* CAREER EXPERIENCE TIMELINE */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16 border-t border-cinematic-border/60">
           <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Professional Timeline
@@ -157,7 +157,7 @@ export default async function AboutPage() {
         </div>
 
         {/* EDUCATION & ACADEMIC CREDENTIALS */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16 border-t border-cinematic-border/60">
           <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Academic Background
@@ -210,7 +210,7 @@ export default async function AboutPage() {
         </div>
 
         {/* SKILLS & SOFTWARE TOOLS MATRIX */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16 border-t border-cinematic-border/60">
           <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Expertise & Tools
@@ -248,7 +248,7 @@ export default async function AboutPage() {
         </div>
 
         {/* Philosophy & Approach Grid */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-12 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-10 sm:py-12 border-t border-cinematic-border/60">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div className="bg-[#12141A] border border-cinematic-border p-6 sm:p-8 rounded-sm space-y-4">
               <span className="text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold block">
@@ -278,7 +278,7 @@ export default async function AboutPage() {
 
         {/* Optional Behind The Scenes Film */}
         {about.video_url && (
-          <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+          <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 py-12 sm:py-16">
             <div className="mb-6">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block mb-1">
                 Behind The Glass
@@ -300,7 +300,7 @@ export default async function AboutPage() {
         )}
 
         {/* Bottom CTA */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center pt-12 sm:pt-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 text-center pt-12 sm:pt-16 border-t border-cinematic-border/60">
           <div className="max-w-xl mx-auto space-y-4">
             <h3 className="font-cinematic text-2xl font-bold text-white">
               Ready To Collaborate?

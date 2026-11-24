@@ -58,7 +58,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,8,11,0.85)_100%)] pointer-events-none z-0" />
 
       {/* Top Banner Bar (Reference 2 style) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 mb-6 sm:mb-12">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto w-full px-5 sm:px-8 2xl:px-12 mb-6 sm:mb-12">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 sm:pb-4 border-b border-white/[0.08] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em]">
           <span className="text-cinematic-textDim">
             Cinematic Portfolio & Direction
@@ -76,33 +76,33 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       </div>
 
       {/* Main Hero Grid: Left Content - Center Portrait - Right Highlights */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto w-full px-5 sm:px-8 2xl:px-12 my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 2xl:gap-10 items-center">
           {/* LEFT COLUMN: Profile Introduction (Inspired by Reference 1 & 2) */}
-          <div className="lg:col-span-4 space-y-5 sm:space-y-6 text-left order-2 lg:order-1">
+          <div className="lg:col-span-4 space-y-5 sm:space-y-6 2xl:space-y-8 text-left order-2 lg:order-1">
             {/* Serif Calligraphic Accent */}
             <div className="space-y-1">
-              <span className="font-cinematic italic text-xl sm:text-3xl text-cinematic-gold/90 font-normal block tracking-wide">
+              <span className="font-cinematic italic text-xl sm:text-3xl 2xl:text-4xl text-cinematic-gold/90 font-normal block tracking-wide">
                 Hello, I&apos;m
               </span>
-              <h1 className="font-cinematic text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[0.95]">
+              <h1 className="font-cinematic text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-white uppercase tracking-tight leading-[0.95]">
                 Athul Ollur
               </h1>
-              <span className="font-mono text-[11px] sm:text-xs text-cinematic-gold uppercase tracking-[0.2em] sm:tracking-[0.25em] font-semibold block pt-1.5">
+              <span className="font-mono text-[11px] sm:text-xs 2xl:text-sm text-cinematic-gold uppercase tracking-[0.2em] sm:tracking-[0.25em] font-semibold block pt-1.5">
                 Creative Director & DOP
               </span>
-              <span className="text-xs uppercase tracking-wider text-cinematic-textDim block font-sans">
+              <span className="text-xs 2xl:text-sm uppercase tracking-wider text-cinematic-textDim block font-sans">
                 Photographer, Artist
               </span>
             </div>
 
             {/* Editorial Bio */}
-            <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed font-sans max-w-sm">
+            <p className="text-xs sm:text-sm 2xl:text-base text-cinematic-textMuted leading-relaxed font-sans max-w-sm 2xl:max-w-md">
               Merging classical fine-art discipline (BFA in Painting from Raja Ravi Varma College of Fine Arts) with high-end camera movement to craft unforgettable commercials, luxury wedding films, and visual stories.
             </p>
 
             {/* Location & Quick Meta */}
-            <div className="flex items-center gap-2 text-[11px] text-white/70 font-mono pt-1">
+            <div className="flex items-center gap-2 text-[11px] 2xl:text-xs text-white/70 font-mono pt-1">
               <MapPin className="w-3.5 h-3.5 text-cinematic-gold shrink-0" />
               <span>Based in Calicut, Kerala · Global Commissions</span>
             </div>
@@ -111,7 +111,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
               <Link
                 href="/work"
-                className="btn-gold text-xs py-3.5 px-6 tracking-[0.18em] shadow-lg shadow-cinematic-gold/20 flex items-center justify-center gap-2 group min-h-[44px]"
+                className="btn-gold text-xs 2xl:text-sm py-3.5 px-6 2xl:py-4 2xl:px-8 tracking-[0.18em] shadow-lg shadow-cinematic-gold/20 flex items-center justify-center gap-2 group min-h-[44px]"
               >
                 <span>Explore Selected Works</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -119,7 +119,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
 
               <Link
                 href="/contact"
-                className="btn-outline-gold text-xs py-3.5 px-6 tracking-[0.18em] flex items-center justify-center min-h-[44px]"
+                className="btn-outline-gold text-xs 2xl:text-sm py-3.5 px-6 2xl:py-4 2xl:px-8 tracking-[0.18em] flex items-center justify-center min-h-[44px]"
               >
                 Let&apos;s Collaborate
               </Link>
@@ -129,14 +129,14 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
           {/* CENTER COLUMN: The Star Cutout Profile (Pure Silhouette Cutout as in References 1, 2, 3 & 4) */}
           <div className="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2 overflow-hidden sm:overflow-visible">
             {/* Cutout Presentation Stage (No rectangular card border, pure cutout) */}
-            <div className="relative w-full max-w-[360px] sm:max-w-[500px] lg:max-w-[540px] h-[360px] xs:h-[400px] sm:h-[520px] lg:h-[620px] flex items-end justify-center group">
+            <div className="relative w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[480px] md:max-w-[520px] lg:max-w-[540px] 2xl:max-w-[640px] 3xl:max-w-[720px] h-[360px] xs:h-[400px] sm:h-[500px] md:h-[540px] lg:h-[620px] 2xl:h-[720px] 3xl:h-[800px] flex items-end justify-center group">
               
               {/* 1. Dramatic Backlight Halo directly behind Athul's head & shoulders */}
-              <div className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tr from-cinematic-gold/40 via-amber-500/30 to-transparent rounded-full blur-[80px] sm:blur-[110px] pointer-events-none -z-10" />
+              <div className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 w-64 sm:w-96 2xl:w-[460px] h-64 sm:h-96 2xl:h-[460px] bg-gradient-to-tr from-cinematic-gold/40 via-amber-500/30 to-transparent rounded-full blur-[80px] sm:blur-[110px] 2xl:blur-[140px] pointer-events-none -z-10" />
 
               {/* 2. Concentric Cine Aperture Ring Halo */}
-              <div className="absolute top-2 sm:top-6 left-1/2 -translate-x-1/2 w-72 sm:w-[420px] h-72 sm:h-[420px] rounded-full border border-cinematic-gold/25 pointer-events-none -z-10 animate-[spin_80s_linear_infinite]" />
-              <div className="absolute top-8 sm:top-14 left-1/2 -translate-x-1/2 w-56 sm:w-80 h-56 sm:h-80 rounded-full border border-dashed border-white/10 pointer-events-none -z-10" />
+              <div className="absolute top-2 sm:top-6 left-1/2 -translate-x-1/2 w-72 sm:w-[420px] 2xl:w-[520px] h-72 sm:h-[420px] 2xl:h-[520px] rounded-full border border-cinematic-gold/25 pointer-events-none -z-10 animate-[spin_80s_linear_infinite]" />
+              <div className="absolute top-8 sm:top-14 left-1/2 -translate-x-1/2 w-56 sm:w-80 2xl:w-[380px] h-56 sm:h-80 2xl:h-[380px] rounded-full border border-dashed border-white/10 pointer-events-none -z-10" />
 
               {/* 3. The Athul Ollur Transparent Cutout PNG */}
               <div 
@@ -151,7 +151,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
                   alt="Athul Ollur (Athul Kumar) — Creative Director, DOP & Visual Artist"
                   fill
                   priority
-                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 540px"
+                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 520px, (max-width: 1536px) 600px, 720px"
                   className="object-contain object-bottom drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)] drop-shadow-[0_0_45px_rgba(201,163,94,0.22)] scale-100 group-hover:scale-[1.02] transition-transform duration-700"
                   onLoad={() => setImgLoaded(true)}
                 />
@@ -162,12 +162,12 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
 
               {/* 5. Floating Badge: Moved to Photo Bottom Center */}
               <div className="absolute bottom-3 sm:bottom-4 inset-x-0 z-20 flex justify-center pointer-events-none">
-                <div className="px-4 py-2 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto">
+                <div className="px-4 py-2 2xl:px-5 2xl:py-2.5 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cinematic-gold opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
                   </span>
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-white font-bold">
+                  <span className="text-[10px] sm:text-[11px] 2xl:text-xs font-mono tracking-wider uppercase text-white font-bold">
                     DOP & Creative Director
                   </span>
                 </div>
@@ -175,76 +175,76 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
             </div>
           </div>
 
-          {/* RIGHT COLUMN: 4 Key Metric / Highlight Cards (Inspired by Reference 2) */}
-          <div className="lg:col-span-3 space-y-3 order-3">
+          {/* RIGHT COLUMN: 4 Key Metric / Highlight Cards (Dynamically adjusts: 2-col grid on tablet, 1-col on desktop) */}
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-3.5 2xl:gap-4 order-3">
             {/* Card 1: Experience */}
-            <div className="p-4 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
+            <div className="p-4 2xl:p-5 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
               <div className="flex items-center gap-2.5 text-cinematic-gold">
                 <div className="p-1.5 rounded-md bg-cinematic-gold/10">
                   <Star className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
+                <span className="text-[10px] 2xl:text-[11px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
                   Experience
                 </span>
               </div>
-              <h4 className="font-cinematic text-sm sm:text-base font-bold text-white uppercase pt-1">
+              <h4 className="font-cinematic text-sm sm:text-base 2xl:text-lg font-bold text-white uppercase pt-1">
                 10+ Years Behind Lens
               </h4>
-              <p className="text-[11px] text-cinematic-textMuted font-sans">
+              <p className="text-[11px] 2xl:text-xs text-cinematic-textMuted font-sans">
                 DOP at Skillmount Education & Greenmedia
               </p>
             </div>
 
             {/* Card 2: Fine Arts Pedigree */}
-            <div className="p-4 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
+            <div className="p-4 2xl:p-5 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
               <div className="flex items-center gap-2.5 text-cinematic-gold">
                 <div className="p-1.5 rounded-md bg-cinematic-gold/10">
                   <GraduationCap className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
+                <span className="text-[10px] 2xl:text-[11px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
                   Fine Art Pedigree
                 </span>
               </div>
-              <h4 className="font-cinematic text-sm sm:text-base font-bold text-white uppercase pt-1">
+              <h4 className="font-cinematic text-sm sm:text-base 2xl:text-lg font-bold text-white uppercase pt-1">
                 BFA in Painting (2015)
               </h4>
-              <p className="text-[11px] text-cinematic-textMuted font-sans">
+              <p className="text-[11px] 2xl:text-xs text-cinematic-textMuted font-sans">
                 Raja Ravi Varma College Of Fine Arts, Mavelikkara
               </p>
             </div>
 
             {/* Card 3: Specialization */}
-            <div className="p-4 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
+            <div className="p-4 2xl:p-5 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
               <div className="flex items-center gap-2.5 text-cinematic-gold">
                 <div className="p-1.5 rounded-md bg-cinematic-gold/10">
                   <Clapperboard className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
+                <span className="text-[10px] 2xl:text-[11px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
                   Specialized In
                 </span>
               </div>
-              <h4 className="font-cinematic text-sm sm:text-base font-bold text-white uppercase pt-1">
+              <h4 className="font-cinematic text-sm sm:text-base 2xl:text-lg font-bold text-white uppercase pt-1">
                 DOP & Direction
               </h4>
-              <p className="text-[11px] text-cinematic-textMuted font-sans">
+              <p className="text-[11px] 2xl:text-xs text-cinematic-textMuted font-sans">
                 Commercials, Weddings, Documentaries & Sculptures
               </p>
             </div>
 
             {/* Card 4: Collaboration */}
-            <div className="p-4 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
+            <div className="p-4 2xl:p-5 rounded-xl bg-[#0F1117]/80 border border-white/[0.08] hover:border-cinematic-gold/50 transition-all backdrop-blur-sm group space-y-1">
               <div className="flex items-center gap-2.5 text-cinematic-gold">
                 <div className="p-1.5 rounded-md bg-cinematic-gold/10">
                   <Globe className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
+                <span className="text-[10px] 2xl:text-[11px] uppercase tracking-[0.2em] font-mono text-cinematic-textDim group-hover:text-cinematic-gold transition-colors font-bold">
                   Working
                 </span>
               </div>
-              <h4 className="font-cinematic text-sm sm:text-base font-bold text-white uppercase pt-1">
+              <h4 className="font-cinematic text-sm sm:text-base 2xl:text-lg font-bold text-white uppercase pt-1">
                 Worldwide Commissions
               </h4>
-              <p className="text-[11px] text-cinematic-textMuted font-sans">
+              <p className="text-[11px] 2xl:text-xs text-cinematic-textMuted font-sans">
                 Available for Freelance & Studio Directing
               </p>
             </div>
@@ -253,7 +253,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       </div>
 
       {/* Bottom Section: Disciplines Pills & Studio Marquee (Inspired by Reference 1) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 mt-10 sm:mt-16 pt-6 border-t border-white/[0.08] space-y-5 sm:space-y-6">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto w-full px-5 sm:px-8 2xl:px-12 mt-10 sm:mt-16 2xl:mt-20 pt-6 border-t border-white/[0.08] space-y-5 sm:space-y-6">
         {/* Disciplines 4-Pill Index */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {DISCIPLINES.map((d) => (

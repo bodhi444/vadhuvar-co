@@ -58,29 +58,29 @@ export default function Navigation({ settings }: NavigationProps) {
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
+        <div className="max-w-7xl 2xl:max-w-[1600px] 3xl:max-w-[1800px] mx-auto px-6 sm:px-8 2xl:px-12 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <ApertureIcon className="w-7 h-7 text-cinematic-gold group-hover:rotate-45 transition-transform duration-700" />
             <div className="flex flex-col">
-              <span className="font-cinematic font-bold tracking-[0.25em] text-sm sm:text-base text-white">
+              <span className="font-cinematic font-bold tracking-[0.25em] text-sm sm:text-base 2xl:text-lg text-white">
                 {settings?.company_name || "ATHUL OLLUR"}
               </span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-cinematic-gold font-sans font-medium">
+              <span className="text-[9px] 2xl:text-[10px] uppercase tracking-[0.3em] text-cinematic-gold font-sans font-medium">
                 {settings?.tagline || "Creative Director"}
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-8 2xl:gap-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-xs uppercase tracking-[0.2em] transition-all relative py-1 ${
+                  className={`text-xs 2xl:text-sm uppercase tracking-[0.2em] transition-all relative py-1 ${
                     isActive
                       ? "text-cinematic-gold font-semibold"
                       : "text-white/80 hover:text-white"
@@ -99,7 +99,7 @@ export default function Navigation({ settings }: NavigationProps) {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/contact"
-              className="btn-gold text-[11px] py-2.5 px-5 tracking-widest shadow-lg shadow-cinematic-gold/10"
+              className="btn-gold text-[11px] 2xl:text-xs py-2.5 px-5 2xl:py-3 2xl:px-6 tracking-widest shadow-lg shadow-cinematic-gold/10"
             >
               Get In Touch
             </Link>

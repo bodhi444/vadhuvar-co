@@ -76,7 +76,7 @@ export default function ProcessAndPedigree({ about }: ProcessAndPedigreeProps) {
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cinematic-gold/[0.03] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4 sm:gap-6">
           <div className="space-y-2 sm:space-y-3">
@@ -84,17 +84,17 @@ export default function ProcessAndPedigree({ about }: ProcessAndPedigreeProps) {
               <Sparkles className="w-3 h-3 text-cinematic-gold" />
               <span>Pedigree & Methodology</span>
             </div>
-            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
+            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-bold text-white uppercase tracking-tight">
               Craft, Education & Process.
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-cinematic-textMuted max-w-md font-sans leading-relaxed">
+          <p className="text-xs sm:text-sm 2xl:text-base text-cinematic-textMuted max-w-md font-sans leading-relaxed">
             How a fine arts foundation at Raja Ravi Varma College translates into rigorous, five-stage cinematic storytelling on set.
           </p>
         </div>
 
         {/* 3-Column Editorial Grid (Inspired by Reference 2) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 2xl:gap-10 items-start">
           {/* Column 1: Education & Skills (4 cols) */}
           <div className="lg:col-span-4 bg-[#101217] border border-cinematic-border p-5 sm:p-8 rounded-sm space-y-6 sm:space-y-8 shadow-xl">
             {/* Education Sub-section */}

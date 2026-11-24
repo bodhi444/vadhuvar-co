@@ -36,24 +36,24 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
       {/* Background accents */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cinematic-borderGold/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1540px] 3xl:max-w-[1760px] mx-auto px-5 sm:px-8 2xl:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4 sm:gap-6">
           <div className="space-y-2 sm:space-y-3">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               What We Create
             </span>
-            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
+            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl font-bold text-white uppercase tracking-tight">
               Cinematic Disciplines.
             </h2>
           </div>
-          <p className="max-w-md text-xs sm:text-sm text-cinematic-textMuted font-sans leading-relaxed">
+          <p className="max-w-md text-xs sm:text-sm 2xl:text-base text-cinematic-textMuted font-sans leading-relaxed">
             Every genre demands bespoke visual pacing, intentional optical characteristics, and master audio design. Explore our primary production offerings.
           </p>
         </div>
 
         {/* 4 Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 2xl:gap-8">
           {activeServices.map((service, index) => {
             const Icon = getServiceIcon(service.icon || service.title);
 
