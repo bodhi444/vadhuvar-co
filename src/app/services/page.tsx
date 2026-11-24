@@ -35,24 +35,24 @@ export default async function ServicesPage() {
     <div className="min-h-screen bg-[#090A0D] text-white flex flex-col justify-between">
       <Navigation settings={settings} />
 
-      <main className="flex-1 pt-32 pb-24">
+      <main className="flex-1 pt-28 sm:pt-32 pb-20 sm:pb-24">
         {/* Editorial Header */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-16 border-b border-cinematic-border/60">
-          <div className="max-w-3xl space-y-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Studio Offerings
             </span>
-            <h1 className="font-cinematic text-4xl sm:text-5xl md:text-6xl font-bold text-white uppercase tracking-tight">
+            <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold text-white uppercase tracking-tight">
               Production Disciplines.
             </h1>
-            <p className="text-sm sm:text-base text-cinematic-textMuted font-sans leading-relaxed">
+            <p className="text-xs sm:text-base text-cinematic-textMuted font-sans leading-relaxed">
               We operate across diverse storytelling mediums, tailoring camera packages, anamorphic lens optics, and sound design to each distinct vision.
             </p>
           </div>
         </div>
 
         {/* Detailed Service Cards */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 space-y-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 space-y-16 sm:space-y-24">
           {services.map((service, idx) => {
             const isReversed = idx % 2 === 1;
 
@@ -60,7 +60,7 @@ export default async function ServicesPage() {
               <div
                 key={service.id}
                 id={service.slug}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center ${
                   isReversed ? "lg:flex-row-reverse" : ""
                 }`}
               >
@@ -88,20 +88,20 @@ export default async function ServicesPage() {
 
                 {/* Content Column */}
                 <div
-                  className={`lg:col-span-6 space-y-6 ${
+                  className={`lg:col-span-6 space-y-5 sm:space-y-6 ${
                     isReversed ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <span className="text-xs uppercase tracking-widest text-cinematic-gold font-semibold">
                       Production Offering
                     </span>
-                    <h2 className="font-cinematic text-3xl sm:text-4xl font-bold text-white uppercase tracking-tight">
+                    <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
                       {service.title}
                     </h2>
                   </div>
 
-                  <p className="text-sm sm:text-base text-cinematic-gold/90 font-medium leading-relaxed font-sans">
+                  <p className="text-xs sm:text-base text-cinematic-gold/90 font-medium leading-relaxed font-sans">
                     {service.description}
                   </p>
 
@@ -137,10 +137,10 @@ export default async function ServicesPage() {
                   <div className="pt-4">
                     <Link
                       href={`/contact?service=${encodeURIComponent(service.title)}`}
-                      className="btn-gold text-xs py-3.5 px-6 tracking-[0.2em] inline-flex items-center gap-2"
+                      className="btn-gold text-xs py-3.5 px-6 tracking-[0.2em] inline-flex items-center justify-center gap-2 min-h-[44px] w-full sm:w-auto"
                     >
-                      <span>Inquire for {service.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-black" />
+                      <span>Commission This Discipline</span>
+                      <ArrowRight className="w-4 h-4 text-black" />
                     </Link>
                   </div>
                 </div>
@@ -150,23 +150,23 @@ export default async function ServicesPage() {
         </div>
 
         {/* Global Production Workflow Callout */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-16 pt-16 border-t border-cinematic-border/60">
-          <div className="bg-[#12141A] border border-cinematic-border p-8 sm:p-12 rounded-sm text-center max-w-4xl mx-auto space-y-6">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-cinematic-border/60">
+          <div className="bg-[#12141A] border border-cinematic-border p-6 sm:p-12 rounded-sm text-center max-w-4xl mx-auto space-y-4 sm:space-y-6">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Global Availability
             </span>
-            <h3 className="font-cinematic text-3xl font-bold text-white uppercase">
-              International Travel & Production Crews
+            <h3 className="font-cinematic text-2xl sm:text-3xl font-bold text-white uppercase">
+              Worldwide Film Commissions
             </h3>
             <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed max-w-2xl mx-auto font-sans">
-              Based in Los Angeles with secondary crews deployed in Tokyo, Paris, and Lake Como. We manage all carnets, customs, drone permissions, and overseas logistics.
+              Based in Calicut, Kerala with commissions executed across India, the Middle East, and internationally. Available for freelance cinematography, commercials, feature documentaries, and luxury wedding films.
             </p>
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="btn-outline-gold text-xs py-3 px-8 tracking-[0.2em]"
+                className="btn-outline-gold text-xs py-3.5 px-8 tracking-[0.2em] inline-flex items-center justify-center min-h-[44px] w-full sm:w-auto"
               >
-                Connect With Production Manager
+                Connect With Athul Ollur
               </Link>
             </div>
           </div>

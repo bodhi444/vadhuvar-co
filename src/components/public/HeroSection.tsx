@@ -58,13 +58,13 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,8,11,0.85)_100%)] pointer-events-none z-0" />
 
       {/* Top Banner Bar (Reference 2 style) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 mb-8 sm:mb-12">
-        <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] text-[11px] font-mono uppercase tracking-[0.2em]">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 mb-6 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 sm:pb-4 border-b border-white/[0.08] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em]">
           <span className="text-cinematic-textDim">
             Cinematic Portfolio & Direction
           </span>
           <div className="flex items-center gap-2 text-cinematic-gold">
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
@@ -76,19 +76,19 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       </div>
 
       {/* Main Hero Grid: Left Content - Center Portrait - Right Highlights */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 my-auto">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           {/* LEFT COLUMN: Profile Introduction (Inspired by Reference 1 & 2) */}
-          <div className="lg:col-span-4 space-y-6 text-left order-2 lg:order-1">
+          <div className="lg:col-span-4 space-y-5 sm:space-y-6 text-left order-2 lg:order-1">
             {/* Serif Calligraphic Accent */}
             <div className="space-y-1">
-              <span className="font-cinematic italic text-2xl sm:text-3xl text-cinematic-gold/90 font-normal block tracking-wide">
+              <span className="font-cinematic italic text-xl sm:text-3xl text-cinematic-gold/90 font-normal block tracking-wide">
                 Hello, I&apos;m
               </span>
               <h1 className="font-cinematic text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-[0.95]">
                 Athul Ollur
               </h1>
-              <span className="font-mono text-[11px] sm:text-xs text-cinematic-gold uppercase tracking-[0.25em] font-semibold block pt-2">
+              <span className="font-mono text-[11px] sm:text-xs text-cinematic-gold uppercase tracking-[0.2em] sm:tracking-[0.25em] font-semibold block pt-1.5">
                 Director of Photography (DOP)
               </span>
               <span className="text-xs uppercase tracking-wider text-cinematic-textDim block font-sans">
@@ -108,10 +108,10 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2">
               <Link
                 href="/work"
-                className="btn-gold text-xs py-3.5 px-6 tracking-[0.18em] shadow-lg shadow-cinematic-gold/20 flex items-center gap-2 group"
+                className="btn-gold text-xs py-3.5 px-6 tracking-[0.18em] shadow-lg shadow-cinematic-gold/20 flex items-center justify-center gap-2 group min-h-[44px]"
               >
                 <span>Explore Selected Works</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -119,7 +119,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
 
               <Link
                 href="/contact"
-                className="btn-outline-gold text-xs py-3.5 px-6 tracking-[0.18em]"
+                className="btn-outline-gold text-xs py-3.5 px-6 tracking-[0.18em] flex items-center justify-center min-h-[44px]"
               >
                 Let&apos;s Collaborate
               </Link>
@@ -127,16 +127,16 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
           </div>
 
           {/* CENTER COLUMN: The Star Cutout Profile (Pure Silhouette Cutout as in References 1, 2, 3 & 4) */}
-          <div className="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2">
+          <div className="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2 overflow-hidden sm:overflow-visible">
             {/* Cutout Presentation Stage (No rectangular card border, pure cutout) */}
-            <div className="relative w-full max-w-[420px] sm:max-w-[500px] lg:max-w-[540px] h-[480px] sm:h-[560px] lg:h-[620px] flex items-end justify-center group">
+            <div className="relative w-full max-w-[360px] sm:max-w-[500px] lg:max-w-[540px] h-[360px] xs:h-[400px] sm:h-[520px] lg:h-[620px] flex items-end justify-center group">
               
               {/* 1. Dramatic Backlight Halo directly behind Athul's head & shoulders */}
-              <div className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-gradient-to-tr from-cinematic-gold/40 via-amber-500/30 to-transparent rounded-full blur-[90px] sm:blur-[110px] pointer-events-none -z-10" />
+              <div className="absolute top-4 sm:top-8 left-1/2 -translate-x-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tr from-cinematic-gold/40 via-amber-500/30 to-transparent rounded-full blur-[80px] sm:blur-[110px] pointer-events-none -z-10" />
 
               {/* 2. Concentric Cine Aperture Ring Halo */}
-              <div className="absolute top-2 sm:top-6 left-1/2 -translate-x-1/2 w-80 sm:w-[420px] h-80 sm:h-[420px] rounded-full border border-cinematic-gold/25 pointer-events-none -z-10 animate-[spin_80s_linear_infinite]" />
-              <div className="absolute top-8 sm:top-14 left-1/2 -translate-x-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full border border-dashed border-white/10 pointer-events-none -z-10" />
+              <div className="absolute top-2 sm:top-6 left-1/2 -translate-x-1/2 w-72 sm:w-[420px] h-72 sm:h-[420px] rounded-full border border-cinematic-gold/25 pointer-events-none -z-10 animate-[spin_80s_linear_infinite]" />
+              <div className="absolute top-8 sm:top-14 left-1/2 -translate-x-1/2 w-56 sm:w-80 h-56 sm:h-80 rounded-full border border-dashed border-white/10 pointer-events-none -z-10" />
 
               {/* 3. The Athul Ollur Transparent Cutout PNG */}
               <div 
@@ -151,17 +151,17 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
                   alt="Athul Ollur (Athul Kumar) — Director of Photography & Visual Artist"
                   fill
                   priority
-                  sizes="(max-width: 768px) 95vw, (max-width: 1200px) 50vw, 540px"
+                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 540px"
                   className="object-contain object-bottom drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)] drop-shadow-[0_0_45px_rgba(201,163,94,0.22)] scale-100 group-hover:scale-[1.02] transition-transform duration-700"
                   onLoad={() => setImgLoaded(true)}
                 />
               </div>
 
               {/* 4. Bottom Smooth Fade to merge seamlessly with page dark background */}
-              <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#07080B] via-[#07080B]/80 to-transparent pointer-events-none z-10" />
+              <div className="absolute bottom-0 inset-x-0 h-20 sm:h-24 bg-gradient-to-t from-[#07080B] via-[#07080B]/80 to-transparent pointer-events-none z-10" />
 
               {/* 5. Floating Badge: Shoulder Level (Director of Photography) */}
-              <div className="absolute top-6 sm:top-10 -right-2 sm:-right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-md flex items-center gap-2">
+              <div className="absolute top-4 sm:top-10 right-1 sm:-right-4 z-20 px-3 py-1.5 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-md flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cinematic-gold opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
@@ -172,9 +172,9 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
               </div>
 
               {/* 6. Floating Capsule Badge: Subtle Glass Baseline */}
-              <div className="absolute bottom-4 inset-x-0 z-20 flex justify-center pointer-events-none">
-                <div className="px-4 py-2 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/40 shadow-2xl backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto">
-                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-cinematic-gold font-bold">
+              <div className="absolute bottom-3 sm:bottom-4 inset-x-0 z-20 flex justify-center pointer-events-none">
+                <div className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/40 shadow-2xl backdrop-blur-xl flex items-center gap-2 pointer-events-auto">
+                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-cinematic-gold font-bold">
                     Skillmount DOP
                   </span>
                   <span className="text-white/30 text-xs">·</span>
@@ -264,14 +264,14 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
       </div>
 
       {/* Bottom Section: Disciplines Pills & Studio Marquee (Inspired by Reference 1) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 mt-12 sm:mt-16 pt-6 border-t border-white/[0.08] space-y-6">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-8 mt-10 sm:mt-16 pt-6 border-t border-white/[0.08] space-y-5 sm:space-y-6">
         {/* Disciplines 4-Pill Index */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
           {DISCIPLINES.map((d) => (
             <Link
               key={d.id}
               href={d.link}
-              className="p-3.5 rounded-lg bg-[#0F1117] border border-white/[0.06] hover:border-cinematic-gold/50 flex items-center justify-between transition-all group shadow-md"
+              className="p-3.5 rounded-lg bg-[#0F1117] border border-white/[0.06] hover:border-cinematic-gold/50 flex items-center justify-between transition-all group shadow-md min-h-[44px]"
             >
               <div>
                 <span className="font-mono text-[10px] text-cinematic-gold font-bold block">
@@ -287,11 +287,11 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
         </div>
 
         {/* Studio / Experience Trust Marquee */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-[11px] font-mono text-cinematic-textDim">
-          <span className="uppercase tracking-[0.2em] font-semibold text-cinematic-gold/80">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2 text-[11px] font-mono text-cinematic-textDim">
+          <span className="uppercase tracking-[0.15em] sm:tracking-[0.2em] font-semibold text-cinematic-gold/80 text-[10px] sm:text-[11px]">
             Trusted Across Studios & Production Houses:
           </span>
-          <div className="flex flex-wrap items-center gap-6 text-white/70">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-white/70 text-[11px]">
             {TRUSTED_STUDIOS.map((s, idx) => (
               <span key={idx} className="hover:text-white transition-colors">
                 {s.name}

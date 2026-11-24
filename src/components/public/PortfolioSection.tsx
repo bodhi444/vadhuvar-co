@@ -37,27 +37,39 @@ export default function PortfolioSection({
       : publishedProjects.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="works" className="py-24 sm:py-32 bg-[#090A0D] relative select-none">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="works" className="py-20 sm:py-32 bg-[#090A0D] relative select-none">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="space-y-3">
-            <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
-              Curated Filmography & Art
-            </span>
-            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
-              Selected Projects.
-            </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
+          <div className="flex items-end justify-between">
+            <div className="space-y-2 sm:space-y-3">
+              <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
+                Curated Filmography & Art
+              </span>
+              <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
+                Selected Projects.
+              </h2>
+            </div>
+
+            {showAllLink && (
+              <Link
+                href="/work"
+                className="inline-flex md:hidden items-center gap-1 text-xs uppercase tracking-[0.15em] text-cinematic-gold hover:text-white font-semibold transition-colors shrink-0 pl-3 py-1"
+              >
+                <span>Archive</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            )}
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
+            {/* Category Filter Pills (Smooth Touch Horizontal Scroll on Mobile) */}
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1.5 -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-sm text-xs uppercase tracking-[0.15em] font-medium transition-all ${
+                  className={`px-3.5 py-2 rounded-sm text-xs uppercase tracking-[0.15em] font-medium transition-all shrink-0 min-h-[38px] flex items-center justify-center ${
                     selectedCategory === cat
                       ? "bg-cinematic-gold text-black font-semibold shadow-lg shadow-cinematic-gold/20"
                       : "text-cinematic-textMuted hover:text-white bg-[#12141A] border border-cinematic-border"
@@ -71,7 +83,7 @@ export default function PortfolioSection({
             {showAllLink && (
               <Link
                 href="/work"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-cinematic-gold hover:text-white font-semibold transition-colors pl-4 border-l border-cinematic-border"
+                className="hidden md:inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-cinematic-gold hover:text-white font-semibold transition-colors pl-4 border-l border-cinematic-border whitespace-nowrap"
               >
                 <span>View Archive</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -85,11 +97,11 @@ export default function PortfolioSection({
           <div className="py-16 text-center bg-[#12141A] border border-cinematic-border rounded-sm">
             <Film className="w-10 h-10 text-cinematic-gold/50 mx-auto mb-3" />
             <p className="text-sm text-cinematic-textMuted">
-              No films currently published under category "{selectedCategory}".
+              No films currently published under category &quot;{selectedCategory}&quot;.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
@@ -112,7 +124,7 @@ export default function PortfolioSection({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#12141A] via-black/20 to-black/40" />
 
                   {/* Top Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
                     <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold tracking-wider bg-black/80 text-cinematic-gold border border-cinematic-borderGold/30 backdrop-blur-md uppercase">
                       {project.category}
                     </span>
@@ -130,7 +142,7 @@ export default function PortfolioSection({
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px] text-cinematic-textDim font-sans">
                       <span className="font-mono text-xs font-bold text-cinematic-gold px-2 py-0.5 rounded bg-cinematic-gold/10 border border-cinematic-gold/30">
@@ -155,7 +167,7 @@ export default function PortfolioSection({
                   <div className="flex items-center justify-between pt-4 border-t border-cinematic-border/60">
                     <button
                       onClick={() => setActiveModalProject(project)}
-                      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-cinematic-gold font-semibold hover:text-cinematic-goldLight transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-cinematic-gold font-semibold hover:text-cinematic-goldLight transition-colors min-h-[44px] py-1"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>Watch Film</span>
@@ -163,7 +175,7 @@ export default function PortfolioSection({
 
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-1 text-xs text-cinematic-textDim hover:text-white transition-colors"
+                      className="inline-flex items-center gap-1 text-xs text-cinematic-textDim hover:text-white transition-colors min-h-[44px] py-1"
                     >
                       <span>Story Details</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -177,10 +189,10 @@ export default function PortfolioSection({
 
         {/* View All Archive CTA */}
         {showAllLink && (
-          <div className="text-center mt-16 pt-8 border-t border-cinematic-border/40">
+          <div className="text-center mt-12 sm:mt-16 pt-8 border-t border-cinematic-border/40">
             <Link
               href="/work"
-              className="btn-outline-gold text-xs py-3 px-8 tracking-[0.2em]"
+              className="btn-outline-gold text-xs py-3.5 px-6 sm:px-8 tracking-[0.18em] sm:tracking-[0.2em] inline-flex items-center justify-center min-h-[44px] w-full sm:w-auto"
             >
               Explore Complete Filmography Archive ({publishedProjects.length})
             </Link>

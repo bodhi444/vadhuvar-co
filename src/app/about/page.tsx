@@ -26,15 +26,15 @@ export default async function AboutPage() {
     <div className="min-h-screen bg-[#090A0D] text-white flex flex-col justify-between">
       <Navigation settings={settings} />
 
-      <main className="flex-1 pt-32 pb-24">
+      <main className="flex-1 pt-28 sm:pt-32 pb-20 sm:pb-24">
         {/* Editorial Manifesto Header */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-16 border-b border-cinematic-border/60">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-3xl space-y-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
+            <div className="max-w-3xl space-y-3 sm:space-y-4">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
                 Curriculum Vitae & Artistic Story
               </span>
-              <h1 className="font-cinematic text-4xl sm:text-5xl md:text-6xl font-bold text-white uppercase tracking-tight leading-tight">
+              <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold text-white uppercase tracking-tight leading-tight">
                 {about.heading}
               </h1>
               <p className="text-sm sm:text-base text-cinematic-gold font-medium font-sans leading-relaxed">
@@ -45,7 +45,7 @@ export default async function AboutPage() {
             <div>
               <Link
                 href="/contact"
-                className="btn-gold text-xs py-3.5 px-8 tracking-[0.18em]"
+                className="btn-gold text-xs py-3.5 px-8 tracking-[0.18em] w-full sm:w-auto inline-flex items-center justify-center min-h-[44px]"
               >
                 Initiate Project Brief
               </Link>
@@ -54,10 +54,10 @@ export default async function AboutPage() {
         </div>
 
         {/* Studio Stills & Founding Narrative */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Image */}
-            <div className="lg:col-span-5 relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
+            <div className="lg:col-span-5 relative aspect-[4/5] max-h-[420px] sm:max-h-none rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
                 src={about.image_url || "/athul-ollur.jpg"}
                 alt="Athul Ollur (Athul Kumar) — Cinematographer & Film Director"
@@ -69,7 +69,7 @@ export default async function AboutPage() {
             </div>
 
             {/* Right Story */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <span className="text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold block">
                 Artistic Foundation
               </span>
@@ -85,13 +85,13 @@ export default async function AboutPage() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-cinematic-border">
                   {about.stats.map((stat, i) => (
                     <div key={i} className="space-y-1">
-                      <span className="font-cinematic text-3xl font-bold text-white block">
+                      <span className="font-cinematic text-2xl sm:text-3xl font-bold text-white block">
                         {stat.value}
                         <span className="text-cinematic-gold text-lg font-normal">
                           {stat.suffix}
                         </span>
                       </span>
-                      <span className="text-[11px] uppercase tracking-wider text-cinematic-textDim block font-sans">
+                      <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-cinematic-textDim block font-sans">
                         {stat.label}
                       </span>
                     </div>
@@ -103,12 +103,12 @@ export default async function AboutPage() {
         </div>
 
         {/* CAREER EXPERIENCE TIMELINE */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 border-t border-cinematic-border/60">
-          <div className="space-y-3 mb-12">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+          <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Professional Timeline
             </span>
-            <h2 className="font-cinematic text-3xl sm:text-4xl font-bold text-white uppercase">
+            <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
               Career Experience
             </h2>
             <p className="text-xs sm:text-sm text-cinematic-textMuted max-w-2xl font-sans">
@@ -116,28 +116,28 @@ export default async function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {about.experience && about.experience.length > 0 ? (
               about.experience.map((exp, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold/60 p-6 sm:p-8 rounded-sm space-y-4 transition-all duration-300 relative group"
+                  className="bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold/60 p-5 sm:p-8 rounded-sm space-y-3 sm:space-y-4 transition-all duration-300 relative group"
                 >
-                  <div className="flex items-center justify-between text-xs font-semibold">
+                  <div className="flex items-center justify-between text-xs font-semibold gap-2">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-cinematic-gold/10 border border-cinematic-gold/30 text-cinematic-gold uppercase tracking-wider rounded-sm text-[11px]">
                       <Calendar className="w-3 h-3" />
                       {exp.period}
                     </span>
                     {exp.location && (
-                      <span className="text-[11px] text-cinematic-textDim font-sans flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-cinematic-gold/70" />
+                      <span className="text-[11px] text-cinematic-textDim font-sans flex items-center gap-1 truncate">
+                        <MapPin className="w-3 h-3 text-cinematic-gold/70 shrink-0" />
                         {exp.location}
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <h3 className="font-cinematic text-xl sm:text-2xl font-bold text-white group-hover:text-cinematic-gold transition-colors uppercase">
+                    <h3 className="font-cinematic text-lg sm:text-2xl font-bold text-white group-hover:text-cinematic-gold transition-colors uppercase">
                       {exp.role}
                     </h3>
                     <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mt-1">
@@ -157,12 +157,12 @@ export default async function AboutPage() {
         </div>
 
         {/* EDUCATION & ACADEMIC CREDENTIALS */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 border-t border-cinematic-border/60">
-          <div className="space-y-3 mb-12">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+          <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Academic Background
             </span>
-            <h2 className="font-cinematic text-3xl sm:text-4xl font-bold text-white uppercase">
+            <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
               Education & Fine Arts Pedigree
             </h2>
             <p className="text-xs sm:text-sm text-cinematic-textMuted max-w-2xl font-sans">
@@ -170,12 +170,12 @@ export default async function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {about.education && about.education.length > 0 ? (
               about.education.map((edu, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#12141A] border border-cinematic-border p-6 rounded-sm space-y-3"
+                  className="bg-[#12141A] border border-cinematic-border p-5 sm:p-6 rounded-sm space-y-3"
                 >
                   <div className="flex items-center justify-between">
                     <GraduationCap className="w-5 h-5 text-cinematic-gold" />
@@ -184,7 +184,7 @@ export default async function AboutPage() {
                     </span>
                   </div>
 
-                  <h3 className="font-cinematic text-lg font-bold text-white uppercase leading-snug">
+                  <h3 className="font-cinematic text-base sm:text-lg font-bold text-white uppercase leading-snug">
                     {edu.degree}
                   </h3>
 
@@ -210,22 +210,22 @@ export default async function AboutPage() {
         </div>
 
         {/* SKILLS & SOFTWARE TOOLS MATRIX */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 border-t border-cinematic-border/60">
-          <div className="space-y-3 mb-12">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16 border-t border-cinematic-border/60">
+          <div className="space-y-2 sm:space-y-3 mb-10 sm:mb-12">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               Expertise & Tools
             </span>
-            <h2 className="font-cinematic text-3xl sm:text-4xl font-bold text-white uppercase">
+            <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
               Disciplines & Technical Craft
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {about.skills_categories && about.skills_categories.length > 0 ? (
               about.skills_categories.map((cat, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#12141A] border border-cinematic-border p-6 rounded-sm space-y-4"
+                  className="bg-[#12141A] border border-cinematic-border p-5 sm:p-6 rounded-sm space-y-4"
                 >
                   <span className="text-xs uppercase tracking-wider text-cinematic-gold font-bold block pb-2 border-b border-cinematic-border/60">
                     {cat.title}
@@ -248,13 +248,13 @@ export default async function AboutPage() {
         </div>
 
         {/* Philosophy & Approach Grid */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12 border-t border-cinematic-border/60">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#12141A] border border-cinematic-border p-8 rounded-sm space-y-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 sm:py-12 border-t border-cinematic-border/60">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-[#12141A] border border-cinematic-border p-6 sm:p-8 rounded-sm space-y-4">
               <span className="text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold block">
                 Pillar 01
               </span>
-              <h3 className="font-cinematic text-2xl font-bold text-white uppercase">
+              <h3 className="font-cinematic text-xl sm:text-2xl font-bold text-white uppercase">
                 Creative Philosophy
               </h3>
               <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed font-sans whitespace-pre-wrap">
@@ -262,11 +262,11 @@ export default async function AboutPage() {
               </p>
             </div>
 
-            <div className="bg-[#12141A] border border-cinematic-border p-8 rounded-sm space-y-4">
+            <div className="bg-[#12141A] border border-cinematic-border p-6 sm:p-8 rounded-sm space-y-4">
               <span className="text-xs uppercase tracking-[0.2em] text-cinematic-gold font-semibold block">
                 Pillar 02
               </span>
-              <h3 className="font-cinematic text-2xl font-bold text-white uppercase">
+              <h3 className="font-cinematic text-xl sm:text-2xl font-bold text-white uppercase">
                 Production Approach
               </h3>
               <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed font-sans whitespace-pre-wrap">
@@ -278,7 +278,7 @@ export default async function AboutPage() {
 
         {/* Optional Behind The Scenes Film */}
         {about.video_url && (
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
             <div className="mb-6">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block mb-1">
                 Behind The Glass
@@ -300,7 +300,7 @@ export default async function AboutPage() {
         )}
 
         {/* Bottom CTA */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center pt-16 border-t border-cinematic-border/60">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 text-center pt-12 sm:pt-16 border-t border-cinematic-border/60">
           <div className="max-w-xl mx-auto space-y-4">
             <h3 className="font-cinematic text-2xl font-bold text-white">
               Ready To Collaborate?
@@ -311,7 +311,7 @@ export default async function AboutPage() {
             <div className="pt-4">
               <Link
                 href="/contact"
-                className="btn-gold text-xs py-3.5 px-8 tracking-[0.2em]"
+                className="btn-gold text-xs py-3.5 px-8 tracking-[0.2em] w-full sm:w-auto inline-flex items-center justify-center min-h-[44px]"
               >
                 Initiate Project Brief
               </Link>

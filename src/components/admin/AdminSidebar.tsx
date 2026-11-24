@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -15,6 +15,8 @@ import {
   Settings,
   LogOut,
   ExternalLink,
+  Menu,
+  X,
 } from "lucide-react";
 import ApertureIcon from "@/components/shared/ApertureIcon";
 
@@ -33,6 +35,24 @@ const navItems = [
 export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: number }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Close drawer on path navigation
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Lock scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const handleLogout = async () => {
     try {
@@ -44,12 +64,16 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
     }
   };
 
-  return (
-    <aside className="w-64 shrink-0 bg-cinematic-surface border-r border-cinematic-border min-h-screen flex flex-col justify-between select-none">
+  const SidebarContent = () => (
+    <>
       <div>
         {/* Brand Header */}
-        <div className="p-6 border-b border-cinematic-border">
-          <Link href="/admin/dashboard" className="flex items-center gap-3 group">
+        <div className="p-6 border-b border-cinematic-border flex items-center justify-between">
+          <Link
+            href="/admin/dashboard"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 group"
+          >
             <ApertureIcon className="w-7 h-7 text-cinematic-gold group-hover:rotate-45 transition-transform duration-500" />
             <div>
               <span className="font-cinematic font-bold tracking-widest text-sm text-white block">
@@ -60,10 +84,19 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
               </span>
             </div>
           </Link>
+
+          {/* Close button visible only inside mobile drawer */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="md:hidden p-1.5 text-white/60 hover:text-white rounded"
+            aria-label="Close Admin Menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Navigation Items */}
-        <nav className="p-4 space-y-1">
+        <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-220px)]">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -72,7 +105,8 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-sm text-xs font-medium tracking-wide transition-all ${
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-sm text-xs font-medium tracking-wide transition-all min-h-[44px] ${
                   isActive
                     ? "bg-cinematic-gold text-cinematic-bg font-semibold shadow-lg shadow-cinematic-gold/20"
                     : "text-cinematic-textMuted hover:text-white hover:bg-white/5"
@@ -103,7 +137,8 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
         <Link
           href="/"
           target="_blank"
-          className="flex items-center justify-between w-full px-3.5 py-2 rounded-sm text-xs text-cinematic-textMuted hover:text-white hover:bg-white/5 transition-colors"
+          onClick={() => setIsOpen(false)}
+          className="flex items-center justify-between w-full px-3.5 py-2.5 rounded-sm text-xs text-cinematic-textMuted hover:text-white hover:bg-white/5 transition-colors min-h-[44px]"
         >
           <span className="flex items-center gap-2">
             <ExternalLink className="w-3.5 h-3.5 text-cinematic-gold" />
@@ -116,12 +151,46 @@ export default function AdminSidebar({ unreadMessages = 0 }: { unreadMessages?: 
 
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 w-full px-3.5 py-2 rounded-sm text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+          className="flex items-center gap-2 w-full px-3.5 py-2.5 rounded-sm text-xs text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors min-h-[44px]"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Sign Out Session</span>
         </button>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Mobile Floating Toggle Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="md:hidden fixed top-3 left-3 z-40 p-2 rounded bg-[#12141A] border border-cinematic-gold/40 text-cinematic-gold shadow-xl min-w-[40px] min-h-[40px] flex items-center justify-center hover:bg-cinematic-surface transition-colors"
+        aria-label="Open Admin Menu"
+      >
+        <Menu className="w-5 h-5" />
+      </button>
+
+      {/* Mobile Off-canvas Drawer */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 animate-fade-in"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`md:hidden fixed inset-y-0 left-0 w-72 z-50 bg-[#0C0E14] border-r border-cinematic-border flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out select-none ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <SidebarContent />
+      </aside>
+
+      {/* Desktop Persistent Sidebar */}
+      <aside className="hidden md:flex w-64 shrink-0 bg-cinematic-surface border-r border-cinematic-border min-h-screen flex-col justify-between select-none">
+        <SidebarContent />
+      </aside>
+    </>
   );
 }

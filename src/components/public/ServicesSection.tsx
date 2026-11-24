@@ -32,14 +32,14 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
   };
 
   return (
-    <section id="services" className="py-24 sm:py-32 bg-[#090A0D] relative select-none">
+    <section id="services" className="py-20 sm:py-32 bg-[#090A0D] relative select-none">
       {/* Background accents */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cinematic-borderGold/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="space-y-3">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4 sm:gap-6">
+          <div className="space-y-2 sm:space-y-3">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
               What We Create
             </span>
@@ -63,7 +63,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                 className="group relative bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold/60 rounded-sm overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cinematic-gold/10"
               >
                 {/* Image Container with Cinematic Zoom */}
-                <div className="relative w-full h-64 overflow-hidden bg-black">
+                <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-black">
                   {service.image_url ? (
                     <Image
                       src={service.image_url}
@@ -94,7 +94,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                 </div>
 
                 {/* Card Text Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <h3 className="font-cinematic text-lg sm:text-xl font-bold text-white group-hover:text-cinematic-gold transition-colors">
                       {service.title}
@@ -104,10 +104,10 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                     </p>
                   </div>
 
-                  {/* Service Detail Link */}
+                  {/* Service Detail Link with 44px min-touch height */}
                   <Link
                     href={`/services#${service.slug}`}
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-cinematic-gold font-semibold pt-2 border-t border-cinematic-border/60 group-hover:border-cinematic-gold/30 transition-colors"
+                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-cinematic-gold font-semibold pt-3 border-t border-cinematic-border/60 group-hover:border-cinematic-gold/30 transition-colors min-h-[44px]"
                   >
                     <span>Explore Craft</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

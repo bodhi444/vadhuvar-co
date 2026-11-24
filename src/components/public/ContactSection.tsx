@@ -85,15 +85,15 @@ export default function ContactSection({ settings, services }: ContactSectionPro
     : "#";
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-[#090A0D] relative select-none">
+    <section id="contact" className="py-20 sm:py-32 bg-[#090A0D] relative select-none">
       {/* Background divider */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cinematic-borderGold/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Headlines & Contact Channels */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-3">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8">
+            <div className="space-y-2 sm:space-y-3">
               <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
                 Initiate Production
               </span>
@@ -102,19 +102,19 @@ export default function ContactSection({ settings, services }: ContactSectionPro
               </h2>
             </div>
 
-            <p className="text-sm sm:text-base text-cinematic-textMuted font-sans leading-relaxed">
-              Let's turn your vision into a cinematic experience. Whether you're commissioning a worldwide brand commercial, an intimate destination wedding film, or a feature documentary, we are ready to roll.
+            <p className="text-xs sm:text-base text-cinematic-textMuted font-sans leading-relaxed">
+              Let&apos;s turn your vision into a cinematic experience. Whether you&apos;re commissioning a worldwide brand commercial, an intimate destination wedding film, or a feature documentary, we are ready to roll.
             </p>
 
             {/* Direct Channels */}
-            <div className="space-y-4 pt-4 border-t border-cinematic-border">
+            <div className="space-y-3 sm:space-y-4 pt-4 border-t border-cinematic-border">
               {/* WhatsApp Button */}
               {settings.whatsapp && (
                 <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between p-4 rounded-sm bg-[#12141A] border border-emerald-500/30 hover:border-emerald-400 text-white transition-all group shadow-md"
+                  className="flex items-center justify-between p-4 rounded-sm bg-[#12141A] border border-emerald-500/30 hover:border-emerald-400 text-white transition-all group shadow-md min-h-[48px]"
                 >
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 rounded-full bg-emerald-500/10 text-emerald-400">
@@ -134,7 +134,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
               )}
 
               {/* Email Channel */}
-              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border">
+              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border min-h-[48px]">
                 <div className="p-2.5 rounded-full bg-cinematic-gold/10 text-cinematic-gold shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
@@ -144,7 +144,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                   </span>
                   <a
                     href={`mailto:${settings.email}`}
-                    className="text-xs sm:text-sm font-mono text-white hover:text-cinematic-gold transition-colors font-medium"
+                    className="text-xs sm:text-sm font-mono text-white hover:text-cinematic-gold transition-colors font-medium break-all"
                   >
                     {settings.email}
                   </a>
@@ -152,7 +152,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
               </div>
 
               {/* Phone Channel */}
-              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border">
+              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border min-h-[48px]">
                 <div className="p-2.5 rounded-full bg-cinematic-gold/10 text-cinematic-gold shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
@@ -170,7 +170,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
               </div>
 
               {/* Physical Location */}
-              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border">
+              <div className="flex items-start gap-4 p-4 rounded-sm bg-[#12141A] border border-cinematic-border min-h-[48px]">
                 <div className="p-2.5 rounded-full bg-cinematic-gold/10 text-cinematic-gold shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
@@ -187,7 +187,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
           </div>
 
           {/* Right Column: Contact Inquiry Form */}
-          <div className="lg:col-span-7 bg-[#12141A] border border-cinematic-border p-8 sm:p-10 rounded-sm shadow-2xl relative">
+          <div className="lg:col-span-7 bg-[#12141A] border border-cinematic-border p-5 sm:p-10 rounded-sm shadow-2xl relative">
             <h3 className="font-cinematic text-xl sm:text-2xl font-bold text-white mb-2">
               Start The Conversation
             </h3>
@@ -207,13 +207,13 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                 <button
                   type="button"
                   onClick={() => setSuccessMsg(null)}
-                  className="btn-gold text-xs py-2 px-4 mt-2"
+                  className="btn-gold text-xs py-2 px-4 mt-2 min-h-[44px]"
                 >
                   Send Another Inquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 {errorMsg && (
                   <div className="p-3 bg-red-950/40 border border-red-800/60 rounded-sm text-xs text-red-300 flex items-start gap-2">
                     <AlertCircle className="w-4 h-4 shrink-0 text-red-400 mt-0.5" />
@@ -233,7 +233,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                       onChange={(e) => setName(e.target.value)}
                       required
                       placeholder="e.g. Julian Vance"
-                      className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                      className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
                     />
                   </div>
 
@@ -248,7 +248,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       placeholder="julian@example.com"
-                      className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-mono"
+                      className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-mono"
                     />
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-mono"
+                      className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-mono"
                     />
                   </div>
 
@@ -276,7 +276,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                     <select
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                      className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
                     >
                       {services.map((s) => (
                         <option key={s.id} value={s.title}>
@@ -301,7 +301,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     placeholder="Tell us about the project scope, timeline, shooting locations, or deliverables..."
-                    className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors leading-relaxed"
+                    className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors leading-relaxed"
                   />
                 </div>
 
@@ -309,7 +309,7 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="btn-gold w-full py-4 text-xs tracking-[0.2em] flex items-center justify-center gap-2 shadow-xl shadow-cinematic-gold/20"
+                  className="btn-gold w-full py-4 text-xs tracking-[0.2em] flex items-center justify-center gap-2 shadow-xl shadow-cinematic-gold/20 min-h-[48px]"
                 >
                   {isLoading ? (
                     <>

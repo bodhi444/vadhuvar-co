@@ -15,8 +15,8 @@ export default function Footer({ settings }: FooterProps) {
 
   return (
     <footer className="bg-[#060709] border-t border-cinematic-border/80 text-white select-none">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-cinematic-border/60">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-8 pb-12 sm:pb-16 border-b border-cinematic-border/60">
           {/* Column 1: Brand & Aperture */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 group">
@@ -31,7 +31,7 @@ export default function Footer({ settings }: FooterProps) {
               </div>
             </Link>
 
-            <p className="text-xs text-cinematic-textMuted leading-relaxed max-w-sm font-sans pt-2">
+            <p className="text-xs text-cinematic-textMuted leading-relaxed max-w-sm font-sans pt-1">
               Official portfolio of Athul Ollur — Cinematographer & Director crafting evocative commercial films, luxury wedding epics, and visual stories worldwide.
             </p>
 
@@ -42,7 +42,7 @@ export default function Footer({ settings }: FooterProps) {
                   href={settings.instagram_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors"
                   aria-label="Instagram Profile"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +57,7 @@ export default function Footer({ settings }: FooterProps) {
                   href={settings.youtube_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors"
                   aria-label="YouTube Channel"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -71,7 +71,7 @@ export default function Footer({ settings }: FooterProps) {
                   href={settings.vimeo_url}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors text-xs font-bold font-mono"
+                  className="w-10 h-10 rounded-full bg-[#12141A] border border-cinematic-border hover:border-cinematic-gold text-cinematic-textMuted hover:text-cinematic-gold flex items-center justify-center transition-colors text-xs font-bold font-mono"
                   aria-label="Vimeo Portfolio"
                 >
                   V
@@ -87,27 +87,27 @@ export default function Footer({ settings }: FooterProps) {
             </span>
             <ul className="space-y-2 text-xs font-sans text-cinematic-textMuted">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link href="/" className="hover:text-white transition-colors py-1 block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/work" className="hover:text-white transition-colors">
+                <Link href="/work" className="hover:text-white transition-colors py-1 block">
                   Filmography & Work
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors">
+                <Link href="/services" className="hover:text-white transition-colors py-1 block">
                   Production Services
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white transition-colors py-1 block">
                   Studio Manifesto
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
+                <Link href="/contact" className="hover:text-white transition-colors py-1 block">
                   Contact Studio
                 </Link>
               </li>
@@ -121,32 +121,32 @@ export default function Footer({ settings }: FooterProps) {
             </span>
             <ul className="space-y-2 text-xs font-sans text-cinematic-textMuted">
               <li>
-                <Link href="/work?cat=Wedding" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Wedding" className="hover:text-white transition-colors py-1 block">
                   Wedding Films
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Commercial" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Commercial" className="hover:text-white transition-colors py-1 block">
                   Commercial Advertising
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Music%20Video" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Music%20Video" className="hover:text-white transition-colors py-1 block">
                   Music Videos
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Documentary" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Documentary" className="hover:text-white transition-colors py-1 block">
                   Documentaries
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Photography" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Photography" className="hover:text-white transition-colors py-1 block">
                   Editorial Photography
                 </Link>
               </li>
               <li>
-                <Link href="/work?cat=Fine%20Art" className="hover:text-white transition-colors">
+                <Link href="/work?cat=Fine%20Art" className="hover:text-white transition-colors py-1 block">
                   Fine Art & Sculptures
                 </Link>
               </li>
@@ -160,20 +160,20 @@ export default function Footer({ settings }: FooterProps) {
             </span>
             <div className="space-y-2 text-xs font-sans text-cinematic-textMuted">
               <p>{settings?.address || "Calicut, Kerala, India"}</p>
-              <p className="font-mono text-white/90">{settings?.email || "athulollur@gmail.com"}</p>
+              <p className="font-mono text-white/90 break-all">{settings?.email || "athulollur@gmail.com"}</p>
               <p className="font-mono text-white/90">{settings?.phone || "+91 98476 10569"}</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cinematic-textDim font-sans">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cinematic-textDim font-sans text-center sm:text-left">
           <p>© {currentYear} ATHUL OLLUR. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
             <Link
               href="/admin/login"
-              className="flex items-center gap-1.5 text-cinematic-textDim hover:text-cinematic-gold transition-colors"
+              className="flex items-center gap-1.5 text-cinematic-textDim hover:text-cinematic-gold transition-colors py-2"
             >
               <Lock className="w-3 h-3" />
               <span>Studio CMS Portal</span>

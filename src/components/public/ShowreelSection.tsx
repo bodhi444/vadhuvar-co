@@ -16,10 +16,10 @@ export default function ShowreelSection({ showreel }: ShowreelSectionProps) {
   if (!showreel.is_active) return null;
 
   return (
-    <section className="py-24 sm:py-32 bg-[#090A0D] relative select-none">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section className="py-20 sm:py-32 bg-[#090A0D] relative select-none">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Headline */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-2 sm:space-y-3">
           <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
             Motion Reel
           </span>
@@ -31,7 +31,7 @@ export default function ShowreelSection({ showreel }: ShowreelSectionProps) {
           </p>
         </div>
 
-        {/* Cinematic 21:9 Widescreen Theater Frame */}
+        {/* Cinematic Widescreen Theater Frame - Responsive Aspect Ratio */}
         <div className="relative rounded-sm overflow-hidden border border-cinematic-border shadow-2xl bg-black">
           <VideoPlayer
             title={showreel.title}
@@ -40,7 +40,7 @@ export default function ShowreelSection({ showreel }: ShowreelSectionProps) {
             vimeoUrl={showreel.vimeo_url}
             posterUrl={showreel.poster_url || "/works/hero/hero-2.jpg"}
             autoPlay={false}
-            className="w-full aspect-[21/9] min-h-[360px]"
+            className="w-full aspect-video sm:aspect-[21/9] min-h-[220px] sm:min-h-[360px]"
           />
         </div>
       </div>

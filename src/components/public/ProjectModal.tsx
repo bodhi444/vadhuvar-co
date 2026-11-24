@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X, Play, ArrowUpRight, Calendar, User, Film } from "lucide-react";
@@ -13,22 +13,36 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+  useEffect(() => {
+    if (project) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-xl animate-fade-in overflow-y-auto">
-      <div className="bg-[#12141A] border border-cinematic-border max-w-4xl w-full rounded-sm shadow-2xl relative my-8 overflow-hidden">
-        {/* Close button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/90 backdrop-blur-xl animate-fade-in overflow-y-auto">
+      <div className="bg-[#12141A] border border-cinematic-border max-w-4xl w-full rounded-sm shadow-2xl relative my-auto sm:my-8 overflow-hidden max-h-[92vh] flex flex-col">
+        {/* Close button with 44x44px touch target */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-30 p-2 rounded-full bg-black/60 text-white/70 hover:text-white hover:bg-black transition-colors"
+          className="absolute top-3 right-3 z-30 min-w-[44px] min-h-[44px] rounded-full bg-black/70 text-white/80 hover:text-white hover:bg-black transition-colors flex items-center justify-center shadow-lg backdrop-blur-md"
           aria-label="Close project preview"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Video or Big Cover Header */}
-        <div className="relative w-full aspect-video bg-black">
+        <div className="relative w-full aspect-video bg-black shrink-0">
           {project.video_url || project.youtube_url || project.vimeo_url ? (
             <VideoPlayer
               title={project.title}
@@ -48,10 +62,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
         </div>
 
-        {/* Project Body */}
-        <div className="p-6 sm:p-8 space-y-6">
+        {/* Project Body - Scrollable if content is long */}
+        <div className="p-5 sm:p-8 space-y-5 sm:space-y-6 overflow-y-auto">
           {/* Metadata Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-cinematic-border">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-cinematic-border">
             <div className="flex items-center gap-3">
               <span className="px-2.5 py-1 rounded text-[10px] uppercase font-bold tracking-widest bg-cinematic-gold text-black">
                 {project.category}
@@ -70,11 +84,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
 
           {/* Title & Descriptions */}
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             <h2 className="font-cinematic text-2xl sm:text-3xl font-bold text-white tracking-wide">
               {project.title}
             </h2>
-            <p className="text-sm text-cinematic-gold/90 font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm text-cinematic-gold/90 font-medium leading-relaxed">
               {project.short_description}
             </p>
             <p className="text-xs sm:text-sm text-cinematic-textMuted leading-relaxed whitespace-pre-wrap font-sans">
@@ -88,7 +102,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <span className="text-xs uppercase tracking-widest text-cinematic-gold font-semibold block">
                 Cinematic Stills & Lens Frames
               </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {project.gallery_images.map((img, idx) => (
                   <div
                     key={idx}
@@ -107,10 +121,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
 
           {/* Footer Actions */}
-          <div className="flex items-center justify-between pt-6 border-t border-cinematic-border">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-5 border-t border-cinematic-border">
             <Link
               href={`/work/${project.slug}`}
-              className="btn-gold text-xs py-2.5 px-5 flex items-center gap-2"
+              className="btn-gold text-xs py-3 px-5 flex items-center justify-center gap-2 min-h-[44px] w-full sm:w-auto"
             >
               <span>Dedicated Project Page</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-black" />
@@ -118,7 +132,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             <button
               onClick={onClose}
-              className="text-xs text-cinematic-textMuted hover:text-white"
+              className="text-xs text-cinematic-textMuted hover:text-white min-h-[44px] flex items-center justify-center py-2 px-4"
             >
               Close Film
             </button>

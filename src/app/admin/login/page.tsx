@@ -106,7 +106,7 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Card */}
-        <div className="bg-cinematic-surface border border-cinematic-border p-8 rounded-sm shadow-2xl backdrop-blur-xl">
+        <div className="bg-cinematic-surface border border-cinematic-border p-6 sm:p-8 rounded-sm shadow-2xl backdrop-blur-xl">
           {errorMessage && (
             <div className="mb-6 p-3 rounded-sm bg-red-950/40 border border-red-800/60 text-xs text-red-300 flex items-start gap-2.5">
               <AlertCircle className="w-4 h-4 shrink-0 text-red-400 mt-0.5" />
@@ -127,7 +127,7 @@ export default function AdminLoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="admin@framemotion.com"
-                  className="w-full bg-black/60 border border-cinematic-border text-white text-sm px-4 py-3 pl-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
+                  className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-sm px-4 py-3 pl-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
                 />
                 <Mail className="w-4 h-4 text-cinematic-textDim absolute left-3.5 top-1/2 -translate-y-1/2" />
               </div>
@@ -155,7 +155,7 @@ export default function AdminLoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="••••••••••••"
-                  className="w-full bg-black/60 border border-cinematic-border text-white text-sm px-4 py-3 pl-11 pr-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
+                  className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-sm px-4 py-3 pl-11 pr-11 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-sans"
                 />
                 <Lock className="w-4 h-4 text-cinematic-textDim absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <button

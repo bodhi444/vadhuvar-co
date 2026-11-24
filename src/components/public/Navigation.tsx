@@ -29,6 +29,18 @@ export default function Navigation({ settings }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent background scrolling when mobile navigation drawer is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Our Work", href: "/work" },
@@ -93,10 +105,10 @@ export default function Navigation({ settings }: NavigationProps) {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button (Comfortable 44x44px touch target) */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-cinematic-gold transition-colors"
+            className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-white hover:text-cinematic-gold transition-colors"
             aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,34 +118,40 @@ export default function Navigation({ settings }: NavigationProps) {
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden bg-[#090A0D]/95 backdrop-blur-xl flex flex-col justify-between p-8 animate-fade-in">
-          <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-6">
+        <div className="fixed inset-0 z-50 md:hidden bg-[#090A0D]/95 backdrop-blur-xl flex flex-col justify-between p-6 sm:p-8 overflow-y-auto animate-fade-in">
+          <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-5">
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center gap-3"
             >
               <ApertureIcon className="w-7 h-7 text-cinematic-gold" />
-              <span className="font-cinematic font-bold tracking-[0.2em] text-sm text-white">
-                {settings?.company_name || "ATHUL OLLUR"}
-              </span>
+              <div className="flex flex-col">
+                <span className="font-cinematic font-bold tracking-[0.2em] text-sm text-white">
+                  {settings?.company_name || "ATHUL OLLUR"}
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.25em] text-cinematic-gold font-sans font-medium">
+                  {settings?.tagline || "Cinematographer"}
+                </span>
+              </div>
             </Link>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 text-white/70 hover:text-white"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-white/70 hover:text-white"
+              aria-label="Close menu"
             >
               <X className="w-6 h-6" />
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-6 my-auto py-8">
+          <nav className="flex flex-col space-y-5 my-auto py-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`font-cinematic text-2xl tracking-widest uppercase transition-colors ${
-                  pathname === link.href ? "text-cinematic-gold font-bold" : "text-white/80"
+                className={`font-cinematic text-2xl sm:text-3xl tracking-widest uppercase transition-colors py-1 ${
+                  pathname === link.href ? "text-cinematic-gold font-bold" : "text-white/80 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -141,20 +159,20 @@ export default function Navigation({ settings }: NavigationProps) {
             ))}
           </nav>
 
-          <div className="border-t border-cinematic-border/60 pt-6 space-y-4">
+          <div className="border-t border-cinematic-border/60 pt-5 space-y-4">
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-gold w-full text-center py-3 text-xs tracking-widest"
+              className="btn-gold w-full text-center py-3.5 text-xs tracking-widest flex items-center justify-center"
             >
               Start A Project
             </Link>
 
-            <div className="flex items-center justify-between text-xs text-cinematic-textDim pt-2">
-              <Link href="/admin/login" className="hover:text-cinematic-gold">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-cinematic-textDim pt-1 text-center sm:text-left">
+              <Link href="/admin/login" className="hover:text-cinematic-gold py-1">
                 Studio Admin Portal →
               </Link>
-              <span>{settings?.phone || "+1 (555) 839-2041"}</span>
+              <span className="font-mono text-white/70">{settings?.phone || "+91 98476 10569"}</span>
             </div>
           </div>
         </div>

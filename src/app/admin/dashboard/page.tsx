@@ -35,9 +35,9 @@ export default async function AdminDashboardPage() {
           subtitle="Real-time control center for films, media, and client inquiries"
         />
 
-        <main className="p-8 space-y-8 flex-1 overflow-y-auto">
+        <main className="p-4 sm:p-8 space-y-6 sm:space-y-8 flex-1 overflow-y-auto">
           {/* Welcome Banner */}
-          <div className="relative overflow-hidden rounded-sm border border-cinematic-border bg-gradient-to-r from-cinematic-surface via-cinematic-surfaceHover to-cinematic-surface p-8 shadow-xl">
+          <div className="relative overflow-hidden rounded-sm border border-cinematic-border bg-gradient-to-r from-cinematic-surface via-cinematic-surfaceHover to-cinematic-surface p-5 sm:p-8 shadow-xl">
             <div className="relative z-10 max-w-2xl">
               <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-cinematic-gold/10 border border-cinematic-gold/20 text-cinematic-gold text-[11px] font-semibold tracking-widest uppercase mb-3">
                 <ShieldCheck className="w-3.5 h-3.5" />
