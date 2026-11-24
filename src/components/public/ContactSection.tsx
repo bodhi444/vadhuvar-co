@@ -16,15 +16,25 @@ import { SiteSettings, Service } from "@/types";
 
 interface ContactSectionProps {
   settings: SiteSettings;
-  services: Service[];
+  services?: Service[];
 }
+
+const CATEGORY_OPTIONS = [
+  "Commercial",
+  "Concert Video",
+  "Podcast",
+  "Photography",
+  "Fine Art & Sculptures",
+  "Wedding",
+  "General Studio Inquiry",
+];
 
 export default function ContactSection({ settings, services }: ContactSectionProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [service, setService] = useState(
-    services[0]?.title || "Commercial Ads"
+    services && services.length > 0 ? services[0].title : "Commercial"
   );
   const [message, setMessage] = useState("");
 
@@ -278,14 +288,24 @@ export default function ContactSection({ settings, services }: ContactSectionPro
                       onChange={(e) => setService(e.target.value)}
                       className="w-full bg-black/60 border border-cinematic-border text-white text-base sm:text-xs px-3.5 py-3 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
                     >
-                      {services.map((s) => (
-                        <option key={s.id} value={s.title}>
-                          {s.title}
-                        </option>
-                      ))}
-                      <option value="Feature Film / Documentary">Feature Film / Documentary</option>
-                      <option value="Editorial Photography">Editorial Photography</option>
-                      <option value="General Studio Inquiry">General Studio Inquiry</option>
+                      {services && services.length > 0
+                        ? services.map((s) => (
+                            <option key={s.id} value={s.title}>
+                              {s.title}
+                            </option>
+                          ))
+                        : CATEGORY_OPTIONS.map((cat) => (
+                            <option key={cat} value={cat}>
+                              {cat}
+                            </option>
+                          ))}
+                      {(!services || services.length === 0) ? null : (
+                        <>
+                          <option value="Concert Video">Concert Video</option>
+                          <option value="Podcast">Podcast</option>
+                          <option value="General Studio Inquiry">General Studio Inquiry</option>
+                        </>
+                      )}
                     </select>
                   </div>
                 </div>

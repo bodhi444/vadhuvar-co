@@ -27,7 +27,7 @@
     "cta_primary_link": "/work",
     "cta_secondary_text": "GET IN TOUCH",
     "cta_secondary_link": "/contact",
-    "show_services": true,
+    "show_services": false,
     "show_portfolio": true,
     "show_showreel": true,
     "show_about": true,

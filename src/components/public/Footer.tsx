@@ -97,11 +97,6 @@ export default function Footer({ settings }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors py-1 block">
-                  Production Services
-                </Link>
-              </li>
-              <li>
                 <Link href="/about" className="hover:text-white transition-colors py-1 block">
                   Studio Manifesto
                 </Link>

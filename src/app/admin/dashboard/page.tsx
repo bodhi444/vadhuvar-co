@@ -107,27 +107,27 @@ export default async function AdminDashboardPage() {
               </Link>
             </div>
 
-            {/* Total Services */}
+            {/* Published Showcase */}
             <div className="bg-cinematic-surface border border-cinematic-border p-5 rounded-sm shadow-md hover:border-cinematic-gold/30 transition-all">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs uppercase tracking-wider font-medium text-cinematic-textMuted">
-                  Services
+                  Live Showcase
                 </span>
-                <div className="p-2 rounded bg-blue-500/10 text-blue-400">
-                  <Sparkles className="w-4 h-4" />
+                <div className="p-2 rounded bg-cinematic-gold/10 text-cinematic-gold">
+                  <Eye className="w-4 h-4" />
                 </div>
               </div>
               <div className="flex items-baseline justify-between">
                 <span className="text-3xl font-cinematic font-bold text-white">
-                  {stats.totalServices}
+                  {stats.publishedProjects}
                 </span>
-                <span className="text-xs text-cinematic-textDim">Active Offerings</span>
+                <span className="text-xs text-emerald-400">Live on Site</span>
               </div>
               <Link
-                href="/admin/services"
+                href="/admin/portfolio"
                 className="mt-3 text-[11px] text-cinematic-gold hover:underline flex items-center gap-1 block"
               >
-                Edit services →
+                View live films →
               </Link>
             </div>
 

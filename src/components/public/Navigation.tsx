@@ -44,7 +44,6 @@ export default function Navigation({ settings }: NavigationProps) {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Our Work", href: "/work" },
-    { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

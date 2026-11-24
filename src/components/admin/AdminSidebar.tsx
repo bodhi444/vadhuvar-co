@@ -23,7 +23,6 @@ import ApertureIcon from "@/components/shared/ApertureIcon";
 const navItems = [
   { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { label: "Manage Homepage", href: "/admin/homepage", icon: Home },
-  { label: "Manage Services", href: "/admin/services", icon: Sparkles },
   { label: "Manage Portfolio", href: "/admin/portfolio", icon: Film },
   { label: "Manage Showreel", href: "/admin/showreel", icon: PlaySquare },
   { label: "Manage About", href: "/admin/about", icon: FileText },

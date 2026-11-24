@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/public/Navigation";
 import ContactSection from "@/components/public/ContactSection";
 import Footer from "@/components/public/Footer";
-import { getSiteSettings, getServices } from "@/lib/db";
+import { getSiteSettings } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Contact Athul Ollur — Inquire for Production",
@@ -14,10 +14,7 @@ export const metadata: Metadata = {
 export const revalidate = 0;
 
 export default async function ContactPage() {
-  const [settings, services] = await Promise.all([
-    getSiteSettings(),
-    getServices(true),
-  ]);
+  const settings = await getSiteSettings();
 
   return (
     <div className="min-h-screen bg-[#090A0D] text-white flex flex-col justify-between">
@@ -40,7 +37,7 @@ export default async function ContactPage() {
         </div>
 
         {/* Contact Form & Direct Channels */}
-        <ContactSection settings={settings} services={services} />
+        <ContactSection settings={settings} />
       </main>
 
       <Footer settings={settings} />

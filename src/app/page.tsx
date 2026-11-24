@@ -1,7 +1,6 @@
 import React from "react";
 import Navigation from "@/components/public/Navigation";
 import HeroSection from "@/components/public/HeroSection";
-import ServicesSection from "@/components/public/ServicesSection";
 import PortfolioSection from "@/components/public/PortfolioSection";
 import ProcessAndPedigree from "@/components/public/ProcessAndPedigree";
 import ShowreelSection from "@/components/public/ShowreelSection";
@@ -11,7 +10,6 @@ import Footer from "@/components/public/Footer";
 import {
   getSiteSettings,
   getHomepageContent,
-  getServices,
   getProjects,
   getShowreel,
   getAboutContent,
@@ -21,10 +19,9 @@ import {
 export const revalidate = 0;
 
 export default async function HomePage() {
-  const [settings, homepage, services, projects, showreel, about] = await Promise.all([
+  const [settings, homepage, projects, showreel, about] = await Promise.all([
     getSiteSettings(),
     getHomepageContent(),
-    getServices(true),
     getProjects({ onlyPublished: true }),
     getShowreel(),
     getAboutContent(),
@@ -37,9 +34,6 @@ export default async function HomePage() {
       <main className="flex-1">
         {/* Profile-Centric Hero (Inspired by User References) */}
         <HeroSection content={homepage} about={about} settings={settings} />
-
-        {/* Services Section */}
-        {homepage.show_services && <ServicesSection services={services} />}
 
         {/* Portfolio Showcase */}
         {homepage.show_portfolio && (
@@ -57,7 +51,7 @@ export default async function HomePage() {
 
         {/* Contact Inquiry Section ("Let's Work Together") */}
         {homepage.show_contact && (
-          <ContactSection settings={settings} services={services} />
+          <ContactSection settings={settings} />
         )}
       </main>
 

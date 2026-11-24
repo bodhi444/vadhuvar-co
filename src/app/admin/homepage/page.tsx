@@ -278,7 +278,6 @@ export default function ManageHomepagePage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {[
-                    { key: "show_services", label: "Services Section" },
                     { key: "show_portfolio", label: "Portfolio Gallery" },
                     { key: "show_showreel", label: "Studio Showreel" },
                     { key: "show_about", label: "About / Philosophy" },
