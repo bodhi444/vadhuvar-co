@@ -26,13 +26,13 @@ export default function Footer({ settings }: FooterProps) {
                   {settings?.company_name || "ATHUL OLLUR"}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.3em] text-cinematic-gold font-sans block">
-                  {settings?.tagline || "Cinematographer & Filmmaker"}
+                  {settings?.tagline || "Creative Director & Filmmaker"}
                 </span>
               </div>
             </Link>
 
             <p className="text-xs text-cinematic-textMuted leading-relaxed max-w-sm font-sans pt-1">
-              Official portfolio of Athul Ollur — Cinematographer & Director crafting evocative commercial films, luxury wedding epics, and visual stories worldwide.
+              Official portfolio of Athul Ollur — Creative Director & Director crafting evocative commercial films, luxury wedding epics, and visual stories worldwide.
             </p>
 
             {/* Social Icons */}

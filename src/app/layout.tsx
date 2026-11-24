@@ -18,13 +18,14 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://athul-ollur.vercel.app"),
   title: {
-    default: "ATHUL OLLUR — Cinematographer & Film Director",
+    default: "ATHUL OLLUR — Creative Director & Film Director",
     template: "%s | ATHUL OLLUR",
   },
   description:
-    "Official cinematic portfolio of Athul Ollur — Director of Photography, filmmaker, and visual storyteller specializing in commercial advertising, luxury wedding films, music videos, and documentaries.",
+    "Official cinematic portfolio of Athul Ollur — Creative Director, Director of Photography, filmmaker, and visual storyteller specializing in commercial advertising, luxury wedding films, music videos, and documentaries.",
   keywords: [
     "Athul Ollur",
+    "creative director",
     "cinematographer",
     "filmmaker",
     "director of photography",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Athul Ollur" }],
   openGraph: {
-    title: "ATHUL OLLUR — Cinematographer & Film Director",
+    title: "ATHUL OLLUR — Creative Director & Film Director",
     description:
       "Creating powerful visuals, unforgettable films, and cinematic experiences for brands, people, and businesses worldwide.",
     url: "https://athul-ollur.vercel.app",
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
         url: "/athul-ollur.jpg",
         width: 1200,
         height: 800,
-        alt: "Athul Ollur — Cinematographer & Director",
+        alt: "Athul Ollur — Creative Director & Director",
       },
     ],
     locale: "en_US",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ATHUL OLLUR — Cinematographer & Filmmaker",
+    title: "ATHUL OLLUR — Creative Director & Filmmaker",
     description: "Creating powerful visuals, unforgettable films, and cinematic experiences.",
     images: ["/athul-ollur.jpg"],
   },

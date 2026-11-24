@@ -24,7 +24,7 @@ export default function AboutSection({ about }: AboutSectionProps) {
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
                 src={about.image_url || "/athul-ollur.jpg"}
-                alt="Athul Ollur (Athul Kumar) — Cinematographer & DOP"
+                alt="Athul Ollur (Athul Kumar) — Creative Director & DOP"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"

@@ -2,7 +2,7 @@
   "site_settings": {
     "id": "default",
     "company_name": "ATHUL OLLUR",
-    "tagline": "Cinematographer · Director of Photography · Visual Artist",
+    "tagline": "Creative Director · Director of Photography · Visual Artist",
     "logo_url": "",
     "favicon_url": "/favicon.ico",
     "email": "athulollur@gmail.com",
@@ -13,14 +13,14 @@
     "facebook_url": "https://facebook.com/athulollur",
     "youtube_url": "https://youtube.com/@athulollur",
     "vimeo_url": "https://vimeo.com/athulollur",
-    "seo_title": "ATHUL OLLUR (ATHUL KUMAR) — Cinematographer, DOP & Visual Artist",
-    "seo_description": "Official portfolio and CV of Athul Ollur (Athul Kumar) — Director of Photography (DOP) at Skillmount Education, former Cinematographer at Greenmedia, and BFA Painting graduate from Raja Ravi Varma College of Fine Arts. Specializing in commercial advertising, wedding epics, documentaries, and fine art.",
+    "seo_title": "ATHUL OLLUR (ATHUL KUMAR) — Creative Director, DOP & Visual Artist",
+    "seo_description": "Official portfolio and CV of Athul Ollur (Athul Kumar) — Creative Director & Director of Photography (DOP) at Skillmount Education, former Cinematographer at Greenmedia, and BFA Painting graduate from Raja Ravi Varma College of Fine Arts. Specializing in commercial advertising, wedding epics, documentaries, and fine art.",
     "updated_at": "2026-11-22T20:00:00.000Z"
   },
   "homepage_content": {
     "id": "default",
     "hero_heading": "TELL YOUR STORY THROUGH THE LENS.",
-    "hero_subheading": "Athul Ollur — Cinematographer & Director of Photography (DOP) merging classical fine art discipline with high-end camera movement to craft evocative films, commercials, and visual experiences.",
+    "hero_subheading": "Athul Ollur — Creative Director & Director of Photography (DOP) merging classical fine art discipline with high-end camera movement to craft evocative films, commercials, and visual experiences.",
     "hero_video_url": "/videos/projects/deepavali-festival-of-lights.mp4",
     "hero_image_fallback": "/projects/deepavali-festival-of-lights.jpg",
     "cta_primary_text": "EXPLORE MY WORK",
@@ -465,8 +465,8 @@
   },
   "about_content": {
     "id": "default",
-    "heading": "ATHUL OLLUR — CINEMATOGRAPHER & VISUAL ARTIST.",
-    "intro": "Athul Ollur (Athul Kumar) is a multidisciplinary Director of Photography (DOP), Cinematographer, and Fine Arts Graduate (BFA in Painting from Raja Ravi Varma College of Fine Arts, Kerala University). His visual direction is shaped by a deep mastery of light, color harmony, and human emotion.",
+    "heading": "ATHUL OLLUR — CREATIVE DIRECTOR & VISUAL ARTIST.",
+    "intro": "Athul Ollur (Athul Kumar) is a multidisciplinary Creative Director, Director of Photography (DOP), and Fine Arts Graduate (BFA in Painting from Raja Ravi Varma College of Fine Arts, Kerala University). His visual direction is shaped by a deep mastery of light, color harmony, and human emotion.",
     "story": "Before looking through a camera viewfinder, Athul Ollur studied the masters of light on canvas. Holding a Bachelor of Fine Arts (BFA in Painting) from the historic Raja Ravi Varma College of Fine Arts, Mavelikkara (2015), and having worked as a sculptor at RestoreDesign Bangalore, his cinema aesthetic is anchored in classical painting, dimensional lighting, and spatial rhythm.\n\nFrom 2016 onwards, Athul built a prolific independent career as a freelance videographer, cinematographer, photographer, and visual artist. He served as lead Cinematographer at Greenmedia (2023–2024), orchestrating commercial advertising campaigns and branded films, before becoming Director of Photography (DOP) at Skillmount Education (2024–2026), where he directs high-production-value video series, masterclasses, and visual narratives.\n\nHis work spans luxury destination weddings, commercial films, music videos, documentaries, and large-scale fine art sculptures and paintings across Kerala, Bangalore, and across India.",
     "philosophy": "To me, cinematography is painting with dynamic light across time. My fine arts background taught me that light is not merely illumination — it creates volume, texture, tension, and truth. Every camera movement must have rhythm, intent, and emotional honesty.",
     "approach": "Bridging fine art intuition with technical precision: tailored anamorphic and spherical lens choices, chiaroscuro lighting architecture, fine-tuned post-production across Final Cut Pro, Premiere Pro, DaVinci Resolve, Edius, and Photoshop, with holistic art direction from concept sketch to final grade.",

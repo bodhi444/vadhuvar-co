@@ -89,10 +89,10 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
                 Athul Ollur
               </h1>
               <span className="font-mono text-[11px] sm:text-xs text-cinematic-gold uppercase tracking-[0.2em] sm:tracking-[0.25em] font-semibold block pt-1.5">
-                Director of Photography (DOP)
+                Creative Director & DOP
               </span>
               <span className="text-xs uppercase tracking-wider text-cinematic-textDim block font-sans">
-                Cinematographer · Fine Artist
+                Creative Director · Visual Artist
               </span>
             </div>
 
@@ -148,7 +148,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
               >
                 <Image
                   src="/athul-ollur-cutout.png"
-                  alt="Athul Ollur (Athul Kumar) — Director of Photography & Visual Artist"
+                  alt="Athul Ollur (Athul Kumar) — Creative Director, DOP & Visual Artist"
                   fill
                   priority
                   sizes="(max-width: 640px) 340px, (max-width: 1024px) 480px, 540px"
@@ -168,7 +168,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
                   </span>
                   <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-white font-bold">
-                    DOP & Cinematographer
+                    DOP & Creative Director
                   </span>
                 </div>
               </div>

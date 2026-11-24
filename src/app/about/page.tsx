@@ -9,9 +9,9 @@ import { getAboutContent, getSiteSettings } from "@/lib/db";
 import { ArrowUpRight, Award, Briefcase, Calendar, CheckCircle2, Compass, Film, GraduationCap, MapPin, Palette } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Athul Ollur (Athul Kumar) — Cinematographer & Visual Artist",
+  title: "About Athul Ollur (Athul Kumar) — Creative Director & Visual Artist",
   description:
-    "Curriculum Vitae, career experience, fine arts education, and cinematography philosophy of Athul Ollur (Athul Kumar).",
+    "Curriculum Vitae, career experience, fine arts education, and creative direction philosophy of Athul Ollur (Athul Kumar).",
 };
 
 export const revalidate = 0;
@@ -60,7 +60,7 @@ export default async function AboutPage() {
             <div className="lg:col-span-5 relative aspect-[4/5] max-h-[420px] sm:max-h-none rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-2xl">
               <Image
                 src={about.image_url || "/athul-ollur.jpg"}
-                alt="Athul Ollur (Athul Kumar) — Cinematographer & Film Director"
+                alt="Athul Ollur (Athul Kumar) — Creative Director & Film Director"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"

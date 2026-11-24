@@ -67,7 +67,7 @@ export default function Navigation({ settings }: NavigationProps) {
                 {settings?.company_name || "ATHUL OLLUR"}
               </span>
               <span className="text-[9px] uppercase tracking-[0.3em] text-cinematic-gold font-sans font-medium">
-                {settings?.tagline || "Cinematographer"}
+                {settings?.tagline || "Creative Director"}
               </span>
             </div>
           </Link>
@@ -131,7 +131,7 @@ export default function Navigation({ settings }: NavigationProps) {
                   {settings?.company_name || "ATHUL OLLUR"}
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.25em] text-cinematic-gold font-sans font-medium">
-                  {settings?.tagline || "Cinematographer"}
+                  {settings?.tagline || "Creative Director"}
                 </span>
               </div>
             </Link>
