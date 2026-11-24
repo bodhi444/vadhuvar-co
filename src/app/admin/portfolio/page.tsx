@@ -26,6 +26,7 @@ import {
   Clock,
   Star,
   Video,
+  FileText,
 } from "lucide-react";
 
 const CATEGORIES: ProjectCategory[] = [
@@ -52,6 +53,13 @@ export default function ManagePortfolioPage() {
   // Delete modal state
   const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
+
+  // Quick Edit Title & Description Modal State
+  const [quickEditProject, setQuickEditProject] = useState<Project | null>(null);
+  const [quickTitle, setQuickTitle] = useState("");
+  const [quickShortDesc, setQuickShortDesc] = useState("");
+  const [quickFullDesc, setQuickFullDesc] = useState("");
+  const [quickLoading, setQuickLoading] = useState(false);
 
   // Form Fields
   const [title, setTitle] = useState("");
@@ -141,6 +149,60 @@ export default function ManagePortfolioPage() {
 
   const removeGalleryImage = (idx: number) => {
     setGalleryImages(galleryImages.filter((_, i) => i !== idx));
+  };
+
+  const openQuickEdit = (p: Project) => {
+    setQuickEditProject(p);
+    setQuickTitle(p.title || "");
+    setQuickShortDesc(p.short_description || "");
+    setQuickFullDesc(p.full_description || p.short_description || "");
+  };
+
+  const handleSaveQuickEdit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!quickEditProject) return;
+    if (!quickTitle.trim()) {
+      toastError("Project title cannot be empty.");
+      return;
+    }
+
+    setQuickLoading(true);
+    try {
+      const res = await fetch("/api/admin/portfolio", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: quickEditProject.id,
+          title: quickTitle.trim(),
+          short_description: quickShortDesc.trim(),
+          full_description: quickFullDesc.trim(),
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && (data.success || data.data)) {
+        success(`Updated title & description for "${quickTitle.trim()}"!`);
+        setProjects((prev) =>
+          prev.map((proj) =>
+            proj.id === quickEditProject.id
+              ? {
+                  ...proj,
+                  title: quickTitle.trim(),
+                  short_description: quickShortDesc.trim(),
+                  full_description: quickFullDesc.trim(),
+                }
+              : proj
+          )
+        );
+        setQuickEditProject(null);
+      } else {
+        toastError(data.error || "Failed to update title and description");
+      }
+    } catch {
+      toastError("Network error saving title and description");
+    } finally {
+      setQuickLoading(false);
+    }
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -422,22 +484,33 @@ export default function ManagePortfolioPage() {
                     </div>
 
                     {/* Card Content */}
-                    <div className="p-5 space-y-2">
+                    <div className="p-5 space-y-2.5">
                       <div className="flex items-center justify-between text-[11px] text-cinematic-textDim">
-                        <span>{project.year}</span>
+                        <span className="font-mono">{project.year}</span>
                         {project.client && <span className="truncate max-w-[150px]">Client: {project.client}</span>}
                       </div>
 
-                      <h3 className="text-sm font-cinematic font-bold text-white line-clamp-1">
-                        {project.title}
-                      </h3>
+                      <div className="flex items-start justify-between gap-2">
+                        <h3 className="text-sm font-cinematic font-bold text-white line-clamp-1 flex-1">
+                          {project.title}
+                        </h3>
+                        <button
+                          type="button"
+                          onClick={() => openQuickEdit(project)}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium text-cinematic-gold bg-cinematic-gold/10 hover:bg-cinematic-gold/25 border border-cinematic-gold/30 transition-all flex-shrink-0"
+                          title="Quick Edit Title & Description"
+                        >
+                          <Pencil className="w-2.5 h-2.5" />
+                          <span>Edit Text</span>
+                        </button>
+                      </div>
 
                       <p className="text-xs text-cinematic-textDim font-mono truncate">
                         /work/{project.slug}
                       </p>
 
                       <p className="text-xs text-cinematic-textMuted line-clamp-2 leading-relaxed">
-                        {project.short_description}
+                        {project.short_description || <span className="italic text-white/30">No short description set</span>}
                       </p>
 
                       {project.gallery_images && project.gallery_images.length > 0 && (
@@ -449,7 +522,7 @@ export default function ManagePortfolioPage() {
                   </div>
 
                   {/* Actions Bar */}
-                  <div className="p-3.5 bg-black/40 border-t border-cinematic-border/60 flex items-center justify-between">
+                  <div className="p-3.5 bg-black/40 border-t border-cinematic-border/60 flex items-center justify-between gap-2 flex-wrap">
                     {/* Ordering buttons */}
                     <div className="flex items-center gap-1">
                       <button
@@ -471,7 +544,17 @@ export default function ManagePortfolioPage() {
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                      <button
+                        type="button"
+                        onClick={() => openQuickEdit(project)}
+                        className="px-2 py-1 rounded text-[11px] font-medium text-cinematic-gold hover:text-black hover:bg-cinematic-gold bg-cinematic-gold/10 border border-cinematic-gold/30 flex items-center gap-1 transition-all"
+                        title="Edit Title & Description"
+                      >
+                        <FileText className="w-3 h-3" />
+                        <span>Title & Desc</span>
+                      </button>
+
                       <button
                         onClick={() => handleToggleFeatured(project)}
                         className={`p-1.5 rounded transition-colors ${
@@ -507,7 +590,7 @@ export default function ManagePortfolioPage() {
                       <button
                         onClick={() => openEditModal(project)}
                         className="p-1.5 text-cinematic-textMuted hover:text-cinematic-gold hover:bg-white/5 rounded transition-colors"
-                        title="Edit Project"
+                        title="Edit Full Project"
                       >
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
@@ -523,6 +606,123 @@ export default function ManagePortfolioPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Quick Edit Title & Description Modal */}
+          {quickEditProject && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in overflow-y-auto">
+              <div className="bg-cinematic-surface border border-cinematic-gold/40 w-full max-w-xl p-6 sm:p-7 rounded-sm shadow-2xl relative my-8">
+                <button
+                  onClick={() => setQuickEditProject(null)}
+                  className="absolute top-5 right-5 text-white/50 hover:text-white"
+                  type="button"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-cinematic-gold animate-pulse" />
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-cinematic-gold font-bold">
+                    Quick Edit Mode
+                  </span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-black/60 border border-cinematic-border text-cinematic-textMuted font-mono">
+                    {quickEditProject.category}
+                  </span>
+                </div>
+
+                <h3 className="text-base font-cinematic font-bold text-white mb-1">
+                  Edit Title & Description
+                </h3>
+                <p className="text-xs text-cinematic-textMuted mb-6 pb-3 border-b border-cinematic-border">
+                  Directly modify the video title, short card summary, and full narrative for <span className="text-white font-medium">"{quickEditProject.title}"</span>.
+                </p>
+
+                <form onSubmit={handleSaveQuickEdit} className="space-y-4">
+                  {/* Title */}
+                  <div>
+                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
+                      <span>Project / Video Title *</span>
+                      <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
+                        {quickTitle.length} characters
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      value={quickTitle}
+                      onChange={(e) => setQuickTitle(e.target.value)}
+                      required
+                      placeholder="e.g. Elysian Vows — Florence & Michael"
+                      className="w-full bg-black/70 border border-cinematic-border text-white text-sm px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-medium"
+                    />
+                  </div>
+
+                  {/* Short Description */}
+                  <div>
+                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
+                      <span>Short Summary / Description (Card & Gallery Preview)</span>
+                      <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
+                        {quickShortDesc.length} characters
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      value={quickShortDesc}
+                      onChange={(e) => setQuickShortDesc(e.target.value)}
+                      placeholder="One or two evocative sentences describing the shoot..."
+                      className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                    />
+                    <p className="text-[10px] text-cinematic-textDim mt-1">
+                      Displayed on homepage selected works grid, card previews, and search snippets.
+                    </p>
+                  </div>
+
+                  {/* Full Description */}
+                  <div>
+                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
+                      <span>Full Storyline & Technical Narrative (Project Page)</span>
+                      <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
+                        {quickFullDesc.length} characters
+                      </span>
+                    </label>
+                    <textarea
+                      rows={5}
+                      value={quickFullDesc}
+                      onChange={(e) => setQuickFullDesc(e.target.value)}
+                      placeholder="Detailed narrative about the film, camera packages, lighting setups, location storytelling, or director notes..."
+                      className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed transition-colors"
+                    />
+                    <p className="text-[10px] text-cinematic-textDim mt-1">
+                      Displayed on the dedicated project page (<span className="font-mono text-white/50">/work/{quickEditProject.slug}</span>).
+                    </p>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-end gap-3 pt-4 border-t border-cinematic-border">
+                    <button
+                      type="button"
+                      onClick={() => setQuickEditProject(null)}
+                      className="px-4 py-2 text-xs text-cinematic-textMuted hover:text-white"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={quickLoading}
+                      className="btn-gold text-xs py-2 px-5 flex items-center gap-2"
+                    >
+                      {quickLoading ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin text-black" />
+                          <span>Saving Changes...</span>
+                        </>
+                      ) : (
+                        <span>Save Title & Description</span>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           )}
 
@@ -620,10 +820,20 @@ export default function ManagePortfolioPage() {
                   </div>
 
                   {/* Short & Full Descriptions */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 p-4 bg-black/40 border border-cinematic-border/80 rounded-sm">
+                    <div className="flex items-center justify-between border-b border-cinematic-border pb-2">
+                      <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Project Story & Descriptions</span>
+                      </span>
+                      <span className="text-[10px] text-cinematic-textDim font-mono">
+                        Short Preview & Full Narrative
+                      </span>
+                    </div>
+
                     <div>
                       <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Short Summary (Card Preview)
+                        Short Summary / Description (Card & Gallery Preview)
                       </label>
                       <input
                         type="text"
@@ -632,11 +842,14 @@ export default function ManagePortfolioPage() {
                         placeholder="One evocative sentence about the cinematic shoot..."
                         className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
                       />
+                      <p className="text-[10px] text-cinematic-textDim mt-1">
+                        Shown on homepage highlight cards and gallery preview cards.
+                      </p>
                     </div>
 
                     <div>
                       <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Full Story & Technical Narrative (Project Page)
+                        Full Story & Technical Narrative (Dedicated Project Page)
                       </label>
                       <textarea
                         rows={4}
@@ -645,6 +858,9 @@ export default function ManagePortfolioPage() {
                         placeholder="Detailed narrative about the camera packages used, lighting setups, location storytelling..."
                         className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed"
                       />
+                      <p className="text-[10px] text-cinematic-textDim mt-1">
+                        Shown on the film's dedicated story page.
+                      </p>
                     </div>
                   </div>
 

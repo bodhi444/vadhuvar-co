@@ -71,16 +71,21 @@ export async function POST(request: Request) {
       .slice(0, 40);
     const uniqueFilename = `${sanitizedBase}-${Date.now()}${ext}`;
 
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    await fs.mkdir(uploadsDir, { recursive: true });
-
-    const filePath = path.join(uploadsDir, uniqueFilename);
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    await fs.writeFile(filePath, buffer);
+    let publicUrl = `/uploads/${uniqueFilename}`;
 
-    const publicUrl = `/uploads/${uniqueFilename}`;
+    try {
+      const uploadsDir = path.join(process.cwd(), "public", "uploads");
+      await fs.mkdir(uploadsDir, { recursive: true });
+      const filePath = path.join(uploadsDir, uniqueFilename);
+      await fs.writeFile(filePath, buffer);
+    } catch (err: any) {
+      // Fallback for read-only serverless filesystems (Vercel Lambda)
+      console.warn("[upload] Read-only filesystem detected, using data URI fallback:", err.message);
+      publicUrl = `data:${mimeType};base64,${buffer.toString("base64")}`;
+    }
 
     // 5. Index into Media Library database
     const asset = await createMediaAsset({

@@ -122,7 +122,7 @@ export default function ManageAboutPage() {
         body: JSON.stringify(about),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         success("About section content updated successfully!");
         setAbout(data.data);

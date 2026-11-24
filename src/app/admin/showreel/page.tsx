@@ -48,7 +48,7 @@ export default function ManageShowreelPage() {
         body: JSON.stringify(showreel),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         success("Showreel updated successfully!");
         setShowreel(data.data);

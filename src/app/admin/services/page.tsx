@@ -114,7 +114,7 @@ export default function ManageServicesPage() {
             is_active: isActive,
           }),
         });
-        const data = await res.json();
+        const data = await res.json().catch(() => ({}));
         if (res.ok && data.success) {
           success("Service updated successfully!");
           setIsModalOpen(false);
@@ -138,7 +138,7 @@ export default function ManageServicesPage() {
             display_order: services.length + 1,
           }),
         });
-        const data = await res.json();
+        const data = await res.json().catch(() => ({}));
         if (res.ok && data.success) {
           success("New service created successfully!");
           setIsModalOpen(false);

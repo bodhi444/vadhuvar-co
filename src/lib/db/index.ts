@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import os from "os";
 import bcrypt from "bcryptjs";
 import {
   Project,
@@ -15,6 +16,7 @@ import {
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const DB_FILE_PATH = path.join(process.cwd(), "src", "data", "db.json");
+const TMP_DB_PATH = path.join(os.tmpdir(), "athul_ollur_db.json");
 
 interface DBData {
   site_settings: SiteSettings;
@@ -32,6 +34,23 @@ interface DBData {
 let memoryCache: DBData | null = null;
 
 async function readDB(): Promise<DBData> {
+  // 1. Return in-memory cache if available
+  if (memoryCache) {
+    return memoryCache;
+  }
+
+  // 2. Check /tmp fallback (populated in active serverless container)
+  try {
+    const rawTmp = await fs.readFile(TMP_DB_PATH, "utf-8");
+    if (rawTmp && rawTmp.trim().length > 0) {
+      memoryCache = JSON.parse(rawTmp);
+      return memoryCache!;
+    }
+  } catch {
+    // /tmp file not present yet, continue to bundled DB
+  }
+
+  // 3. Read from bundled repository db.json
   try {
     const raw = await fs.readFile(DB_FILE_PATH, "utf-8");
     memoryCache = JSON.parse(raw);
@@ -43,10 +62,31 @@ async function readDB(): Promise<DBData> {
 }
 
 async function writeDB(data: DBData): Promise<void> {
+  // Update memory cache immediately
   memoryCache = data;
-  const tempPath = `${DB_FILE_PATH}.tmp`;
-  await fs.writeFile(tempPath, JSON.stringify(data, null, 2), "utf-8");
-  await fs.rename(tempPath, DB_FILE_PATH);
+  const serialized = JSON.stringify(data, null, 2);
+
+  // 1. Attempt writing to local repository file (works in local dev)
+  try {
+    const tempPath = `${DB_FILE_PATH}.tmp`;
+    await fs.writeFile(tempPath, serialized, "utf-8");
+    await fs.rename(tempPath, DB_FILE_PATH);
+  } catch (err: any) {
+    // On Vercel / AWS Lambda, process.cwd() is read-only (EROFS).
+    // Never fail or throw an exception on read-only environments.
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("[db] Local file write notice:", err.message);
+    }
+  }
+
+  // 2. Always persist to /tmp storage (writable in serverless execution environments)
+  try {
+    const tmpTemp = `${TMP_DB_PATH}.tmp`;
+    await fs.writeFile(tmpTemp, serialized, "utf-8");
+    await fs.rename(tmpTemp, TMP_DB_PATH);
+  } catch (err: any) {
+    console.warn("[db] Temporary storage fallback notice:", err.message);
+  }
 }
 
 // -------------------------------------------------------------

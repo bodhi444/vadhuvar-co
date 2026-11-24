@@ -56,7 +56,7 @@ export default function WebsiteSettingsPage() {
         body: JSON.stringify(settings),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         success("Website settings updated successfully!");
         setSettings(data.data);

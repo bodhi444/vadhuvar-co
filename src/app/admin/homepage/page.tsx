@@ -47,7 +47,7 @@ export default function ManageHomepagePage() {
         body: JSON.stringify(content),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         success("Homepage content updated successfully!");
         setContent(data.data);
