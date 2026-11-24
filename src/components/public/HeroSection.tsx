@@ -45,14 +45,14 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
   return (
     <section className="relative min-h-screen pt-28 pb-16 sm:pb-24 overflow-hidden bg-[#07080B] flex flex-col justify-between select-none">
       {/* 1. Giant Typographic Backdrop (Inspired by Reference 2 & 4) */}
-      <div className="absolute top-16 sm:top-20 inset-x-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
-        <span className="font-cinematic font-black text-[15vw] sm:text-[14vw] tracking-tighter uppercase text-white/[0.035] leading-none whitespace-nowrap">
+      <div className="absolute top-20 sm:top-24 inset-x-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+        <span className="font-cinematic font-black text-[16vw] sm:text-[14vw] tracking-tight uppercase text-white/[0.06] leading-none whitespace-nowrap">
           ATHUL OLLUR
         </span>
       </div>
 
       {/* 2. Warm Amber/Gold Ambient Halo Glow (Inspired by Reference 1 & Reference 4) */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] lg:w-[750px] h-[350px] sm:h-[600px] lg:h-[750px] bg-gradient-to-tr from-amber-600/20 via-cinematic-gold/15 to-transparent rounded-full blur-[100px] sm:blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] sm:w-[650px] lg:w-[800px] h-[380px] sm:h-[650px] lg:h-[800px] bg-gradient-to-tr from-amber-600/25 via-cinematic-gold/20 to-transparent rounded-full blur-[110px] sm:blur-[150px] pointer-events-none z-0" />
 
       {/* Background Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,8,11,0.85)_100%)] pointer-events-none z-0" />
@@ -126,32 +126,59 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
             </div>
           </div>
 
-          {/* CENTER COLUMN: The Star Portrait (Front and Center like Ref 1, 2, 3 & 4) */}
+          {/* CENTER COLUMN: The Star Cutout Profile (Pure Silhouette Cutout as in References 1, 2, 3 & 4) */}
           <div className="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2">
-            {/* Portrait Frame Container */}
-            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[440px] aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/60 group">
-              {/* Backlight Glow inside container */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#07080B] via-transparent to-transparent z-10 pointer-events-none" />
+            {/* Cutout Presentation Stage (No rectangular card border, pure cutout) */}
+            <div className="relative w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[480px] h-[460px] sm:h-[540px] lg:h-[580px] flex items-end justify-center group">
+              
+              {/* 1. Dramatic Backlight Halo directly behind Athul's head & shoulders */}
+              <div className="absolute top-8 sm:top-12 left-1/2 -translate-x-1/2 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-tr from-cinematic-gold/35 via-amber-500/25 to-transparent rounded-full blur-[80px] sm:blur-[100px] pointer-events-none -z-10" />
 
-              <Image
-                src="/athul-ollur.jpg"
-                alt="Athul Ollur (Athul Kumar) — Director of Photography & Visual Artist"
-                fill
-                priority
-                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 440px"
-                className="object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
-                onLoad={() => setImgLoaded(true)}
-              />
+              {/* 2. Concentric Cine Aperture Ring Halo */}
+              <div className="absolute top-10 sm:top-14 left-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full border border-cinematic-gold/20 pointer-events-none -z-10 animate-[spin_80s_linear_infinite]" />
+              <div className="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 w-56 sm:w-72 h-56 sm:h-72 rounded-full border border-dashed border-white/10 pointer-events-none -z-10" />
 
-              {/* Floating Bottom Card Over Portrait */}
-              <div className="absolute bottom-4 inset-x-4 z-20 bg-[#0C0E14]/90 border border-cinematic-gold/40 p-3.5 rounded-xl backdrop-blur-xl shadow-2xl space-y-1">
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-cinematic-gold font-bold">
-                  <span>Athul Ollur (Athul Kumar)</span>
-                  <span className="text-white/60">BFA Painting (2015)</span>
+              {/* 3. The Athul Ollur Transparent Cutout PNG */}
+              <div 
+                className="relative w-full h-full flex items-end justify-center"
+                style={{
+                  maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+                }}
+              >
+                <Image
+                  src="/athul-ollur-cutout.png"
+                  alt="Athul Ollur (Athul Kumar) — Director of Photography & Visual Artist"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 480px"
+                  className="object-contain object-bottom drop-shadow-[0_20px_45px_rgba(0,0,0,0.95)] drop-shadow-[0_0_40px_rgba(201,163,94,0.18)] scale-100 group-hover:scale-[1.02] transition-transform duration-700"
+                  onLoad={() => setImgLoaded(true)}
+                />
+              </div>
+
+              {/* 4. Bottom Smooth Fade to merge seamlessly with page dark background */}
+              <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#07080B] via-[#07080B]/85 to-transparent pointer-events-none z-10" />
+
+              {/* 5. Floating Badge: Shoulder Level (Director of Photography) */}
+              <div className="absolute top-12 sm:top-16 -right-2 sm:-right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/40 shadow-2xl backdrop-blur-md flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cinematic-gold opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
+                </span>
+                <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-white font-bold">
+                  DOP & Cinematographer
+                </span>
+              </div>
+
+              {/* 6. Floating Badge: Subtle Glass Baseline Pill */}
+              <div className="absolute bottom-5 inset-x-4 sm:inset-x-8 z-20 mx-auto max-w-[320px] bg-[#0C0E14]/95 border border-cinematic-gold/30 p-2.5 sm:p-3 rounded-xl backdrop-blur-xl shadow-2xl text-center space-y-0.5">
+                <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-cinematic-gold font-bold">
+                  Athul Ollur · Skillmount DOP
                 </div>
-                <p className="text-[11px] text-white/90 font-sans leading-tight">
-                  DOP at Skillmount Education (2024–2026) · Former Cinematographer at Greenmedia (2023–2024)
-                </p>
+                <div className="text-[11px] text-white/80 font-sans font-medium">
+                  BFA in Painting · Raja Ravi Varma Fine Arts (2015)
+                </div>
               </div>
             </div>
           </div>
