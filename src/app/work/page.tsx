@@ -20,15 +20,15 @@ export default async function WorkPage({
   searchParams?: Promise<{ cat?: string }>;
 }) {
   const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  let initialCategory: ProjectCategory = "All";
+  let initialCategory: string = "All";
   if (resolvedSearchParams?.cat) {
     const rawCat = resolvedSearchParams.cat;
-    if (rawCat === "Wedding" || rawCat === "Commercial" || rawCat === "Concert Video" || rawCat === "Podcast" || rawCat === "Photography" || rawCat === "Fine Art") {
-      initialCategory = rawCat;
-    } else if (rawCat.toLowerCase() === "music video") {
+    if (rawCat.toLowerCase() === "music video") {
       initialCategory = "Concert Video";
     } else if (rawCat.toLowerCase() === "documentary" || rawCat.toLowerCase() === "portcast") {
       initialCategory = "Podcast";
+    } else {
+      initialCategory = rawCat;
     }
   }
 

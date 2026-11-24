@@ -27,10 +27,10 @@ import {
   Star,
   Video,
   FileText,
+  Tag,
 } from "lucide-react";
 
-const CATEGORIES: ProjectCategory[] = [
-  "All",
+const DEFAULT_CATEGORIES: string[] = [
   "Commercial",
   "Concert Video",
   "Podcast",
@@ -43,7 +43,17 @@ export default function ManagePortfolioPage() {
   const { success, error: toastError } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<ProjectCategory>("All");
+  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>("All");
+
+  // Dynamic Categories state
+  const [categoriesList, setCategoriesList] = useState<string[]>(DEFAULT_CATEGORIES);
+  const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [addingCategoryLoading, setAddingCategoryLoading] = useState(false);
+
+  // In modal: custom category input toggle
+  const [isCustomCategoryInput, setIsCustomCategoryInput] = useState(false);
+  const [customCategoryName, setCustomCategoryName] = useState("");
 
   // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,6 +67,7 @@ export default function ManagePortfolioPage() {
   // Quick Edit Title & Description Modal State
   const [quickEditProject, setQuickEditProject] = useState<Project | null>(null);
   const [quickTitle, setQuickTitle] = useState("");
+  const [quickCategory, setQuickCategory] = useState<string>("");
   const [quickShortDesc, setQuickShortDesc] = useState("");
   const [quickFullDesc, setQuickFullDesc] = useState("");
   const [quickLoading, setQuickLoading] = useState(false);
@@ -64,7 +75,7 @@ export default function ManagePortfolioPage() {
   // Form Fields
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
-  const [category, setCategory] = useState<Project["category"]>("Wedding");
+  const [category, setCategory] = useState<string>("Commercial");
   const [shortDesc, setShortDesc] = useState("");
   const [fullDesc, setFullDesc] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
@@ -80,7 +91,46 @@ export default function ManagePortfolioPage() {
 
   useEffect(() => {
     fetchProjects();
+    fetchCategories();
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch("/api/admin/settings");
+      if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (data && Array.isArray(data.categories)) {
+          setCategoriesList((prev) => {
+            const merged = [...DEFAULT_CATEGORIES];
+            data.categories.forEach((cat: string) => {
+              if (cat && !merged.includes(cat) && cat !== "Wedding") {
+                merged.splice(merged.length - 1, 0, cat);
+              }
+            });
+            return merged;
+          });
+        }
+      }
+    } catch {
+      // fallback
+    }
+  };
+
+  useEffect(() => {
+    if (projects.length > 0) {
+      setCategoriesList((prev) => {
+        const merged = [...prev];
+        projects.forEach((p) => {
+          if (p.category && !merged.includes(p.category) && p.category !== "Wedding") {
+            const wIdx = merged.indexOf("Wedding");
+            if (wIdx !== -1) merged.splice(wIdx, 0, p.category);
+            else merged.push(p.category);
+          }
+        });
+        return merged;
+      });
+    }
+  }, [projects]);
 
   const fetchProjects = async () => {
     try {
@@ -99,11 +149,53 @@ export default function ManagePortfolioPage() {
     }
   };
 
+  const handleAddNewCategory = async (name: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) {
+      toastError("Please enter a category name");
+      return;
+    }
+    if (categoriesList.some((c) => c.toLowerCase() === trimmed.toLowerCase())) {
+      toastError(`Category "${trimmed}" already exists.`);
+      return;
+    }
+
+    setAddingCategoryLoading(true);
+    try {
+      const updated = [...categoriesList];
+      const wIdx = updated.indexOf("Wedding");
+      if (wIdx !== -1) {
+        updated.splice(wIdx, 0, trimmed);
+      } else {
+        updated.push(trimmed);
+      }
+      setCategoriesList(updated);
+      setSelectedCategoryFilter(trimmed);
+      setNewCategoryName("");
+      setIsAddCategoryOpen(false);
+
+      // Persist to site settings
+      await fetch("/api/admin/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ categories: updated }),
+      });
+
+      success(`Category "${trimmed}" added successfully!`);
+    } catch {
+      toastError("Network error saving category");
+    } finally {
+      setAddingCategoryLoading(false);
+    }
+  };
+
   const openCreateModal = () => {
     setEditingProject(null);
     setTitle("");
     setSlug("");
-    setCategory("Commercial");
+    setCategory(categoriesList[0] || "Commercial");
+    setIsCustomCategoryInput(false);
+    setCustomCategoryName("");
     setShortDesc("");
     setFullDesc("");
     setThumbnailUrl("/works/hero/hero-1.jpg");
@@ -124,6 +216,8 @@ export default function ManagePortfolioPage() {
     setTitle(p.title);
     setSlug(p.slug);
     setCategory(p.category);
+    setIsCustomCategoryInput(false);
+    setCustomCategoryName("");
     setShortDesc(p.short_description);
     setFullDesc(p.full_description);
     setThumbnailUrl(p.thumbnail_url);
@@ -154,6 +248,7 @@ export default function ManagePortfolioPage() {
   const openQuickEdit = (p: Project) => {
     setQuickEditProject(p);
     setQuickTitle(p.title || "");
+    setQuickCategory(p.category || "Commercial");
     setQuickShortDesc(p.short_description || "");
     setQuickFullDesc(p.full_description || p.short_description || "");
   };
@@ -174,6 +269,7 @@ export default function ManagePortfolioPage() {
         body: JSON.stringify({
           id: quickEditProject.id,
           title: quickTitle.trim(),
+          category: quickCategory || quickEditProject.category,
           short_description: quickShortDesc.trim(),
           full_description: quickFullDesc.trim(),
         }),
@@ -181,13 +277,14 @@ export default function ManagePortfolioPage() {
 
       const data = await res.json().catch(() => ({}));
       if (res.ok && (data.success || data.data)) {
-        success(`Updated title & description for "${quickTitle.trim()}"!`);
+        success(`Updated title & details for "${quickTitle.trim()}"!`);
         setProjects((prev) =>
           prev.map((proj) =>
             proj.id === quickEditProject.id
               ? {
                   ...proj,
                   title: quickTitle.trim(),
+                  category: quickCategory || quickEditProject.category,
                   short_description: quickShortDesc.trim(),
                   full_description: quickFullDesc.trim(),
                 }
@@ -355,7 +452,9 @@ export default function ManagePortfolioPage() {
   const filteredProjects =
     selectedCategoryFilter === "All"
       ? projects
-      : projects.filter((p) => p.category === selectedCategoryFilter);
+      : projects.filter(
+          (p) => p.category?.toLowerCase() === selectedCategoryFilter.toLowerCase()
+        );
 
   return (
     <div className="flex min-h-screen bg-cinematic-bg text-white">
@@ -387,19 +486,73 @@ export default function ManagePortfolioPage() {
 
           {/* Category Filters Bar */}
           <div className="flex flex-wrap items-center gap-2 border-b border-cinematic-border pb-4">
-            {CATEGORIES.map((cat) => (
+            {["All", ...categoriesList].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategoryFilter(cat)}
                 className={`px-3 py-1.5 rounded-sm text-xs uppercase tracking-wider font-medium transition-all ${
                   selectedCategoryFilter === cat
-                    ? "bg-cinematic-gold text-black font-semibold"
-                    : "text-cinematic-textMuted hover:text-white bg-black/40 border border-cinematic-border"
+                    ? "bg-cinematic-gold text-black font-semibold shadow-md shadow-cinematic-gold/20"
+                    : "text-cinematic-textMuted hover:text-white bg-black/40 border border-cinematic-border hover:border-cinematic-gold/40"
                 }`}
               >
                 {cat}
               </button>
             ))}
+
+            {/* Inline Add Category Trigger */}
+            {isAddCategoryOpen ? (
+              <div className="flex items-center gap-1.5 p-1 bg-black/90 border border-cinematic-gold/60 rounded-sm animate-fade-in">
+                <input
+                  type="text"
+                  value={newCategoryName}
+                  onChange={(e) => setNewCategoryName(e.target.value)}
+                  placeholder="New Category..."
+                  className="bg-transparent text-white text-xs px-2 py-1 focus:outline-none w-32 sm:w-44 font-medium"
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleAddNewCategory(newCategoryName);
+                    } else if (e.key === "Escape") {
+                      setIsAddCategoryOpen(false);
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  disabled={addingCategoryLoading}
+                  onClick={() => handleAddNewCategory(newCategoryName)}
+                  className="px-2.5 py-1 bg-cinematic-gold text-black text-xs font-semibold rounded-sm hover:bg-cinematic-gold/90 transition-colors flex items-center gap-1"
+                >
+                  {addingCategoryLoading ? (
+                    <Loader2 className="w-3 h-3 animate-spin text-black" />
+                  ) : (
+                    <span>Add</span>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsAddCategoryOpen(false);
+                    setNewCategoryName("");
+                  }}
+                  className="p-1 text-cinematic-textDim hover:text-white"
+                  title="Cancel"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsAddCategoryOpen(true)}
+                className="px-3 py-1.5 rounded-sm text-xs uppercase tracking-wider font-semibold text-cinematic-gold hover:text-black hover:bg-cinematic-gold bg-cinematic-gold/10 border border-cinematic-gold/40 flex items-center gap-1.5 transition-all"
+                title="Create New Project Category"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add Category</span>
+              </button>
+            )}
           </div>
 
           {/* Project Grid */}
@@ -609,42 +762,45 @@ export default function ManagePortfolioPage() {
             </div>
           )}
 
-          {/* Quick Edit Title & Description Modal */}
+          {/* Quick Edit Title & Description Modal — Dynamically Responsive */}
           {quickEditProject && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in overflow-y-auto">
-              <div className="bg-cinematic-surface border border-cinematic-gold/40 w-full max-w-xl p-6 sm:p-7 rounded-sm shadow-2xl relative my-8">
-                <button
-                  onClick={() => setQuickEditProject(null)}
-                  className="absolute top-5 right-5 text-white/50 hover:text-white"
-                  type="button"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-cinematic-gold animate-pulse" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-cinematic-gold font-bold">
-                    Quick Edit Mode
-                  </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-black/60 border border-cinematic-border text-cinematic-textMuted font-mono">
-                    {quickEditProject.category}
-                  </span>
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md animate-fade-in overflow-hidden">
+              <div className="bg-[#0C0E12] border border-cinematic-gold/40 w-full max-w-full sm:max-w-lg md:max-w-xl 2xl:max-w-2xl max-h-[100dvh] sm:max-h-[90vh] rounded-sm shadow-2xl flex flex-col overflow-hidden relative">
+                
+                {/* Sticky Header */}
+                <div className="p-4 sm:p-5 border-b border-cinematic-border/80 bg-[#11131A]/95 backdrop-blur-md flex items-center justify-between shrink-0">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-2 h-2 rounded-full bg-cinematic-gold animate-pulse shrink-0" />
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-cinematic-gold font-bold">
+                        Quick Edit Mode
+                      </span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-black/60 border border-cinematic-border text-cinematic-textMuted font-mono">
+                        {quickCategory || quickEditProject.category}
+                      </span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-cinematic font-bold text-white truncate max-w-[260px] sm:max-w-md">
+                      Edit Film Details
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setQuickEditProject(null)}
+                    className="p-2 text-white/50 hover:text-white hover:bg-white/5 rounded-sm transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    type="button"
+                    title="Close Dialog"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
 
-                <h3 className="text-base font-cinematic font-bold text-white mb-1">
-                  Edit Title & Description
-                </h3>
-                <p className="text-xs text-cinematic-textMuted mb-6 pb-3 border-b border-cinematic-border">
-                  Directly modify the video title, short card summary, and full narrative for <span className="text-white font-medium">"{quickEditProject.title}"</span>.
-                </p>
-
-                <form onSubmit={handleSaveQuickEdit} className="space-y-4">
+                {/* Scrollable Form Body */}
+                <form id="quick-edit-form" onSubmit={handleSaveQuickEdit} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scrollbar">
                   {/* Title */}
                   <div>
                     <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
                       <span>Project / Video Title *</span>
                       <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
-                        {quickTitle.length} characters
+                        {quickTitle.length} chars
                       </span>
                     </label>
                     <input
@@ -657,12 +813,30 @@ export default function ManagePortfolioPage() {
                     />
                   </div>
 
+                  {/* Category Selection */}
+                  <div>
+                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5">
+                      Category *
+                    </label>
+                    <select
+                      value={quickCategory}
+                      onChange={(e) => setQuickCategory(e.target.value)}
+                      className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                    >
+                      {categoriesList.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
                   {/* Short Description */}
                   <div>
                     <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
                       <span>Short Summary / Description (Card & Gallery Preview)</span>
                       <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
-                        {quickShortDesc.length} characters
+                        {quickShortDesc.length} chars
                       </span>
                     </label>
                     <input
@@ -673,7 +847,7 @@ export default function ManagePortfolioPage() {
                       className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
                     />
                     <p className="text-[10px] text-cinematic-textDim mt-1">
-                      Displayed on homepage selected works grid, card previews, and search snippets.
+                      Displayed on homepage selected works grid and card previews.
                     </p>
                   </div>
 
@@ -682,7 +856,7 @@ export default function ManagePortfolioPage() {
                     <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block mb-1.5 flex items-center justify-between">
                       <span>Full Storyline & Technical Narrative (Project Page)</span>
                       <span className="text-[10px] text-cinematic-textDim font-normal font-mono">
-                        {quickFullDesc.length} characters
+                        {quickFullDesc.length} chars
                       </span>
                     </label>
                     <textarea
@@ -690,138 +864,225 @@ export default function ManagePortfolioPage() {
                       value={quickFullDesc}
                       onChange={(e) => setQuickFullDesc(e.target.value)}
                       placeholder="Detailed narrative about the film, camera packages, lighting setups, location storytelling, or director notes..."
-                      className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed transition-colors"
+                      className="w-full bg-black/70 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed transition-colors min-h-[100px]"
                     />
                     <p className="text-[10px] text-cinematic-textDim mt-1">
-                      Displayed on the dedicated project page (<span className="font-mono text-white/50">/work/{quickEditProject.slug}</span>).
+                      Displayed on the dedicated project page (/work/{quickEditProject.slug}).
                     </p>
                   </div>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-end gap-3 pt-4 border-t border-cinematic-border">
-                    <button
-                      type="button"
-                      onClick={() => setQuickEditProject(null)}
-                      className="px-4 py-2 text-xs text-cinematic-textMuted hover:text-white"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={quickLoading}
-                      className="btn-gold text-xs py-2 px-5 flex items-center gap-2"
-                    >
-                      {quickLoading ? (
-                        <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin text-black" />
-                          <span>Saving Changes...</span>
-                        </>
-                      ) : (
-                        <span>Save Title & Description</span>
-                      )}
-                    </button>
-                  </div>
                 </form>
+
+                {/* Sticky Footer */}
+                <div className="p-3.5 sm:p-4 border-t border-cinematic-border/80 bg-[#11131A]/95 backdrop-blur-md flex items-center justify-end gap-3 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setQuickEditProject(null)}
+                    className="px-4 py-2.5 text-xs text-cinematic-textMuted hover:text-white rounded-sm min-h-[44px] flex items-center"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    form="quick-edit-form"
+                    type="submit"
+                    disabled={quickLoading}
+                    className="btn-gold text-xs py-2.5 px-5 flex items-center gap-2 min-h-[44px]"
+                  >
+                    {quickLoading ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin text-black" />
+                        <span>Saving Changes...</span>
+                      </>
+                    ) : (
+                      <span>Save Title & Details</span>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           )}
 
-          {/* Add / Edit Project Modal */}
+          {/* Add / Edit Project Modal — Dynamically Responsive across all Screen Resolutions */}
           {isModalOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in overflow-y-auto">
-              <div className="bg-cinematic-surface border border-cinematic-border w-full max-w-3xl p-6 sm:p-8 rounded-sm shadow-2xl relative my-8">
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="absolute top-5 right-5 text-white/50 hover:text-white"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md animate-fade-in overflow-hidden">
+              <div className="bg-[#0C0E12] border border-cinematic-border/80 w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-6xl h-full sm:h-auto max-h-[100dvh] sm:max-h-[92vh] rounded-sm shadow-2xl flex flex-col overflow-hidden relative">
+                
+                {/* 1. STICKY DYNAMIC HEADER */}
+                <div className="p-4 sm:p-5 border-b border-cinematic-border/80 bg-[#11131A]/95 backdrop-blur-md flex items-center justify-between shrink-0">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2 rounded bg-cinematic-gold/10 text-cinematic-gold border border-cinematic-gold/20 shrink-0">
+                      <Film className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-cinematic-gold font-semibold">
+                          {editingProject ? "Editing Film Project" : "New Production Setup"}
+                        </span>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-black/60 border border-cinematic-border text-cinematic-textMuted font-mono">
+                          {category}
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-cinematic font-bold text-white truncate max-w-[240px] sm:max-w-md lg:max-w-xl">
+                        {editingProject ? editingProject.title : "Add New Cinematic Film"}
+                      </h3>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setIsModalOpen(false)}
+                    className="p-2 text-white/50 hover:text-white hover:bg-white/5 rounded-sm transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    title="Close Dialog"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
 
-                <h3 className="text-base font-cinematic font-bold text-white mb-6 pb-3 border-b border-cinematic-border">
-                  {editingProject ? `Edit Film: ${editingProject.title}` : "Add New Cinematic Film"}
-                </h3>
-
-                <form onSubmit={handleSave} className="space-y-6">
-                  {/* Title & Slug */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Project Title *
-                      </label>
-                      <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                        placeholder="e.g. Elysian Vows — Florence & Michael"
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
-                      />
+                {/* 2. SCROLLABLE FORM BODY WITH RESPONSIVE GRIDS */}
+                <form id="project-form" onSubmit={handleSave} className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 custom-scrollbar">
+                  
+                  {/* SECTION 1: CORE INFORMATION & CATEGORY */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-2">
+                      <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold flex items-center gap-1.5">
+                        <Tag className="w-3.5 h-3.5" />
+                        <span>Core Identity & Production Details</span>
+                      </span>
+                      <span className="text-[10px] text-cinematic-textDim font-mono">Required *</span>
                     </div>
 
-                    <div>
-                      <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        URL Slug
-                      </label>
-                      <input
-                        type="text"
-                        value={slug}
-                        onChange={(e) => setSlug(e.target.value)}
-                        placeholder="Leave blank to auto-generate"
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
-                      />
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                      {/* Title (spans 8 on lg+) */}
+                      <div className="lg:col-span-8">
+                        <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
+                          Project Title *
+                        </label>
+                        <input
+                          type="text"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
+                          required
+                          placeholder="e.g. Elysian Vows — Florence & Michael"
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-sm px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors font-medium"
+                        />
+                      </div>
+
+                      {/* Slug (spans 4 on lg+) */}
+                      <div className="lg:col-span-4">
+                        <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
+                          URL Slug
+                        </label>
+                        <input
+                          type="text"
+                          value={slug}
+                          onChange={(e) => setSlug(e.target.value)}
+                          placeholder="Leave blank to auto-generate"
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Category, Year, Client (Responsive 3-col on sm+, 1-col on mobile) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      {/* Category Selection with Custom Category Adder */}
+                      <div>
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="text-xs uppercase tracking-wider text-cinematic-textMuted font-medium">
+                            Category *
+                          </label>
+                          <button
+                            type="button"
+                            onClick={() => setIsCustomCategoryInput(!isCustomCategoryInput)}
+                            className="text-[10px] text-cinematic-gold hover:underline font-mono"
+                          >
+                            {isCustomCategoryInput ? "Choose Existing" : "+ New"}
+                          </button>
+                        </div>
+
+                        {isCustomCategoryInput ? (
+                          <div className="flex gap-1.5">
+                            <input
+                              type="text"
+                              value={customCategoryName}
+                              onChange={(e) => setCustomCategoryName(e.target.value)}
+                              placeholder="New Category..."
+                              className="flex-1 bg-black/70 border border-cinematic-gold/60 text-white text-xs px-2.5 py-2 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                              autoFocus
+                            />
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const newCat = customCategoryName.trim();
+                                if (!newCat) return;
+                                if (!categoriesList.includes(newCat)) {
+                                  const updated = [...categoriesList];
+                                  const wIdx = updated.indexOf("Wedding");
+                                  if (wIdx !== -1) updated.splice(wIdx, 0, newCat);
+                                  else updated.push(newCat);
+                                  setCategoriesList(updated);
+                                }
+                                setCategory(newCat);
+                                setIsCustomCategoryInput(false);
+                                setCustomCategoryName("");
+                                success(`Category "${newCat}" applied!`);
+                              }}
+                              className="px-2.5 py-2 bg-cinematic-gold text-black text-xs font-semibold rounded-sm hover:bg-cinematic-gold/90 transition-colors"
+                            >
+                              Set
+                            </button>
+                          </div>
+                        ) : (
+                          <select
+                            value={category}
+                            onChange={(e) => {
+                              if (e.target.value === "__NEW__") {
+                                setIsCustomCategoryInput(true);
+                              } else {
+                                setCategory(e.target.value);
+                              }
+                            }}
+                            className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                          >
+                            {categoriesList.map((cat) => (
+                              <option key={cat} value={cat}>
+                                {cat}
+                              </option>
+                            ))}
+                            <option value="__NEW__">+ Add Custom Category...</option>
+                          </select>
+                        )}
+                      </div>
+
+                      {/* Year */}
+                      <div>
+                        <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
+                          Production Year
+                        </label>
+                        <input
+                          type="text"
+                          value={year}
+                          onChange={(e) => setYear(e.target.value)}
+                          placeholder="2025"
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono transition-colors"
+                        />
+                      </div>
+
+                      {/* Client */}
+                      <div>
+                        <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
+                          Client / Brand Name
+                        </label>
+                        <input
+                          type="text"
+                          value={client}
+                          onChange={(e) => setClient(e.target.value)}
+                          placeholder="e.g. Porsche or Century"
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Category, Year, Client */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Category *
-                      </label>
-                      <select
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value as any)}
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
-                      >
-                        <option value="Commercial">Commercial</option>
-                        <option value="Concert Video">Concert Video</option>
-                        <option value="Podcast">Podcast</option>
-                        <option value="Photography">Photography</option>
-                        <option value="Fine Art">Fine Art & Sculptures</option>
-                        <option value="Wedding">Wedding</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Production Year
-                      </label>
-                      <input
-                        type="text"
-                        value={year}
-                        onChange={(e) => setYear(e.target.value)}
-                        placeholder="2025"
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                        Client / Brand Name
-                      </label>
-                      <input
-                        type="text"
-                        value={client}
-                        onChange={(e) => setClient(e.target.value)}
-                        placeholder="e.g. Porsche or Florence Sterling"
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Short & Full Descriptions */}
-                  <div className="space-y-4 p-4 bg-black/40 border border-cinematic-border/80 rounded-sm">
-                    <div className="flex items-center justify-between border-b border-cinematic-border pb-2">
+                  {/* SECTION 2: DESCRIPTIONS & CREATIVE VISION */}
+                  <div className="space-y-4 p-4 sm:p-5 bg-black/40 border border-cinematic-border/80 rounded-sm">
+                    <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-2">
                       <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold flex items-center gap-1.5">
                         <FileText className="w-3.5 h-3.5" />
                         <span>Project Story & Descriptions</span>
@@ -840,7 +1101,7 @@ export default function ManagePortfolioPage() {
                         value={shortDesc}
                         onChange={(e) => setShortDesc(e.target.value)}
                         placeholder="One evocative sentence about the cinematic shoot..."
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold"
+                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold transition-colors"
                       />
                       <p className="text-[10px] text-cinematic-textDim mt-1">
                         Shown on homepage highlight cards and gallery preview cards.
@@ -855,59 +1116,90 @@ export default function ManagePortfolioPage() {
                         rows={4}
                         value={fullDesc}
                         onChange={(e) => setFullDesc(e.target.value)}
-                        placeholder="Detailed narrative about the camera packages used, lighting setups, location storytelling..."
-                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed"
+                        placeholder="Detailed narrative about camera packages, lighting setups, location storytelling, lens optics, and director notes..."
+                        className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3.5 py-2.5 rounded-sm focus:outline-none focus:border-cinematic-gold leading-relaxed transition-colors min-h-[90px] 2xl:min-h-[140px]"
                       />
                       <p className="text-[10px] text-cinematic-textDim mt-1">
-                        Shown on the film's dedicated story page.
+                        Shown on the film's dedicated story page (/work/[slug]).
                       </p>
                     </div>
                   </div>
 
-                  {/* Thumbnail Image */}
-                  <div>
-                    <label className="text-xs uppercase tracking-wider text-cinematic-textMuted block mb-1">
-                      Main Thumbnail Image (4K / 1080p Poster) *
-                    </label>
-                    <input
-                      type="text"
-                      value={thumbnailUrl}
-                      onChange={(e) => setThumbnailUrl(e.target.value)}
-                      required
-                      placeholder="/works/hero/hero-1.jpg"
-                      className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2 rounded-sm focus:outline-none focus:border-cinematic-gold mb-2 font-mono"
-                    />
-                    <MediaUploader
-                      label="Upload or Replace Thumbnail"
-                      fileType="image"
-                      accept="image/*"
-                      currentValue={thumbnailUrl}
-                      onUploadSuccess={(url) => setThumbnailUrl(url)}
-                    />
+                  {/* SECTION 3: PRIMARY POSTER / THUMBNAIL */}
+                  <div className="space-y-3 p-4 sm:p-5 bg-black/40 border border-cinematic-border/80 rounded-sm">
+                    <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-2">
+                      <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold">
+                        Primary 4K / 1080p Poster Thumbnail *
+                      </span>
+                      <span className="text-[10px] text-cinematic-textDim font-mono">Cover Artwork</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                      <div className="md:col-span-8 space-y-2">
+                        <input
+                          type="text"
+                          value={thumbnailUrl}
+                          onChange={(e) => setThumbnailUrl(e.target.value)}
+                          required
+                          placeholder="/works/hero/hero-1.jpg"
+                          className="w-full bg-black/60 border border-cinematic-border text-white text-xs px-3 py-2 rounded-sm focus:outline-none focus:border-cinematic-gold font-mono"
+                        />
+                        <MediaUploader
+                          label="Upload or Replace Thumbnail"
+                          fileType="image"
+                          accept="image/*"
+                          currentValue={thumbnailUrl}
+                          onUploadSuccess={(url) => setThumbnailUrl(url)}
+                        />
+                      </div>
+
+                      {/* Live Thumbnail Preview */}
+                      <div className="md:col-span-4 flex justify-center">
+                        <div className="relative w-full aspect-video max-w-[220px] rounded-sm overflow-hidden border border-cinematic-border bg-black shadow-md">
+                          {thumbnailUrl ? (
+                            <Image src={thumbnailUrl} alt="Thumbnail preview" fill className="object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-[10px] text-white/30">
+                              Preview Frame
+                            </div>
+                          )}
+                          <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded text-[8px] font-mono bg-black/80 text-cinematic-gold border border-cinematic-border">
+                            POSTER
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Gallery Images */}
-                  <div className="space-y-3 p-4 bg-black/40 border border-cinematic-border rounded-sm">
-                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block">
-                      Additional Gallery Stills
-                    </label>
-
-                    {/* Gallery Thumbnails List */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                      {galleryImages.map((img, i) => (
-                        <div key={i} className="relative aspect-video rounded-sm overflow-hidden border border-cinematic-border group/gal">
-                          <Image src={img} alt={`Gallery ${i}`} fill className="object-cover" />
-                          <button
-                            type="button"
-                            onClick={() => removeGalleryImage(i)}
-                            className="absolute top-1 right-1 bg-red-600/90 text-white p-1 rounded hover:bg-red-500 opacity-0 group-hover/gal:opacity-100 transition-opacity"
-                            title="Remove Still"
-                          >
-                            <X className="w-3 h-3" />
-                          </button>
-                        </div>
-                      ))}
+                  {/* SECTION 4: STILL FRAMES GALLERY */}
+                  <div className="space-y-3 p-4 sm:p-5 bg-black/40 border border-cinematic-border/80 rounded-sm">
+                    <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-2">
+                      <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold">
+                        High-Fidelity Still Frames Gallery
+                      </span>
+                      <span className="text-[10px] text-cinematic-textDim font-mono">
+                        {galleryImages.length} still frames added
+                      </span>
                     </div>
+
+                    {/* Responsive Stills Grid */}
+                    {galleryImages.length > 0 && (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6 gap-3">
+                        {galleryImages.map((img, i) => (
+                          <div key={i} className="relative aspect-video rounded-sm overflow-hidden border border-cinematic-border group/gal">
+                            <Image src={img} alt={`Gallery ${i}`} fill className="object-cover" />
+                            <button
+                              type="button"
+                              onClick={() => removeGalleryImage(i)}
+                              className="absolute top-1 right-1 bg-red-600/90 text-white p-1 rounded hover:bg-red-500 opacity-0 group-hover/gal:opacity-100 transition-opacity"
+                              title="Remove Still"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Add Image to Gallery */}
                     <div className="flex gap-2 pt-2">
@@ -921,7 +1213,7 @@ export default function ManagePortfolioPage() {
                       <button
                         type="button"
                         onClick={() => addGalleryImage(newGalleryInput)}
-                        className="px-3 py-2 bg-cinematic-surface border border-cinematic-border hover:border-cinematic-gold text-xs text-white rounded-sm"
+                        className="px-3.5 py-2 bg-cinematic-surface border border-cinematic-border hover:border-cinematic-gold text-xs text-white rounded-sm transition-colors"
                       >
                         Add URL
                       </button>
@@ -935,11 +1227,14 @@ export default function ManagePortfolioPage() {
                     />
                   </div>
 
-                  {/* Video Links & Uploads */}
-                  <div className="space-y-4 p-4 bg-black/40 border border-cinematic-border rounded-sm">
-                    <label className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold block">
-                      Video Playback Configuration (Uploaded MP4 / YouTube / Vimeo)
-                    </label>
+                  {/* SECTION 5: VIDEO PLAYBACK STREAMS */}
+                  <div className="space-y-4 p-4 sm:p-5 bg-black/40 border border-cinematic-border/80 rounded-sm">
+                    <div className="flex items-center justify-between border-b border-cinematic-border/60 pb-2">
+                      <span className="text-xs uppercase tracking-wider text-cinematic-gold font-semibold">
+                        Video Playback Streams (Uploaded MP4 / YouTube / Vimeo)
+                      </span>
+                      <span className="text-[10px] text-cinematic-textDim font-mono">Stream Integration</span>
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
@@ -990,9 +1285,9 @@ export default function ManagePortfolioPage() {
                     </div>
                   </div>
 
-                  {/* Toggles */}
-                  <div className="flex flex-wrap items-center gap-6 pt-2">
-                    <label className="flex items-center gap-2 cursor-pointer">
+                  {/* SECTION 6: PUBLISHING FLAGS */}
+                  <div className="flex flex-wrap items-center gap-6 p-3 bg-black/30 border border-cinematic-border/60 rounded-sm">
+                    <label className="flex items-center gap-2 cursor-pointer select-none">
                       <input
                         type="checkbox"
                         checked={isPublished}
@@ -1004,7 +1299,7 @@ export default function ManagePortfolioPage() {
                       </span>
                     </label>
 
-                    <label className="flex items-center gap-2 cursor-pointer">
+                    <label className="flex items-center gap-2 cursor-pointer select-none">
                       <input
                         type="checkbox"
                         checked={isFeatured}
@@ -1016,20 +1311,26 @@ export default function ManagePortfolioPage() {
                       </span>
                     </label>
                   </div>
+                </form>
 
-                  {/* Modal Footer */}
-                  <div className="flex items-center justify-end gap-3 pt-6 border-t border-cinematic-border">
+                {/* 3. STICKY DYNAMIC FOOTER */}
+                <div className="p-3.5 sm:p-4 border-t border-cinematic-border/80 bg-[#11131A]/95 backdrop-blur-md flex items-center justify-between gap-3 shrink-0">
+                  <div className="text-[11px] text-cinematic-textDim font-mono truncate hidden sm:block max-w-[240px] md:max-w-md">
+                    Permalink: <span className="text-white/60">/work/{slug || "project-slug"}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
                     <button
                       type="button"
                       onClick={() => setIsModalOpen(false)}
-                      className="px-4 py-2 text-xs text-cinematic-textMuted hover:text-white"
+                      className="px-4 py-2.5 text-xs text-cinematic-textMuted hover:text-white rounded-sm min-h-[44px] flex items-center"
                     >
                       Cancel
                     </button>
                     <button
+                      form="project-form"
                       type="submit"
                       disabled={formLoading}
-                      className="btn-gold text-xs py-2 px-5 flex items-center gap-2"
+                      className="btn-gold text-xs py-2.5 px-6 flex items-center gap-2 min-h-[44px]"
                     >
                       {formLoading ? (
                         <>
@@ -1037,11 +1338,12 @@ export default function ManagePortfolioPage() {
                           <span>Saving Project...</span>
                         </>
                       ) : (
-                        <span>{editingProject ? "Update Project" : "Publish Project"}</span>
+                        <span>{editingProject ? "Update Film" : "Publish Film Project"}</span>
                       )}
                     </button>
                   </div>
-                </form>
+                </div>
+
               </div>
             </div>
           )}

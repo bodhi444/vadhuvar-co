@@ -13,8 +13,7 @@ interface PortfolioSectionProps {
   initialCategory?: ProjectCategory;
 }
 
-const CATEGORIES: ProjectCategory[] = [
-  "All",
+const BASE_CATEGORIES: string[] = [
   "Commercial",
   "Concert Video",
   "Podcast",
@@ -28,8 +27,21 @@ export default function PortfolioSection({
   showAllLink = true,
   initialCategory = "All",
 }: PortfolioSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>(initialCategory);
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
+
+  // Compute dynamic categories with Wedding always at the bottom
+  const categories: string[] = React.useMemo(() => {
+    const projectCategories = Array.from(new Set(projects.map((p) => p.category).filter(Boolean)));
+    const merged = [...BASE_CATEGORIES];
+    projectCategories.forEach((cat) => {
+      if (!merged.includes(cat) && cat !== "Wedding") {
+        // insert before Wedding so Wedding stays at the bottom
+        merged.splice(merged.length - 1, 0, cat);
+      }
+    });
+    return ["All", ...merged];
+  }, [projects]);
 
   const publishedProjects = projects.filter((p) => p.is_published);
 
@@ -48,7 +60,7 @@ export default function PortfolioSection({
               p.category?.toLowerCase() === "podcast"
             );
           }
-          return p.category === selectedCategory;
+          return p.category?.toLowerCase() === selectedCategory.toLowerCase();
         });
 
   return (
@@ -80,7 +92,7 @@ export default function PortfolioSection({
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             {/* Category Filter Pills (Smooth Touch Horizontal Scroll on Mobile) */}
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1.5 -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap">
-              {CATEGORIES.map((cat) => (
+              {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}

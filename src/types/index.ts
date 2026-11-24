@@ -5,7 +5,8 @@ export type ProjectCategory =
   | "Podcast"
   | "Photography"
   | "Fine Art"
-  | "Wedding";
+  | "Wedding"
+  | string;
 
 export interface Project {
   id: string;
@@ -142,6 +143,7 @@ export interface SiteSettings {
   vimeo_url: string;
   seo_title: string;
   seo_description: string;
+  categories?: string[];
   updated_at: string;
 }
 
