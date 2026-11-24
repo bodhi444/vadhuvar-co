@@ -160,26 +160,15 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
               {/* 4. Bottom Smooth Fade to merge seamlessly with page dark background */}
               <div className="absolute bottom-0 inset-x-0 h-20 sm:h-24 bg-gradient-to-t from-[#07080B] via-[#07080B]/80 to-transparent pointer-events-none z-10" />
 
-              {/* 5. Floating Badge: Shoulder Level (Director of Photography) */}
-              <div className="absolute top-4 sm:top-10 right-1 sm:-right-4 z-20 px-3 py-1.5 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-md flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cinematic-gold opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-white font-bold">
-                  DOP & Cinematographer
-                </span>
-              </div>
-
-              {/* 6. Floating Capsule Badge: Subtle Glass Baseline */}
+              {/* 5. Floating Badge: Moved to Photo Bottom Center */}
               <div className="absolute bottom-3 sm:bottom-4 inset-x-0 z-20 flex justify-center pointer-events-none">
-                <div className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/40 shadow-2xl backdrop-blur-xl flex items-center gap-2 pointer-events-auto">
-                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-cinematic-gold font-bold">
-                    Skillmount DOP
+                <div className="px-4 py-2 rounded-full bg-[#0C0E14]/90 border border-cinematic-gold/50 shadow-2xl backdrop-blur-xl flex items-center gap-2.5 pointer-events-auto">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cinematic-gold opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cinematic-gold" />
                   </span>
-                  <span className="text-white/30 text-xs">·</span>
-                  <span className="text-[10px] sm:text-[11px] text-white/90 font-sans font-medium">
-                    BFA in Painting (2015)
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-white font-bold">
+                    DOP & Cinematographer
                   </span>
                 </div>
               </div>
