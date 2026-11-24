@@ -3,6 +3,7 @@ import Navigation from "@/components/public/Navigation";
 import HeroSection from "@/components/public/HeroSection";
 import ServicesSection from "@/components/public/ServicesSection";
 import PortfolioSection from "@/components/public/PortfolioSection";
+import ProcessAndPedigree from "@/components/public/ProcessAndPedigree";
 import ShowreelSection from "@/components/public/ShowreelSection";
 import AboutSection from "@/components/public/AboutSection";
 import ContactSection from "@/components/public/ContactSection";
@@ -34,8 +35,8 @@ export default async function HomePage() {
       <Navigation settings={settings} />
 
       <main className="flex-1">
-        {/* Cinematic Hero */}
-        <HeroSection content={homepage} />
+        {/* Profile-Centric Hero (Inspired by User References) */}
+        <HeroSection content={homepage} about={about} settings={settings} />
 
         {/* Services Section */}
         {homepage.show_services && <ServicesSection services={services} />}
@@ -45,13 +46,16 @@ export default async function HomePage() {
           <PortfolioSection projects={projects} showAllLink={true} />
         )}
 
+        {/* Education, Process & Pedigree Matrix (Inspired by Reference 2) */}
+        <ProcessAndPedigree about={about} />
+
         {/* Studio Showreel */}
         {homepage.show_showreel && <ShowreelSection showreel={showreel} />}
 
         {/* About & Studio Philosophy */}
         {homepage.show_about && <AboutSection about={about} />}
 
-        {/* Contact Inquiry Section */}
+        {/* Contact Inquiry Section ("Let's Work Together") */}
         {homepage.show_contact && (
           <ContactSection settings={settings} services={services} />
         )}

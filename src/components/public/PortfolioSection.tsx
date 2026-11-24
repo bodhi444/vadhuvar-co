@@ -43,28 +43,40 @@ export default function PortfolioSection({
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="space-y-3">
             <span className="text-xs uppercase tracking-[0.25em] text-cinematic-gold font-semibold block">
-              Portfolio
+              Curated Filmography & Art
             </span>
             <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
-              Selected Works.
+              Selected Projects.
             </h2>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-sm text-xs uppercase tracking-[0.15em] font-medium transition-all ${
-                  selectedCategory === cat
-                    ? "bg-cinematic-gold text-black font-semibold shadow-lg shadow-cinematic-gold/20"
-                    : "text-cinematic-textMuted hover:text-white bg-[#12141A] border border-cinematic-border"
-                }`}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-sm text-xs uppercase tracking-[0.15em] font-medium transition-all ${
+                    selectedCategory === cat
+                      ? "bg-cinematic-gold text-black font-semibold shadow-lg shadow-cinematic-gold/20"
+                      : "text-cinematic-textMuted hover:text-white bg-[#12141A] border border-cinematic-border"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {showAllLink && (
+              <Link
+                href="/work"
+                className="hidden sm:inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-cinematic-gold hover:text-white font-semibold transition-colors pl-4 border-l border-cinematic-border"
               >
-                {cat}
-              </button>
-            ))}
+                <span>View Archive</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
         </div>
 
@@ -121,6 +133,9 @@ export default function PortfolioSection({
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px] text-cinematic-textDim font-sans">
+                      <span className="font-mono text-xs font-bold text-cinematic-gold px-2 py-0.5 rounded bg-cinematic-gold/10 border border-cinematic-gold/30">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
                       {project.client && <span>Client: {project.client}</span>}
                     </div>
 
