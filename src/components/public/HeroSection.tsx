@@ -92,7 +92,7 @@ export default function HeroSection({ content, about, settings }: HeroSectionPro
                 Creative Director & DOP
               </span>
               <span className="text-xs uppercase tracking-wider text-cinematic-textDim block font-sans">
-                Creative Director · Visual Artist
+                Photographer, Artist
               </span>
             </div>
 
